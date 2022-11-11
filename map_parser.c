@@ -10,3 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+#include <fcntl.h>
+#include <unistd.h>
+
+t_list	*read_map(char *path)
+{
+	int		fd;
+	t_list	*map;
+	char	*line;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		exit(69); // replace this later
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line)
+			ft_lstadd_back(&map, ft_lstnew(line));
+		else
+			break ;
+	}
+	close(fd);
+	ft_lstiter(map, &lstiter_remove_newline);
+	return (map);
+}
+
+void	lstiter_remove_newline(void *ptr)
+{
+	char	*str;
+
+	str = (char *) ptr;
+	while (*str)
+	{
+		if (*str == '\n')
+			*str = '\0';
+		str++;
+	}
+}
+
+void	validate_map(t_list *map)
+{
+}

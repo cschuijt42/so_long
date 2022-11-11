@@ -33,10 +33,13 @@ t_list	*read_map(char *path)
 	}
 	close(fd);
 	ft_lstiter(map, &lstiter_remove_newline);
+	validate_map_measurements(map);
+	validate_map_boundaries(map);
+	validate_map_content(map);
 	return (map);
 }
 
-void	lstiter_remove_newline(void *ptr)
+static void	lstiter_remove_newline(void *ptr)
 {
 	char	*str;
 
@@ -47,8 +50,4 @@ void	lstiter_remove_newline(void *ptr)
 			*str = '\0';
 		str++;
 	}
-}
-
-void	validate_map(t_list *map)
-{
 }

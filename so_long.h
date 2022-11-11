@@ -10,4 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
+# include "libft/libft.h"
+
+void	validate_map_measurements(t_list *map);
+void	validate_map_boundaries(t_list *map);
+void	validate_map_content(t_list *map);
+
+#endif

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   so_long.h                                          :+:    :+:            */
+/*   free_functions.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/11 14:32:03 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/11/11 14:32:03 by cschuijt      ########   odam.nl         */
+/*   Created: 2022/11/12 20:32:15 by cschuijt      #+#    #+#                 */
+/*   Updated: 2022/11/12 20:32:15 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "libft/libft.h"
+#include "so_long.h"
 
-typedef struct s_map {
-	char	*content;
-	size_t	rows;
-	size_t	row_length;
-}	t_map;
+void	free_split_array(char ***array)
+{
+	size_t	i;
 
-void	validate_map_measurements(char **map);
-void	validate_map_boundaries(char **map);
-void	validate_map_content(char *map);
-
-#endif
+	i = 0;
+	while (*array[i])
+	{
+		free(*array[i]);
+		i++;
+	}
+	free(*array);
+	*array = NULL;
+}

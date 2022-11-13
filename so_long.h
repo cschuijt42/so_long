@@ -25,6 +25,11 @@ typedef struct s_map {
 	size_t	row_length;
 }	t_map;
 
+// -- MAP INITIALIZATION --
+
+t_map	*initialize_map(char *path);
+char	*read_map_from_file(int fd);
+
 // -- VALIDATIONS --
 
 void	validate_map_measurements(char **map);
@@ -41,5 +46,9 @@ void	free_map_struct(t_map *map);
 
 char	*join_string_array(char **array);
 char	*last_string_in_array(char **array);
+
+// -- FREEING FUNCTIONS --
+
+void	free_split_array(char ***array);
 
 #endif

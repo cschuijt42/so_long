@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 t_map	*initialize_map_struct(char **map_array)
 {

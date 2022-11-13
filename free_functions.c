@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 void	free_split_array(char ***array)
 {

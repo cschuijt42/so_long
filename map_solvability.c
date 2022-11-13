@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
+
+static size_t	traverse_map_string(char *str, t_map *map);
+static void	move_into_space(char *space);
+static size_t	remaining_objectives(char *map);
 
 void	validate_map_solvability(t_map *map)
 {

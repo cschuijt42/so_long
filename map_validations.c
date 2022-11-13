@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
+
+static void	validate_outer_row(char *row);
+static void	validate_middle_row(char *row);
 
 // Validates that all rows of the map are the same size and
 // that the map contains at least three rows and three columns

@@ -13,6 +13,7 @@
 #include "so_long.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 t_map	*initialize_map(char *path)
 {
@@ -24,7 +25,7 @@ t_map	*initialize_map(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit(69); // replace this later
-	map_str = read_map_from_file(path);
+	map_str = read_map_from_file(fd);
 	close(fd);
 	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)

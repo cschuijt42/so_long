@@ -14,24 +14,28 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char	*initialize_map(char *path)
+t_map	*initialize_map(char *path)
 {
 	int		fd;
-	char	*map;
+	char	*map_str;
 	char	**map_rows;
+	t_map	*map_struct;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit(69); // replace this later
-	map = read_map_from_file(path);
+	map_str = read_map_from_file(path);
 	close(fd);
-	map_rows = ft_split(map,'\n');
+	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)
 		exit(90); // replace later
 	validate_map_measurements(map_rows);
 	validate_map_boundaries(map_rows);
-	validate_map_content(map);
-	return (map);
+	validate_map_content(map_str);
+	map_struct = initialize_map_struct(map_rows);
+	free_split_array(&map_rows);
+	validate_map_solvability(map_struct);
+	return (map_struct);
 }
 
 // Returns the entire map as a string, without newlines stripped.

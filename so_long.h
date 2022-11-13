@@ -12,7 +12,12 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+// -- INCLUDES --
+
 # include "libft/libft.h"
+
+// -- STRUCTS --
 
 typedef struct s_map {
 	char	*content;
@@ -20,8 +25,21 @@ typedef struct s_map {
 	size_t	row_length;
 }	t_map;
 
+// -- VALIDATIONS --
+
 void	validate_map_measurements(char **map);
 void	validate_map_boundaries(char **map);
 void	validate_map_content(char *map);
+void	validate_map_solvability(t_map *map);
+
+// -- STRUCT FUNCTIONS -- 
+
+t_map	*initialize_map_struct(char **map_array);
+void	free_map_struct(t_map *map);
+
+// -- HELPERS --
+
+char	*join_string_array(char **array);
+char	*last_string_in_array(char **array);
 
 #endif

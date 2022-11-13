@@ -26,7 +26,7 @@ void	validate_map_measurements(char **map)
 	i = 0;
 	len = ft_strlen(map[i]);
 	if (len < 3)
-		exit_message("map is too small to be solvable");
+		exit_message("map is too small");
 	i++;
 	while (map[i])
 	{
@@ -35,7 +35,7 @@ void	validate_map_measurements(char **map)
 		i++;
 	}
 	if (i < 3)
-		exit_message("map is too small to be solvable");
+		exit_message("map is too small");
 }
 
 // Validates that the entire map is surrounded by walls.

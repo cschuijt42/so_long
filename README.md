@@ -2,4 +2,12 @@
 The objective for so_long is to create a small 2D game where the player moves
 through a maze, grabbing collectibles and making it to the exit.
 
-There is nothing here yet, scram!
+## Checklist of doom:
+- [x] File handling and ingress
+- [x] Map validation
+  - [x] Ensure map meets subject criteria
+  - [x] Ensure map is solvable
+- [ ] Set up rendering with sprites
+- [ ] Set up gameplay loop
+- [ ] Set up win condition
+- [ ] Cleanly exit the game when necessary

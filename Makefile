@@ -1,6 +1,6 @@
 OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						map_struct_functions.o map_validations.o
-FLAGS = -Werror -Wall -Wextra
+FLAGS = -Werror -Wall -Wextra -g
 NAME = so_long
 
 $(NAME) : $(OBJFILES) libft.a

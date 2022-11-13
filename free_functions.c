@@ -13,16 +13,15 @@
 #include "so_long.h"
 #include <stdlib.h>
 
-void	free_split_array(char ***array)
+void	free_split_array(char **array)
 {
 	size_t	i;
 
 	i = 0;
-	while (*array[i])
+	while (array[i])
 	{
-		free(*array[i]);
+		free(array[i]);
 		i++;
 	}
-	free(*array);
-	*array = NULL;
+	free(array);
 }

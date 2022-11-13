@@ -34,7 +34,7 @@ t_map	*initialize_map(char *path)
 	validate_map_boundaries(map_rows);
 	validate_map_content(map_str);
 	map_struct = initialize_map_struct(map_rows);
-	free_split_array(&map_rows);
+	free_split_array(map_rows);
 	validate_map_solvability(map_struct);
 	return (map_struct);
 }

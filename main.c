@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		exit(900);
 	/* map = */initialize_map(av[1]);	
-	ft_printf("Map seems good to me!");
+	ft_printf("Map seems good to me!\n");
 	exit(0);
 	return (0);
 }

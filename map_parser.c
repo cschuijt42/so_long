@@ -22,6 +22,7 @@ t_map	*initialize_map(char *path)
 	char	**map_rows;
 	t_map	*map_struct;
 
+	validate_filename(path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit(69); // replace this later

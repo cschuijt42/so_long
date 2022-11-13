@@ -25,12 +25,12 @@ t_map	*initialize_map(char *path)
 	validate_filename(path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		exit(69); // replace this later
+		exit_perror("error opening file");
 	map_str = read_map_from_file(fd);
 	close(fd);
 	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)
-		exit(90); // replace later
+		exit_perror("malloc error in ft_split");
 	validate_map_measurements(map_rows);
 	validate_map_boundaries(map_rows);
 	validate_map_content(map_str);
@@ -49,7 +49,7 @@ char	*read_map_from_file(int fd)
 
 	map = ft_calloc(1, 1);
 	if (!map)
-		exit(90); // replace later
+		exit_perror("malloc error");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -57,7 +57,7 @@ char	*read_map_from_file(int fd)
 		{
 			map2 = ft_strjoin(map, line);
 			if (!map2)
-				exit(90); // replace later
+				exit_perror("malloc error");
 			free(map);
 			free(line);
 			map = map2;
@@ -75,7 +75,7 @@ void	validate_filename(char *file)
 
 	len = ft_strlen(file);
 	if (len < 5)
-		exit(420);
+		exit_message("invalid filename, needs to end in .ber");
 	if (ft_strncmp(".ber", file + len - 4, 5))
-		exit(420);
+		exit_message("invalid filename, needs to end in .ber");
 }

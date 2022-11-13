@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	// t_map	*map;
 
 	if (ac != 2)
-		exit(900);
+		exit_message("please provide just the map file as a single argument");
 	/* map = */initialize_map(av[1]);	
 	ft_printf("Map seems good to me!\n");
 	exit(0);

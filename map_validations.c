@@ -26,16 +26,16 @@ void	validate_map_measurements(char **map)
 	i = 0;
 	len = ft_strlen(map[i]);
 	if (len < 3)
-		exit(69); // Replace later
+		exit_message("map is too small to be solvable");
 	i++;
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != len)
-			exit(80); // replace this later
+			exit_message("map rows are not all the same length");
 		i++;
 	}
 	if (i < 3)
-		exit(69);
+		exit_message("map is too small to be solvable");
 }
 
 // Validates that the entire map is surrounded by walls.
@@ -59,7 +59,7 @@ static void	validate_outer_row(char *row)
 	while (*row)
 	{
 		if (*row != '1')
-			exit(69); // replace later
+			exit_message("map outer walls are not properly closed");
 		row++;
 	}
 }
@@ -67,13 +67,13 @@ static void	validate_outer_row(char *row)
 static void	validate_middle_row(char *row)
 {
 	if (*row != '1')
-		exit(69); // replace later
+		exit_message("map outer walls are not properly closed");
 	row++;
 	while (*row)
 		row++;
 	row--;
 	if (*row != '1')
-		exit(69); // replace later
+		exit_message("map outer walls are not properly closed");
 }
 
 // Checks the map for invalid characters, as well as for invalid start,
@@ -97,13 +97,13 @@ void	validate_map_content(char *map)
 		else if (*map == 'C')
 			collects++;
 		else if (*map != '1' && *map != '0' && *map != '\n')
-			exit(69); // replace later
+			exit_message("map contains illegal characters");
 		map++;
 	}
 	if (starts != 1)
-		exit(69); // replace later
+		exit_message("map does not have exactly one starting position");
 	if (exits != 1)
-		exit(69); // replace later
+		exit_message("map does not have exactly one exit");
 	if (collects < 1)
-		exit(69); // replace later
+		exit_message("map does not have at least one collectible");
 }

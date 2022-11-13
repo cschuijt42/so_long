@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	free_split_array(char **array)
 {
@@ -24,4 +25,17 @@ void	free_split_array(char **array)
 		i++;
 	}
 	free(array);
+}
+
+void	exit_message(char *msg)
+{
+	ft_putstr_fd("Error: ", 2);
+	ft_putendl_fd(msg, 2);
+	exit(1);
+}
+
+void	exit_perror(char *msg)
+{
+	perror(msg);
+	exit(1);
 }

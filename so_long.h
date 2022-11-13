@@ -51,5 +51,7 @@ char	*last_string_in_array(char **array);
 // -- FREEING FUNCTIONS --
 
 void	free_split_array(char **array);
+void	exit_message(char *msg);
+void	exit_perror(char *msg);
 
 #endif

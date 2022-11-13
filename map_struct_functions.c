@@ -24,6 +24,8 @@ t_map	*initialize_map_struct(char **map_array)
 	while (map_array[y])
 		y++;
 	map = malloc(sizeof(t_map));
+	if (!map)
+		exit_perror("malloc error");
 	map->rows = y;
 	map->row_length = x;
 	map->content = join_string_array(map_array);
@@ -41,10 +43,14 @@ char	*join_string_array(char **array)
 		return (NULL);
 	else
 		str = ft_strdup(array[i]);
+	if (!str)
+		exit_perror("malloc error");
 	i++;
 	while (array[i])
 	{
 		str2 = ft_strjoin(str, array[i]);
+		if (!str2)
+			exit_perror("malloc error");
 		free(str);
 		str = str2;
 		i++;

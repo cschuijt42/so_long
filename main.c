@@ -10,3 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+#include <stdlib.h>
+
+int	main(int ac, char **av)
+{
+	// t_map	*map;
+
+	if (ac != 2)
+		exit(900);
+	/* map = */initialize_map(av[1]);	
+	ft_printf("Map seems good to me!");
+	exit(0);
+	return (0);
+}

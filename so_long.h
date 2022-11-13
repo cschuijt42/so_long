@@ -32,6 +32,7 @@ char	*read_map_from_file(int fd);
 
 // -- VALIDATIONS --
 
+void	validate_filename(char *file);
 void	validate_map_measurements(char **map);
 void	validate_map_boundaries(char **map);
 void	validate_map_content(char *map);

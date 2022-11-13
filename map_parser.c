@@ -66,3 +66,15 @@ char	*read_map_from_file(int fd)
 	}
 	return (map);
 }
+
+// Exits unless the file ends in the .ber extension.
+void	validate_filename(char *file)
+{
+	size_t	len;
+
+	len = ft_strlen(file);
+	if (len < 5)
+		exit(420);
+	if (ft_strncmp(".ber", file + len - 4, 5))
+		exit(420);
+}

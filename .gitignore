@@ -1,7 +1,7 @@
 .DS_Store
 *.o
-*.a
 test
 a.out*
 .vscode/*
 so_long
+libft.a

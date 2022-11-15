@@ -16,11 +16,11 @@
 // -- DEFINES --
 
 # ifndef TILE_S
-#  define TILE_S 32
+#  define TILE_S 16
 # endif
 
 # ifndef TILE_M
-#  define TILE_M 2
+#  define TILE_M 1
 # endif
 
 // -- INCLUDES --
@@ -36,10 +36,21 @@ typedef struct s_map {
 	size_t	row_length;
 }	t_map;
 
+typedef struct s_sprites {
+	mlx_texture_t	*texture;
+	mlx_image_t		*wall;
+	mlx_image_t		*open;
+	mlx_image_t		*collectible;
+	mlx_image_t		*player;
+}	t_sprites;
+
 // -- MAP INITIALIZATION --
 
 t_map	*initialize_map(char *path);
 char	*read_map_from_file(int fd);
+
+// -- RENDERING --
+void	render_map(t_map *map, mlx_t *mlx);
 
 // -- VALIDATIONS --
 

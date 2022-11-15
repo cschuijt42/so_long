@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	mlx = mlx_init(map->row_length * TILE_S, map->rows * TILE_S, "so_long", 0);
 	if (!mlx)
 		exit_message("couldn't initialize MLX window");
+	render_map(map, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	exit(0);

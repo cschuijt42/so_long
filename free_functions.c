@@ -14,7 +14,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	free_split_array(char **array)
+// @brief Frees each element in a NULL-terminated array of pointers, then
+// frees the array itself. Does not set array pointer to NULL.
+void	free_array(void **array)
 {
 	size_t	i;
 
@@ -27,6 +29,8 @@ void	free_split_array(char **array)
 	free(array);
 }
 
+// @brief Prints "Error\n" on stderr, followed by a message, then exits the
+// program with code 1.
 void	exit_message(char *msg)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -34,6 +38,7 @@ void	exit_message(char *msg)
 	exit(1);
 }
 
+// @brief Calls perror with msg, then exits the program with code 1.
 void	exit_perror(char *msg)
 {
 	perror(msg);

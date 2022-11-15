@@ -36,44 +36,44 @@ typedef struct s_map {
 	size_t	row_length;
 }	t_map;
 
-typedef struct s_sprites {
-	mlx_texture_t	*texture;
-	mlx_image_t		*wall;
-	mlx_image_t		*open;
-	mlx_image_t		*collectible;
-	mlx_image_t		*player;
-}	t_sprites;
+typedef struct s_spritesheet {
+	char	*path;
+	size_t	size;
+	size_t	sprites_w;
+	size_t	sprites_h;
+}	t_spritesheet;
 
 // -- MAP INITIALIZATION --
 
-t_map	*initialize_map(char *path);
-char	*read_map_from_file(int fd);
+t_map		*initialize_map(char *path);
+char		*read_map_from_file(int fd);
 
-// -- RENDERING --
-void	render_map(t_map *map, mlx_t *mlx);
+// -- SPRITESHEETS --
 
-// -- VALIDATIONS --
+uint8_t		**read_spritesheet(char *path, size_t dim, size_t w, size_t h);
 
-void	validate_filename(char *file);
-void	validate_map_measurements(char **map);
-void	validate_map_boundaries(char **map);
-void	validate_map_content(char *map);
-void	validate_map_solvability(t_map *map);
+// -- MAP VALIDATIONS --
+
+void		validate_filename(char *file);
+void		validate_map_measurements(char **map);
+void		validate_map_boundaries(char **map);
+void		validate_map_content(char *map);
+void		validate_map_solvability(t_map *map);
 
 // -- STRUCT FUNCTIONS -- 
 
-t_map	*initialize_map_struct(char **map_array);
-void	free_map_struct(t_map *map);
+t_map		*initialize_map_struct(char **map_array);
+void		free_map_struct(t_map *map);
 
 // -- HELPERS --
 
-char	*join_string_array(char **array);
-char	*last_string_in_array(char **array);
+char		*join_string_array(char **array);
+char		*last_string_in_array(char **array);
 
 // -- FREEING/EXIT FUNCTIONS --
 
-void	free_split_array(char **array);
-void	exit_message(char *msg);
-void	exit_perror(char *msg);
+void		free_array(void **array);
+void		exit_message(char *msg);
+void		exit_perror(char *msg);
 
 #endif

@@ -1,5 +1,6 @@
 OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
-						map_struct_functions.o map_validations.o map_rendering.o
+						map_struct_functions.o map_validations.o map_rendering.o \
+						sprites_parsing.o
 FLAGS = -Werror -Wall -Wextra -g
 MAC_FLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 LINUX_FLAGS = -ldl -lglfw -pthread -lm

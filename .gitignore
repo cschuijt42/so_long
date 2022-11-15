@@ -4,4 +4,5 @@ test
 a.out*
 .vscode/*
 so_long
+so_long_linux
 libft.a

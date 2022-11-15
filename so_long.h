@@ -13,6 +13,16 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// -- DEFINES --
+
+# ifndef TILE_S
+#  define TILE_S 32
+# endif
+
+# ifndef TILE_M
+#  define TILE_M 2
+# endif
+
 // -- INCLUDES --
 
 # include "libft/libft.h"

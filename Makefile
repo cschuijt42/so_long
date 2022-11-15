@@ -1,10 +1,11 @@
 OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						map_struct_functions.o map_validations.o
 FLAGS = -Werror -Wall -Wextra -g
+MAC_FLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 NAME = so_long
 
 $(NAME) : $(OBJFILES) libft.a
-	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) libft.a
+	$(CC) $(FLAGS) $(MAC_FLAGS) -o $(NAME) $(OBJFILES) libft.a lib/libmlx42.a
 
 all : $(NAME)
 

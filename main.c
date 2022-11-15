@@ -15,12 +15,18 @@
 
 int	main(int ac, char **av)
 {
-	// t_map	*map;
+	t_map	*map;
+	mlx_t	*mlx;
 
 	if (ac != 2)
 		exit_message("please provide just the map file as a single argument");
-	/* map = */initialize_map(av[1]);	
+	map = initialize_map(av[1]);
 	ft_printf("Map seems good to me!\n");
+	mlx = mlx_init(map->row_length * TILE_S, map->rows * TILE_S, "so_long", 0);
+	if (!mlx)
+		exit_message("couldn't initialize MLX window");
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
 	exit(0);
 	return (0);
 }

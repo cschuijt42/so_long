@@ -16,6 +16,7 @@
 // -- INCLUDES --
 
 # include "libft/libft.h"
+# include "include/MLX42.h"
 
 // -- STRUCTS --
 
@@ -48,7 +49,7 @@ void	free_map_struct(t_map *map);
 char	*join_string_array(char **array);
 char	*last_string_in_array(char **array);
 
-// -- FREEING FUNCTIONS --
+// -- FREEING/EXIT FUNCTIONS --
 
 void	free_split_array(char **array);
 void	exit_message(char *msg);

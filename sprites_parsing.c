@@ -13,8 +13,6 @@
 #include "so_long.h"
 #include <stdlib.h>
 
-static uint8_t	*crop_buffer(mlx_texture_t *txt, size_t i, size_t dim, size_t w);
-
 // @brief Takes a spritesheet and returns an array of pixel buffers for each
 // sprite, sorted left to right and top to bottom.
 // @param path The path to the png file containing the spritesheet.
@@ -39,7 +37,7 @@ uint8_t	**read_spritesheet(char *path, size_t dim, size_t w, size_t h)
 		exit_perror("malloc error");
 	while (i < w * h)
 	{
-		array[i] = crop_buffer(texture, i, dim, w);
+		array[i] = crop_buffer(texture->pixels, i, dim, w);
 		i++;
 	}
 	array[i] = NULL;
@@ -49,21 +47,26 @@ uint8_t	**read_spritesheet(char *path, size_t dim, size_t w, size_t h)
 // @brief Returns a pixel buffer for the given sprite in a sprite sheet.
 // skips ahead to sprite i, by determining how many rows we've been through
 // using w, then uses ft_memmove on it, one row at a time.
-static uint8_t	*crop_buffer(mlx_texture_t *txt, size_t i, size_t dim, size_t w)
+// @param texture Pointer to the texture's pixel buffer.
+// @param i       Index of the sprite being cropped.
+// @param dim     Dimensions of the sprite (eg. 16 for a 16x16 sprite)
+// @param w       Amount of sprites in a row of the spritesheet.
+uint8_t	*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w)
 {
 	size_t		pos;
 	size_t		y;
 	uint8_t		*buffer;
 
+	pos = 0 + ((i / w) * dim * dim * w * 4);
+	pos += (i % w) * dim * 4;
 	buffer = malloc(sizeof(uint8_t) * dim * dim * 4);
 	if (!buffer)
 		exit_perror("malloc error");
-	pos = (dim * dim * w * (i / w)) + (dim * (i % w)) * 4;
 	y = 0;
 	while (y < dim)
 	{
-		ft_memmove(&buffer[y * dim * 4], &(txt->pixels[pos * 4]), dim * 4);
-		pos += dim * w;
+		ft_memmove(&buffer[y * dim * 4], &texture[pos], dim * 4);
+		pos += dim * w * 4;
 		y++;
 	}
 	return (buffer);

@@ -36,20 +36,13 @@ int	main(int ac, char **av)
 
 void	funny_sprites_render(mlx_t *mlx)
 {
-	uint32_t	**sprites;
-	// size_t		i;
+	uint8_t		**sprites;
 	mlx_image_t	*img;
 
-	sprites = read_spritesheet("sprites/dungeon_/32/dungeon_.png", 32, 12, 15);
-	// i = 0;
-	// while (sprites[i])
-	// {
-	// 	img = mlx_new_image(mlx, 32, 32);
-	// 	img->pixels = (uint8_t *) sprites[i];
-	// 	mlx_image_to_window(mlx, img, (i % 12) * 36, (i / 12) * 36);
-	// 	i++;
-	// }	
+	sprites = read_spritesheet("sprites/dungeon_/32/dungeon_.png", 32, 15, 12);
+
 	img = mlx_new_image(mlx, 32, 32);
-	img->pixels = (uint8_t *) sprites[7];
+	free(img->pixels);
+	img->pixels = sprites[60];
 	mlx_image_to_window(mlx, img, 0, 0);
 }

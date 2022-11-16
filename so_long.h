@@ -51,6 +51,7 @@ char		*read_map_from_file(int fd);
 // -- SPRITESHEETS --
 
 uint8_t		**read_spritesheet(char *path, size_t dim, size_t w, size_t h);
+uint8_t		*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w);
 
 // -- MAP VALIDATIONS --
 

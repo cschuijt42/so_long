@@ -47,7 +47,7 @@ void	validate_map_boundaries(char **map)
 	validate_outer_row(map[i]);
 	validate_outer_row(last_string_in_array(map));
 	i++;
-	while (map[i] && map[i+1])
+	while (map[i] && map[i + 1])
 	{
 		validate_middle_row(map[i]);
 		i++;

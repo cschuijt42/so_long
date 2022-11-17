@@ -1,6 +1,6 @@
 OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						map_struct_functions.o map_validations.o map_rendering.o \
-						sprites_parsing.o
+						sprites_parsing.o map_rendering_passes.o
 FLAGS = -Werror -Wall -Wextra -g
 MAC_FLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 LINUX_FLAGS = -ldl -lglfw -pthread -lm
@@ -24,9 +24,11 @@ clean :
 fclean :
 	rm -f $(NAME) $(NAME)_linux $(OBJFILES) libft.a
 
-libft.a :
-	make -C libft
+libft.a : libft/libft.a
 	cp libft/libft.a libft.a
+
+libft/libft.a :
+	make -C libft
 
 %.o : %.c 
 	$(CC) -c $(FLAGS) -o $@ $^

@@ -26,8 +26,8 @@ t_map	*initialize_map_struct(char **map_array)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		exit_perror("malloc error");
-	map->rows = y;
-	map->row_length = x;
+	map->height = y;
+	map->width = x;
 	map->content = join_string_array(map_array);
 	return (map);
 }

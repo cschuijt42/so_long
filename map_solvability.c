@@ -51,8 +51,8 @@ static size_t	traverse_map_string(char *str, t_map *map)
 			*str = 'x';
 			move_into_space(str + 1);
 			move_into_space(str - 1);
-			move_into_space(str + map->row_length);
-			move_into_space(str - map->row_length);
+			move_into_space(str + map->width);
+			move_into_space(str - map->width);
 		}
 		str++;
 	}

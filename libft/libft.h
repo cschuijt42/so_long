@@ -157,5 +157,7 @@ char	*get_next_line(int fd);
 // -- OTHERS --
 
 int		ft_put_nbr_base(size_t nbr, char *base);
+// Returns the amount of occurrences of character c in string str.
+size_t	ft_strchrc(char *str, char c);
 
 #endif

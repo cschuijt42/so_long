@@ -32,16 +32,11 @@
 
 typedef struct s_map {
 	char	*content;
-	size_t	rows;
-	size_t	row_length;
+	size_t	height;
+	size_t	width;
 }	t_map;
 
-typedef struct s_spritesheet {
-	char	*path;
-	size_t	size;
-	size_t	sprites_w;
-	size_t	sprites_h;
-}	t_spritesheet;
+
 
 // -- MAP INITIALIZATION --
 

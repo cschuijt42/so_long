@@ -12,6 +12,10 @@
 
 #include "so_long.h"
 
+static void	recursive_walls(t_map *map);
+static int	neighbors_wall(t_map *map, size_t i);
+static int	can_be_wall(t_map *map, size_t i);
+
 void	categorize_map_walls(t_map *map)
 {
 	char	*c_map;
@@ -22,7 +26,7 @@ void	categorize_map_walls(t_map *map)
 	c_map = ft_calloc(1, map_size + 1);
 	ft_memset(c_map, ' ', map_size);
 	ft_memset(c_map, 'W', map->width);
-	ft_memset(c_map[(map->width * map->height) - map->width], 'W', map->width);
+	ft_memset(&c_map[(map->width * map->height) - map->width], 'W', map->width);
 	while (y < map->height)
 	{
 		c_map[y * map->width] = 'W';
@@ -34,7 +38,7 @@ void	categorize_map_walls(t_map *map)
 	// lava_and_pillars(map);
 }
 
-void	recursive_walls(t_map *map)
+static void	recursive_walls(t_map *map)
 {
 	size_t	i;
 	size_t	changed;
@@ -60,7 +64,7 @@ void	recursive_walls(t_map *map)
 		recursive_walls(map);
 }
 
-int	neighbors_wall(t_map *map, size_t i)
+static int	neighbors_wall(t_map *map, size_t i)
 {
 	if (map->map_wall_categories[i + 1] == 'W')
 		return (1);
@@ -73,7 +77,7 @@ int	neighbors_wall(t_map *map, size_t i)
 	return (0);
 }
 
-int	can_be_wall(t_map *map, size_t i)
+static int	can_be_wall(t_map *map, size_t i)
 {
 	if (map->content[i + map->width] == '1')
 		return (1);

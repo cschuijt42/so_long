@@ -23,13 +23,7 @@ void	validate_map_solvability(t_map *map)
 	size_t	i;
 
 	map_str = ft_strdup(map->content);
-	i = 0;
-	while (map_str[i])
-	{
-		if (map_str[i] == 'P')
-			map_str[i] = 'X';
-		i++;
-	}
+	map_str[map->player_pos] = 'X';
 	i = 1;
 	while (i)
 		i = traverse_map_string(map_str, map);

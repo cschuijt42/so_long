@@ -13,16 +13,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// -- DEFINES --
-
-# ifndef TILE_S
-#  define TILE_S 16
-# endif
-
-# ifndef TILE_M
-#  define TILE_M 1
-# endif
-
 // -- INCLUDES --
 
 # include "libft/libft.h"
@@ -64,7 +54,7 @@ void		validate_map_boundaries(char **map);
 void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
 
-// -- MAP RENDERING PASSES --  //
+// -- MAP RENDERING PASSES -- //
 
 void		categorize_map_walls(t_map *map);
 

@@ -29,6 +29,11 @@ t_map	*initialize_map_struct(char **map_array)
 	map->height = y;
 	map->width = x;
 	map->content = join_string_array(map_array);
+	map->player_pos = ft_strchr(map->content, 'P') - map->content;
+	map->content[map->player_pos] = '0';
+	map->collectibles = 0;
+	map->total_collectibles = ft_strchrc(map->content, 'C');
+	categorize_map_walls(map);
 	return (map);
 }
 

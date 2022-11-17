@@ -15,6 +15,7 @@
 static void	recursive_walls(t_map *map);
 static int	neighbors_wall(t_map *map, size_t i);
 static int	can_be_wall(t_map *map, size_t i);
+static void	lava_and_pillars(t_map *map);
 
 void	categorize_map_walls(t_map *map)
 {
@@ -35,7 +36,7 @@ void	categorize_map_walls(t_map *map)
 	}
 	map->map_wall_categories = c_map;
 	recursive_walls(map);
-	// lava_and_pillars(map);
+	lava_and_pillars(map);
 }
 
 static void	recursive_walls(t_map *map)
@@ -84,4 +85,29 @@ static int	can_be_wall(t_map *map, size_t i)
 	if (map->content[i - map->width] == '1')
 		return (1);
 	return (0);
+}
+
+static void	lava_and_pillars(t_map *map)
+{
+	size_t	i;
+	char	*loc;
+
+	i = 0;
+	while (map->content[i])
+	{
+		if (map->content[i] == '1' && map->map_wall_categories[i] == ' ')
+		{
+			loc = &map->content[i];
+			if (*(loc + 1) != '1' && *(loc - 1) != '1')
+			{
+				if (*(loc + map->width) != '1' && *(loc - map->width) != '1')
+					map->map_wall_categories[i] = 'P';
+				else
+					map->map_wall_categories[i] = 'L';
+			}
+			else
+				map->map_wall_categories[i] = 'L';
+		}
+		i++;
+	}
 }

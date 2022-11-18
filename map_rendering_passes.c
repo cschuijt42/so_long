@@ -23,6 +23,7 @@ void	categorize_map_walls(t_map *map)
 	size_t	y;
 	size_t	map_size;
 
+	y = 0;
 	map_size = ft_strlen(map->content);
 	c_map = ft_calloc(1, map_size + 1);
 	ft_memset(c_map, ' ', map_size);

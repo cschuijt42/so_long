@@ -8,7 +8,8 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Ensure map meets subject criteria
   - [x] Ensure map is solvable
 - [x] Set up sprite intake
-- [ ] Set up system to determine which sprites go where
+- [x] Determine what to draw where
+- [ ] Pick sprites based on surroundings and categories
 - [ ] Set up rendering
 - [ ] Set up gameplay loop
 - [ ] Set up win condition

@@ -29,6 +29,7 @@ t_map	*initialize_map_struct(char **map_array)
 	map->height = y;
 	map->width = x;
 	map->content = join_string_array(map_array);
+	map->size = ft_strlen(map->content);
 	map->player_pos = ft_strchr(map->content, 'P') - map->content;
 	map->content[map->player_pos] = '0';
 	map->collectibles = 0;

@@ -16,14 +16,14 @@ void	categorize_map_walls(t_map *map)
 {
 	char	*c_map;
 	size_t	y;
-	size_t	map_size;
 
 	y = 0;
-	map_size = ft_strlen(map->content);
-	c_map = ft_calloc(1, map_size + 1);
-	ft_memset(c_map, ' ', map_size);
+	c_map = ft_calloc(map->size + 1, 1);
+	if (!c_map)
+		exit_perror("malloc error");
+	ft_memset(c_map, ' ', map->size);
 	ft_memset(c_map, 'W', map->width);
-	ft_memset(&c_map[(map->width * map->height) - map->width], 'W', map->width);
+	ft_memset(&c_map[map->width * (map->height - 1)], 'W', map->width);
 	while (y < map->height)
 	{
 		c_map[y * map->width] = 'W';
@@ -34,4 +34,11 @@ void	categorize_map_walls(t_map *map)
 	initial_wall_seed(map);
 	recursive_walls(map);
 	lava_and_pillars(map);
+	north_walls(map);
+	fill_floors_and_strip_walls(map);
 }
+
+// void	fill_in_walls(t_map *map)
+// {
+	
+// }

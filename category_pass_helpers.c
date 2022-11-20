@@ -15,11 +15,9 @@
 void	initial_wall_seed(t_map *map)
 {
 	size_t	i;
-	size_t	mapsize;
 
 	i = map->width * 2;
-	mapsize = ft_strlen(map->content);
-	while (i < mapsize - map->width * 3)
+	while (i < map->size - map->width * 3)
 	{
 		if (map->content[i] == '1' && map->render_categories[i] != 'W')
 			if (map->content[i + 1] == '1')
@@ -34,12 +32,11 @@ void	recursive_walls(t_map *map)
 {
 	size_t	i;
 	size_t	changed;
-	size_t	map_size;
 
-	map_size = ft_strlen(map->content);
+	map->size = ft_strlen(map->content);
 	i = map->width;
 	changed = 0;
-	while (i < map_size - map->width)
+	while (i < map->size - map->width)
 	{
 		if (map->content[i] == '1' && map->render_categories[i] == ' ')
 		{

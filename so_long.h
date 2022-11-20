@@ -29,6 +29,7 @@ typedef struct s_map {
 	char	*render_shadows;
 	size_t	height;
 	size_t	width;
+	size_t	size;
 	size_t	player_pos;
 	size_t	total_collectibles;
 	size_t	collectibles;
@@ -54,14 +55,25 @@ void		validate_map_boundaries(char **map);
 void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
 
-// -- MAP RENDERING PASSES -- //
+// -- MAP RENDERING PASSES --
 
 void		categorize_map_walls(t_map *map);
+void		fill_in_walls(t_map *map);
+
+// -- Pass 1 helpers --
+
 void		initial_wall_seed(t_map *map);
 void		recursive_walls(t_map *map);
 int			neighbors_wall(t_map *map, size_t i);
 int			can_be_wall(t_map *map, size_t i);
 void		lava_and_pillars(t_map *map);
+
+// -- Pass 2 helpers --
+
+void		north_walls(t_map *map);
+void		fill_floors_and_strip_walls(t_map *map);
+int			is_edge_wall(size_t i, t_map *map);
+int			floor_or_north_wall(size_t i, t_map *map);
 
 // -- STRUCT FUNCTIONS -- 
 

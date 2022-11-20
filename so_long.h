@@ -50,6 +50,7 @@ uint8_t		*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w);
 // -- MAP VALIDATIONS --
 
 void		validate_filename(char *file);
+void		validate_empty_lines(char *map);
 void		validate_map_measurements(char **map);
 void		validate_map_boundaries(char **map);
 void		validate_map_content(char *map);

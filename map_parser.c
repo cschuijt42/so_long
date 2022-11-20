@@ -28,6 +28,7 @@ t_map	*initialize_map(char *path)
 		exit_perror("error opening file");
 	map_str = read_map_from_file(fd);
 	close(fd);
+	validate_empty_lines(map_str);
 	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)
 		exit_perror("malloc error in ft_split");
@@ -78,4 +79,14 @@ void	validate_filename(char *file)
 		exit_message("invalid filename, needs to end in .ber");
 	if (ft_strncmp(".ber", file + len - 4, 5))
 		exit_message("invalid filename, needs to end in .ber");
+}
+
+void	validate_empty_lines(char *map)
+{
+	while (*map)
+	{
+		if (*map == '\n' && *(map + 1) == '\n')
+			exit_message("map contains empty lines");
+		map++;
+	}
 }

@@ -52,7 +52,7 @@ void	print_map_data(t_map *map)
 	y = 0;
 	while (y < map->height)
 	{
-		write(1, &map->map_wall_categories[y * map->width], map->width);
+		write(1, &map->render_categories[y * map->width], map->width);
 		write(1, "\n", 1);
 		y++;
 	}

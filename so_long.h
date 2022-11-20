@@ -22,8 +22,8 @@
 
 typedef struct s_map {
 	char	*content;
-	char	*map_wall_categories;
-	char	*render_big_walls;
+	char	*render_categories;
+	char	*render_walls;
 	char	*render_lava;
 	char	*render_floor;
 	char	*render_shadows;
@@ -57,6 +57,11 @@ void		validate_map_solvability(t_map *map);
 // -- MAP RENDERING PASSES -- //
 
 void		categorize_map_walls(t_map *map);
+void		initial_wall_seed(t_map *map);
+void		recursive_walls(t_map *map);
+int			neighbors_wall(t_map *map, size_t i);
+int			can_be_wall(t_map *map, size_t i);
+void		lava_and_pillars(t_map *map);
 
 // -- STRUCT FUNCTIONS -- 
 

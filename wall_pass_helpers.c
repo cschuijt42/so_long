@@ -5,71 +5,49 @@
 /*                                                     +:+                    */
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/20 15:08:51 by cschuijt      #+#    #+#                 */
-/*   Updated: 2022/11/20 15:08:51 by cschuijt      ########   odam.nl         */
+/*   Created: 2022/11/21 22:09:28 by cschuijt      #+#    #+#                 */
+/*   Updated: 2022/11/21 22:09:28 by cschuijt      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	north_walls(t_map *map)
-{
-	size_t	i;
+static int	is_o(char c);
 
-	i = 0;
-	while (i < map->size - (map->width * 2))
-	{
-		if (map->render_categories[i] == 'W')
-			if (map->render_categories[i + map->width] == ' ')
-				map->render_categories[i] = 'N';
-		i++;
-	}
+unsigned char	determine_wall_sprite(t_map *map, size_t i)
+{
+	unsigned char	surroundings;
+	size_t			size;
+	size_t			width;
+
+	surroundings = 0;
+	size = map->size;
+	width = map->width;
+	if (i >= width + 1 && is_o(map->render_categories[i - width - 1]))
+		surroundings += 128;
+	if (i >= width && is_o(map->render_categories[i - width]))
+		surroundings += 64;
+	if (i >= width - 1 && is_o(map->render_categories[i - width + 1]))
+		surroundings += 32;
+	if (i < size - 1 && is_o(map->render_categories[i + 1]))
+		surroundings += 16;
+	if (i <= size - width - 1 && is_o(map->render_categories[i + width + 1]))
+		surroundings += 8;
+	if (i <= size - width && is_o(map->render_categories[i + width]))
+		surroundings += 4;
+	if (i <= size - width + 1 && is_o(map->render_categories[i + width - 1]))
+		surroundings += 2;
+	if (i >= 1 && is_o(map->render_categories[i - 1]))
+		surroundings += 1;
+	return (get_wall_sprite_from_surroundings(surroundings));
 }
 
-void	fill_floors_and_strip_walls(t_map *map)
+unsigned char	get_wall_sprite_from_surroundings(unsigned char s)
 {
-	size_t	i;
-
-	i = map->width;
-	while (i < map->size - map->width)
-	{
-		if (map->render_categories[i] == ' ')
-			map->render_categories[i] = 'F';
-		i++;
-	}
-	i = 0;
-	while (i < map->size)
-	{
-		if (!is_edge_wall(i, map))
-			map->render_categories[i] = ' ';
-		i++;
-	}
-}
-
-int	is_edge_wall(size_t i, t_map *map)
-{
-	if (floor_or_north_wall(i - map->width - 1, map))
-		return (1);
-	if (floor_or_north_wall(i - map->width, map))
-		return (1);
-	if (floor_or_north_wall(i - map->width + 1, map))
-		return (1);
-	if (floor_or_north_wall(i - 1, map))
-		return (1);
-	if (floor_or_north_wall(i + 1, map))
-		return (1);
-	if (floor_or_north_wall(i + map->width - 1, map))
-		return (1);
-	if (floor_or_north_wall(i + map->width, map))
-		return (1);
-	if (floor_or_north_wall(i + map->width + 1, map))
-		return (1);
 	return (0);
 }
 
-int	floor_or_north_wall(size_t i, t_map *map)
+static int	is_o(char c)
 {
-	if (map->render_categories[i] == 'N' || map->render_categories[i] == 'F')
-		return (1);
-	return (0);
+	return (c == 'N' || c == 'F' || c == 'L' || c == 'P');
 }

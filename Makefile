@@ -24,6 +24,7 @@ clean :
 
 fclean :
 	rm -f $(NAME) $(NAME)_linux $(OBJFILES) libft.a
+	make -C libft fclean
 
 libft.a : libft/libft.a
 	cp libft/libft.a libft.a

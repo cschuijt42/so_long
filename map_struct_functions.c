@@ -23,7 +23,7 @@ t_map	*initialize_map_struct(char **map_array)
 	y = 0;
 	while (map_array[y])
 		y++;
-	map = malloc(sizeof(t_map));
+	map = ft_calloc(sizeof(t_map));
 	if (!map)
 		exit_perror("malloc error");
 	map->height = y;
@@ -34,8 +34,14 @@ t_map	*initialize_map_struct(char **map_array)
 	map->content[map->player_pos] = '0';
 	map->collectibles = 0;
 	map->total_collectibles = ft_strchrc(map->content, 'C');
-	categorize_map_walls(map);
+	load_spritesheets(map);
 	return (map);
+}
+
+void	load_spritesheets(t_map *map)
+{
+	map->wall_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
+	map->lava_sprites = read_spritesheet("sprites/lava.png", 32, 12, 18);
 }
 
 char	*join_string_array(char **array)
@@ -67,5 +73,14 @@ char	*join_string_array(char **array)
 void	free_map_struct(t_map *map)
 {
 	free(map->content);
+	free(map->render_categories);
+	free(map->render_walls);
+	free(map->render_lava);
+	free(map->render_floor);
+	free(map->render_shadows);
+	free_array((void **) map->wall_sprites);
+	free_array((void **) map->lava_sprites);
+	free_array((void **) map->shadow_sprites);
+	free_array((void **) map->character_sprites);
 	free(map);
 }

@@ -33,6 +33,10 @@ typedef struct s_map {
 	size_t	player_pos;
 	size_t	total_collectibles;
 	size_t	collectibles;
+	uint8_t	**wall_sprites;
+	uint8_t	**lava_sprites;
+	uint8_t	**shadow_sprites;
+	uint8_t	**character_sprites;
 }	t_map;
 
 // -- MAP INITIALIZATION --
@@ -57,7 +61,7 @@ void	validate_map_solvability(t_map *map);
 // -- MAP RENDERING PASSES --
 
 void	categorize_map_walls(t_map *map);
-void	fill_in_walls(t_map *map);
+void	fill_in_wall_map(t_map *map);
 
 // -- Categorization helpers --
 

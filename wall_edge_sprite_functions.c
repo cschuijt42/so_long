@@ -38,8 +38,7 @@ t_uc	edge_opposing(t_uc surroundings)
 {
 	if (surroundings >> 0 & 1)
 		return (34);
-	if (surroundings >> 2 & 1)
-		return (49);
+	return (49);
 }
 
 t_uc	edge_triple(t_uc surroundings)

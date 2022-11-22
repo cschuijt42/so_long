@@ -86,6 +86,16 @@ t_uc	edge_consecutive(t_uc surroundings);
 t_uc	edge_opposing(t_uc surroundings);
 t_uc	edge_triple(t_uc surroundings);
 
+t_uc	wall_corner(t_uc surroundings);
+t_uc	wall_single(t_uc surroundings);
+t_uc	wall_opposing(t_uc surroundings);
+t_uc	wall_triple(t_uc surroundings);
+t_uc	wall_corner_edge(t_uc surroundings);
+
+t_uc	wall_single_edge_lr(t_uc surroundings);
+t_uc	wall_single_edge_l(t_uc surroundings);
+t_uc	wall_single_edge_r(t_uc surroundings);
+
 // -- STRUCT FUNCTIONS -- 
 
 t_map	*initialize_map_struct(char **map_array);

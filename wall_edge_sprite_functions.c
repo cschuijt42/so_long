@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-t_uc	edge_single(t_uc surroundings)
+uint8_t	edge_single(uint8_t surroundings)
 {
 	if (surroundings >> 0 & 1)
 		return (20);
@@ -23,7 +23,7 @@ t_uc	edge_single(t_uc surroundings)
 	return (5);
 }
 
-t_uc	edge_consecutive(t_uc surroundings)
+uint8_t	edge_consecutive(uint8_t surroundings)
 {
 	if ((surroundings >> 0 & 1) & (surroundings >> 2 & 1))
 		return (50);
@@ -34,14 +34,14 @@ t_uc	edge_consecutive(t_uc surroundings)
 	return (21);
 }
 
-t_uc	edge_opposing(t_uc surroundings)
+uint8_t	edge_opposing(uint8_t surroundings)
 {
 	if (surroundings >> 0 & 1)
 		return (34);
 	return (49);
 }
 
-t_uc	edge_triple(t_uc surroundings)
+uint8_t	edge_triple(uint8_t surroundings)
 {
 	if (surroundings >> 0 ^ 1)
 		return (52);

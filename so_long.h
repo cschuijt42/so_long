@@ -35,10 +35,6 @@ typedef struct s_map {
 	size_t	collectibles;
 }	t_map;
 
-// -- TYPEDEFS --
-
-typedef unsigned char	t_uc;
-
 // -- MAP INITIALIZATION --
 
 t_map	*initialize_map(char *path);
@@ -77,24 +73,24 @@ int		floor_or_north_wall(size_t i, t_map *map);
 
 // -- Wall pass helpers --
 
-t_uc	determine_wall_sprite(t_map *map, size_t i);
-int		check_against_bitmask(t_uc in, char *mask, int c);
-t_uc	cyclical_shift_two(t_uc in);
+uint8_t	determine_wall_sprite(t_map *map, size_t i);
+int		check_against_bitmask(uint8_t in, char *mask, int c);
+uint8_t	cyclical_shift_two(uint8_t in);
 
-t_uc	edge_single(t_uc surroundings);
-t_uc	edge_consecutive(t_uc surroundings);
-t_uc	edge_opposing(t_uc surroundings);
-t_uc	edge_triple(t_uc surroundings);
+uint8_t	edge_single(uint8_t surroundings);
+uint8_t	edge_consecutive(uint8_t surroundings);
+uint8_t	edge_opposing(uint8_t surroundings);
+uint8_t	edge_triple(uint8_t surroundings);
 
-t_uc	wall_corner(t_uc surroundings);
-t_uc	wall_single(t_uc surroundings);
-t_uc	wall_opposing(t_uc surroundings);
-t_uc	wall_triple(t_uc surroundings);
-t_uc	wall_corner_edge(t_uc surroundings);
+uint8_t	wall_corner(uint8_t surroundings);
+uint8_t	wall_single(uint8_t surroundings);
+uint8_t	wall_opposing(uint8_t surroundings);
+uint8_t	wall_triple(uint8_t surroundings);
+uint8_t	wall_corner_edge(uint8_t surroundings);
 
-t_uc	wall_single_edge_lr(t_uc surroundings);
-t_uc	wall_single_edge_l(t_uc surroundings);
-t_uc	wall_single_edge_r(t_uc surroundings);
+uint8_t	wall_single_edge_lr(uint8_t surroundings);
+uint8_t	wall_single_edge_l(uint8_t surroundings);
+uint8_t	wall_single_edge_r(uint8_t surroundings);
 
 // -- STRUCT FUNCTIONS -- 
 

@@ -12,10 +12,10 @@
 
 #include "so_long.h"
 
-static t_uc	get_sprite_from_surroundings(t_uc s);
-static t_uc	get_wall_sprite_from_surroundings(t_uc s);
-static t_uc	get_edge_sprite_from_surroundings(t_uc s);
-static int	is_o(char c);
+static uint8_t	get_sprite_from_surroundings(uint8_t s);
+static uint8_t	get_wall_sprite_from_surroundings(uint8_t s);
+static uint8_t	get_edge_sprite_from_surroundings(uint8_t s);
+static int		is_o(char c);
 
 unsigned char	determine_wall_sprite(t_map *map, size_t i)
 {
@@ -45,7 +45,7 @@ unsigned char	determine_wall_sprite(t_map *map, size_t i)
 	return (get_sprite_from_surroundings(surroundings));
 }
 
-static t_uc	get_sprite_from_surroundings(t_uc s)
+static uint8_t	get_sprite_from_surroundings(uint8_t s)
 {
 
 	if ((s >> 1 & 1) | (s >> 3 & 1) | (s >> 5 & 1) | (s >> 7 & 1))
@@ -53,7 +53,7 @@ static t_uc	get_sprite_from_surroundings(t_uc s)
 	return (get_edge_sprite_from_surroundings(s));
 }
 
-static t_uc	get_wall_sprite_from_surroundings(t_uc s)
+static uint8_t	get_wall_sprite_from_surroundings(uint8_t s)
 {
 	if (check_against_bitmask(s, "*1*000*1", 4))
 		return (wall_corner(s));
@@ -76,7 +76,7 @@ static t_uc	get_wall_sprite_from_surroundings(t_uc s)
 	return (0);
 }
 
-static t_uc	get_edge_sprite_from_surroundings(t_uc s)
+static uint8_t	get_edge_sprite_from_surroundings(uint8_t s)
 {
 	if (check_against_bitmask(s, "10000000", 4))
 		return (edge_single(s));

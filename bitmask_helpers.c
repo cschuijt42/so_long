@@ -12,11 +12,11 @@
 
 #include "so_long.h"
 
-int	check_against_bitmask(t_uc in, char *mask, int c)
+int	check_against_bitmask(uint8_t in, char *mask, int c)
 {
 	size_t		i;
-	t_uc		orig;
-	t_uc		match;
+	uint8_t		orig;
+	uint8_t		match;
 
 	i = 0;
 	match = 0;
@@ -37,9 +37,9 @@ int	check_against_bitmask(t_uc in, char *mask, int c)
 	return (0);
 }
 
-t_uc	cyclical_shift_two(t_uc in)
+uint8_t	cyclical_shift_two(uint8_t in)
 {
-	t_uc	swap;
+	uint8_t	swap;
 
 	swap = (in >> 6);
 	in <<= 2;

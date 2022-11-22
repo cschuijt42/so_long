@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-t_uc	wall_corner(t_uc surroundings)
+uint8_t	wall_corner(uint8_t surroundings)
 {
 	if ((surroundings >> 1 & 1) & (surroundings >> 3 & 1))
 		return (2);
@@ -23,7 +23,7 @@ t_uc	wall_corner(t_uc surroundings)
 	return (0);
 }
 
-t_uc	wall_single(t_uc surroundings)
+uint8_t	wall_single(uint8_t surroundings)
 {
 	if (surroundings >> 1 & 1)
 		return (1);
@@ -34,14 +34,14 @@ t_uc	wall_single(t_uc surroundings)
 	return (15);
 }
 
-t_uc	wall_opposing(t_uc surroundings)
+uint8_t	wall_opposing(uint8_t surroundings)
 {
 	if (surroundings >> 1 & 1)
 		return (46);
 	return (18);
 }
 
-t_uc	wall_triple(t_uc surroundings)
+uint8_t	wall_triple(uint8_t surroundings)
 {
 	if (surroundings >> 1 ^ 1)
 		return (33);
@@ -52,7 +52,7 @@ t_uc	wall_triple(t_uc surroundings)
 	return (47);
 }
 
-t_uc	wall_corner_edge(t_uc surroundings)
+uint8_t	wall_corner_edge(uint8_t surroundings)
 {
 	if ((surroundings >> 1 & 1) & (surroundings >> 3 & 1))
 		return (12);

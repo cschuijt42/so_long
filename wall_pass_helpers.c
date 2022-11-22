@@ -12,6 +12,9 @@
 
 #include "so_long.h"
 
+static t_uc	get_sprite_from_surroundings(t_uc s);
+static t_uc	get_wall_sprite_from_surroundings(t_uc s);
+static t_uc	get_edge_sprite_from_surroundings(t_uc s);
 static int	is_o(char c);
 
 unsigned char	determine_wall_sprite(t_map *map, size_t i)
@@ -24,26 +27,67 @@ unsigned char	determine_wall_sprite(t_map *map, size_t i)
 	size = map->size;
 	width = map->width;
 	if (i >= width + 1 && is_o(map->render_categories[i - width - 1]))
-		surroundings += 128;
+		surroundings |= 1;
 	if (i >= width && is_o(map->render_categories[i - width]))
-		surroundings += 64;
+		surroundings |= 1 << 1;
 	if (i >= width - 1 && is_o(map->render_categories[i - width + 1]))
-		surroundings += 32;
+		surroundings |= 1 << 2;
 	if (i < size - 1 && is_o(map->render_categories[i + 1]))
-		surroundings += 16;
+		surroundings |= 1 << 3;
 	if (i <= size - width - 1 && is_o(map->render_categories[i + width + 1]))
-		surroundings += 8;
+		surroundings |= 1 << 4;
 	if (i <= size - width && is_o(map->render_categories[i + width]))
-		surroundings += 4;
+		surroundings |= 1 << 5;
 	if (i <= size - width + 1 && is_o(map->render_categories[i + width - 1]))
-		surroundings += 2;
+		surroundings |= 1 << 6;
 	if (i >= 1 && is_o(map->render_categories[i - 1]))
-		surroundings += 1;
-	return (get_wall_sprite_from_surroundings(surroundings));
+		surroundings |= 1 << 7;
+	return (get_sprite_from_surroundings(surroundings));
 }
 
-unsigned char	get_wall_sprite_from_surroundings(unsigned char s)
+static t_uc	get_sprite_from_surroundings(t_uc s)
 {
+
+	if ((s >> 1 & 1) | (s >> 3 & 1) | (s >> 5 & 1) | (s >> 7 & 1))
+		return (get_wall_sprite_from_surroundings(s));
+	return (get_edge_sprite_from_surroundings(s));
+}
+
+static t_uc	get_wall_sprite_from_surroundings(t_uc s)
+{
+	if (check_against_bitmask(s, "*1*000*1", 4))
+		return (wall_corner(s));
+	if (check_against_bitmask(s, "*1*00000", 4))
+		return (wall_single(s));
+	if (check_against_bitmask(s, "*0*1*0*1", 2))
+		return (wall_opposing(s));
+	if (check_against_bitmask(s, "*1*1*0*1", 4))
+		return (wall_triple(s));
+	if (check_against_bitmask(s, "*1*010*1", 4))
+		return (wall_corner_edge(s));
+	if (check_against_bitmask(s, "*1*01010", 4))
+		return (wall_single_edge_lr(s));
+	if (check_against_bitmask(s, "*1*00010", 4))
+		return (wall_single_edge_l(s));
+	if (check_against_bitmask(s, "*1*01000", 4))
+		return (wall_single_edge_r(s));
+	if (check_against_bitmask(s, "*1*1*1*1", 1))
+		return (48);
+	return (0);
+}
+
+static t_uc	get_edge_sprite_from_surroundings(t_uc s)
+{
+	if (check_against_bitmask(s, "10000000", 4))
+		return (edge_single(s));
+	if (check_against_bitmask(s, "10100000", 4))
+		return (edge_consecutive(s));
+	if (check_against_bitmask(s, "10001000", 2))
+		return (edge_opposing(s));
+	if (check_against_bitmask(s, "10101000", 4))
+		return (edge_triple(s));
+	if (check_against_bitmask(s, "10101010", 1))
+		return (26);
 	return (0);
 }
 

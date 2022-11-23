@@ -23,7 +23,7 @@ t_map	*initialize_map_struct(char **map_array)
 	y = 0;
 	while (map_array[y])
 		y++;
-	map = ft_calloc(sizeof(t_map));
+	map = ft_calloc(sizeof(t_map), 1);
 	if (!map)
 		exit_perror("malloc error");
 	map->height = y;

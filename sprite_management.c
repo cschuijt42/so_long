@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
-t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i, size_t a)
+t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i)
 {
 	t_sprite	*sprite;
 	t_sprite	*end_of_list;
@@ -37,7 +38,7 @@ t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i, size_t a)
 	return (sprite);
 }
 
-t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i, size_t a)
+t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i)
 {
 	t_sprite	*sprite;
 
@@ -50,5 +51,5 @@ t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i, size_t a)
 			break ;
 		sprite = sprite->next;
 	}
-	return (add_new_sprite(map, sheet, i, a));
+	return (add_new_sprite(map, sheet, i));
 }

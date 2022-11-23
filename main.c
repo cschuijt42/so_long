@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	fill_in_wall_map(map);
 	print_map_data(map);
 	render_map(map);
-	mlx_loop(mlx);
+	mlx_loop(map->mlx);
 	mlx_terminate(mlx);
 	exit(0);
 	return (0);

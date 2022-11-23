@@ -10,6 +10,10 @@ through a maze, grabbing collectibles and making it to the exit.
 - [x] Set up sprite intake
 - [x] Determine what to draw where
 - [ ] Pick sprites based on surroundings and categories
+  - [x] Walls
+  - [ ] Lava
+  - [ ] Pillars
+  - [ ] Floors
 - [ ] Set up rendering
 - [ ] Set up gameplay loop
 - [ ] Set up win condition

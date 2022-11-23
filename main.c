@@ -28,10 +28,11 @@ int	main(int ac, char **av)
 	mlx = mlx_init(32 * map->width, 32 * map->height, "so_long", 0);
 	if (!mlx)
 		exit_message("couldn't initialize MLX window");
+	map->mlx = mlx;
 	categorize_map_walls(map);
 	fill_in_wall_map(map);
 	print_map_data(map);
-	render_map(mlx, map);
+	render_map(map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	exit(0);

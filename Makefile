@@ -3,7 +3,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						sprites_parsing.o map_rendering_passes.o category_pass_helpers.o \
 						category_pass_updaters.o wall_pass_helpers.o wall_sprite_functions.o \
 						wall_sprite_functions_part_two.o wall_edge_sprite_functions.o \
-						bitmask_helpers.o
+						bitmask_helpers.o sprite_management.o
 FLAGS = -Werror -Wall -Wextra -g
 MAC_FLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 LINUX_FLAGS = -ldl -lglfw -pthread -lm

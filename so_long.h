@@ -21,23 +21,32 @@
 // -- STRUCTS --
 
 typedef struct s_map {
-	char	*content;
-	char	*render_categories;
-	char	*render_walls;
-	char	*render_lava;
-	char	*render_floor;
-	char	*render_shadows;
-	size_t	height;
-	size_t	width;
-	size_t	size;
-	size_t	player_pos;
-	size_t	total_collectibles;
-	size_t	collectibles;
-	uint8_t	**wall_sprites;
-	uint8_t	**lava_sprites;
-	uint8_t	**shadow_sprites;
-	uint8_t	**character_sprites;
+	mlx_t		*mlx;
+	char		*content;
+	char		*render_categories;
+	char		*render_walls;
+	char		*render_lava;
+	char		*render_floor;
+	char		*render_shadows;
+	size_t		height;
+	size_t		width;
+	size_t		size;
+	size_t		player_pos;
+	size_t		total_collectibles;
+	size_t		collectibles;
+	uint8_t		**wall_sprites;
+	uint8_t		**lava_sprites;
+	uint8_t		**shadow_sprites;
+	uint8_t		**character_sprites;
+	t_sprite	*sprites;
 }	t_map;
+
+typedef struct s_sprite {
+	uint8_t			**spritesheet;
+	size_t			index;
+	mlx_image_t		*image;
+	struct s_sprite	*next;
+}	t_sprite;
 
 // -- MAP INITIALIZATION --
 
@@ -62,6 +71,7 @@ void	validate_map_solvability(t_map *map);
 
 void	categorize_map_walls(t_map *map);
 void	fill_in_wall_map(t_map *map);
+void	render_map(t_map *map);
 
 // -- Categorization helpers --
 

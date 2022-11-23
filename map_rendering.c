@@ -12,3 +12,18 @@
 
 #include "so_long.h"
 #include <stdlib.h>
+
+void	render_map(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	// while (map->render_categories[i])
+	// {
+	// 	if (map->render_categories[i] == 'W')
+	// 		return ;
+	// 	if (map->render_categories[i] == 'N')
+	// 		return ;
+	// 	if (map->)
+	// }	
+}

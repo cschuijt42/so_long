@@ -43,11 +43,11 @@ uint8_t	wall_opposing(uint8_t surroundings)
 
 uint8_t	wall_triple(uint8_t surroundings)
 {
-	if (surroundings >> 1 ^ 1)
+	if (!(surroundings >> 1 & 1))
 		return (33);
-	if (surroundings >> 1 ^ 1)
+	if (!(surroundings >> 3 & 1))
 		return (45);
-	if (surroundings >> 1 ^ 1)
+	if (!(surroundings >> 5 & 1))
 		return (3);
 	return (47);
 }

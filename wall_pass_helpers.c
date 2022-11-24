@@ -47,7 +47,6 @@ unsigned char	determine_wall_sprite(t_map *map, size_t i)
 
 static uint8_t	get_sprite_from_surroundings(uint8_t s)
 {
-
 	if ((s >> 1 & 1) | (s >> 3 & 1) | (s >> 5 & 1) | (s >> 7 & 1))
 		return (get_wall_sprite_from_surroundings(s));
 	return (get_edge_sprite_from_surroundings(s));

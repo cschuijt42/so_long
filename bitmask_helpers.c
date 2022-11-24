@@ -29,7 +29,7 @@ int	check_against_bitmask(uint8_t in, char *mask, int c)
 			orig &= ~(1 << i);
 		i++;
 	}
-	if (in == match)
+	if (orig == match)
 		return (1);
 	c--;
 	if (c > 0)

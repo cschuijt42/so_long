@@ -43,11 +43,11 @@ uint8_t	edge_opposing(uint8_t surroundings)
 
 uint8_t	edge_triple(uint8_t surroundings)
 {
-	if (surroundings >> 0 ^ 1)
+	if (!(surroundings >> 0 & 1))
 		return (52);
-	if (surroundings >> 2 ^ 1)
+	if (!(surroundings >> 2 & 1))
 		return (51);
-	if (surroundings >> 4 ^ 1)
+	if (!(surroundings >> 4 & 1))
 		return (36);
 	return (37);
 }

@@ -13,7 +13,7 @@
 #include "so_long.h"
 #include <stdlib.h>
 
-t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i)
+t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index)
 {
 	t_sprite	*sprite;
 	t_sprite	*end_of_list;
@@ -22,10 +22,10 @@ t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i)
 	if (!sprite)
 		return (NULL);
 	sprite->spritesheet = sheet;
-	sprite->index = i;
+	sprite->index = index;
 	sprite->image = mlx_new_image(map->mlx, 32, 32);
 	free(sprite->image->pixels);
-	sprite->image->pixels = sheet[i];
+	sprite->image->pixels = sheet[index];
 	if (!map->sprites)
 		map->sprites = sprite;
 	else
@@ -41,15 +41,17 @@ t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i)
 t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i)
 {
 	t_sprite	*sprite;
+	size_t		index;
 
 	sprite = map->sprites;
+	index = (size_t) map->render_walls[i];
 	while (sprite)
 	{
-		if (sprite->index == i && sprite->spritesheet == sheet)
+		if (sprite->index == index && sprite->spritesheet == sheet)
 			return (sprite);
 		if (!sprite->next)
 			break ;
 		sprite = sprite->next;
 	}
-	return (add_new_sprite(map, sheet, i));
+	return (add_new_sprite(map, sheet, index));
 }

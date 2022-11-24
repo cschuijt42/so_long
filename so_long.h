@@ -115,7 +115,7 @@ size_t		render_y_pos(t_map *map, size_t i);
 
 // -- SPRITE MANAGEMENT --
 
-t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t i);
+t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index);
 t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i);
 
 // -- STRUCT FUNCTIONS -- 

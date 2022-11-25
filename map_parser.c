@@ -31,7 +31,10 @@ t_map	*initialize_map(char *path)
 	validate_empty_lines(map_str);
 	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)
+	{
+		free(map_str);
 		exit_perror("malloc error in ft_split");
+	}
 	validate_map_measurements(map_rows);
 	validate_map_boundaries(map_rows);
 	validate_map_content(map_str);
@@ -57,10 +60,10 @@ char	*read_map_from_file(int fd)
 		if (line)
 		{
 			map2 = ft_strjoin(map, line);
-			if (!map2)
-				exit_perror("malloc error");
 			free(map);
 			free(line);
+			if (!map2)
+				exit_perror("malloc error");
 			map = map2;
 		}
 		else

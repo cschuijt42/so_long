@@ -69,9 +69,9 @@ void		validate_map_solvability(t_map *map);
 // -- MAP RENDERING PASSES --
 
 void		categorize_map_walls(t_map *map);
-void		fill_in_wall_map(t_map *map);
+void		fill_in_background_sprite_indexes(t_map *map);
 void		render_map(t_map *map);
-void		render_wall_sprite(t_map *map, size_t i);
+void		render_background_sprite(t_map *map, size_t i, uint8_t **sprites);
 
 // -- Categorization helpers --
 
@@ -105,6 +105,12 @@ uint8_t		wall_corner_edge(uint8_t surroundings);
 uint8_t		wall_single_edge_lr(uint8_t surroundings);
 uint8_t		wall_single_edge_l(uint8_t surroundings);
 uint8_t		wall_single_edge_r(uint8_t surroundings);
+
+// -- Lava pass helpers --
+
+uint8_t		determine_lava_sprite(t_map *map, size_t i);
+uint8_t		match_high_lava_sprites(uint8_t surroundings);
+uint8_t		match_low_lava_sprites(uint8_t surroundings);
 
 // -- RENDER TOOLS --
 

@@ -21,20 +21,24 @@ void	render_map(t_map *map)
 	while (map->sprite_categories[i])
 	{
 		if (map->sprite_categories[i] == 'W')
-			render_wall_sprite(map, i);
+			render_background_sprite(map, i, map->wall_sprites);
 		if (map->sprite_categories[i] == 'N')
-			render_wall_sprite(map, i);
+			render_background_sprite(map, i, map->wall_sprites);
+		if (map->sprite_categories[i] == 'L')
+			render_background_sprite(map, i, map->lava_sprites);
+		if (map->sprite_categories[i] == 'F')
+			render_background_sprite(map, i, map->wall_sprites);
 		i++;
 	}	
 }
 
-void	render_wall_sprite(t_map *map, size_t i)
+void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)
 {
 	t_sprite	*sprite;
 	size_t		x_pos;
 	size_t		y_pos;
 
-	sprite = find_or_create_sprite(map, map->wall_sprites, i);
+	sprite = find_or_create_sprite(map, sprites, i);
 	x_pos = render_x_pos(map, i);
 	y_pos = render_y_pos(map, i);
 	mlx_image_to_window(map->mlx, sprite->image, x_pos, y_pos);

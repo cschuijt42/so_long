@@ -38,7 +38,20 @@ void	categorize_map_walls(t_map *map)
 	fill_floors_and_strip_walls(map);
 }
 
-// void	fill_in_walls(t_map *map)
-// {
-	
-// }
+void	fill_in_wall_map(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	map->render_walls = ft_calloc(1, map->size + 1);
+	if (!map->render_walls)
+		exit_perror("malloc error");
+	while (map->render_categories[i])
+	{
+		if (map->render_categories[i] == 'N')
+			map->render_walls[i] = 60;
+		if (map->render_categories[i] == 'W')
+			map->render_walls[i] = determine_wall_sprite(map, i);
+		i++;
+	}
+}

@@ -14,25 +14,27 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	funny_sprites_render(mlx_t *mlx);
 void	print_map_data(t_map *map);
 
 int	main(int ac, char **av)
 {
 	t_map	*map;
-	// mlx_t	*mlx;
+	mlx_t	*mlx;
 
 	if (ac != 2)
 		exit_message("please provide just the map file as a single argument");
 	map = initialize_map(av[1]);
 	ft_printf("Map seems good to me!\n");
-	// mlx = mlx_init(1024, 1024, "so_long", 0);
-	// if (!mlx)
-	// 	exit_message("couldn't initialize MLX window");
+	mlx = mlx_init(32 * map->width, 32 * map->height, "so_long", 0);
+	if (!mlx)
+		exit_message("couldn't initialize MLX window");
+	map->mlx = mlx;
+	categorize_map_walls(map);
+	fill_in_wall_map(map);
 	print_map_data(map);
-	// funny_sprites_render(mlx);
-	// mlx_loop(mlx);
-	// mlx_terminate(mlx);
+	render_map(map);
+	mlx_loop(map->mlx);
+	mlx_terminate(mlx);
 	exit(0);
 	return (0);
 }
@@ -56,17 +58,4 @@ void	print_map_data(t_map *map)
 		write(1, "\n", 1);
 		y++;
 	}
-}
-
-void	funny_sprites_render(mlx_t *mlx)
-{
-	uint8_t		**sprites;
-	mlx_image_t	*img;
-
-	sprites = read_spritesheet("sprites/dungeon_/32/dungeon_.png", 32, 15, 12);
-
-	img = mlx_new_image(mlx, 32, 32);
-	free(img->pixels);
-	img->pixels = sprites[60];
-	mlx_image_to_window(mlx, img, 0, 0);
 }

@@ -20,22 +20,33 @@
 
 // -- STRUCTS --
 
+typedef struct s_sprite {
+	uint8_t			**spritesheet;
+	size_t			index;
+	mlx_image_t		*image;
+	struct s_sprite	*next;
+}	t_sprite;
+
 typedef struct s_map {
-	char	*content;
-	char	*render_categories;
-	char	*render_walls;
-	char	*render_lava;
-	char	*render_floor;
-	char	*render_shadows;
-	size_t	height;
-	size_t	width;
-	size_t	size;
-	size_t	player_pos;
-	size_t	total_collectibles;
-	size_t	collectibles;
+	mlx_t		*mlx;
+	char		*content;
+	char		*render_categories;
+	char		*render_walls;
+	char		*render_lava;
+	char		*render_floor;
+	char		*render_shadows;
+	size_t		height;
+	size_t		width;
+	size_t		size;
+	size_t		player_pos;
+	size_t		total_collectibles;
+	size_t		collectibles;
+	uint8_t		**wall_sprites;
+	uint8_t		**lava_sprites;
+	uint8_t		**shadow_sprites;
+	uint8_t		**character_sprites;
+	t_sprite	*sprites;
 }	t_map;
-
-
 
 // -- MAP INITIALIZATION --
 
@@ -46,6 +57,7 @@ char		*read_map_from_file(int fd);
 
 uint8_t		**read_spritesheet(char *path, size_t dim, size_t w, size_t h);
 uint8_t		*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w);
+void		load_spritesheets(t_map *map);
 
 // -- MAP VALIDATIONS --
 
@@ -59,22 +71,52 @@ void		validate_map_solvability(t_map *map);
 // -- MAP RENDERING PASSES --
 
 void		categorize_map_walls(t_map *map);
-void		fill_in_walls(t_map *map);
+void		fill_in_wall_map(t_map *map);
+void		render_map(t_map *map);
+void		render_wall_sprite(t_map *map, size_t i);
 
-// -- Pass 1 helpers --
+// -- Categorization helpers --
 
 void		initial_wall_seed(t_map *map);
 void		recursive_walls(t_map *map);
 int			neighbors_wall(t_map *map, size_t i);
 int			can_be_wall(t_map *map, size_t i);
 void		lava_and_pillars(t_map *map);
-
-// -- Pass 2 helpers --
-
 void		north_walls(t_map *map);
 void		fill_floors_and_strip_walls(t_map *map);
 int			is_edge_wall(size_t i, t_map *map);
 int			floor_or_north_wall(size_t i, t_map *map);
+
+// -- Wall pass helpers --
+
+uint8_t		determine_wall_sprite(t_map *map, size_t i);
+int			check_against_bitmask(uint8_t in, char *mask, int c);
+uint8_t		cyclical_shift_two(uint8_t in);
+
+uint8_t		edge_single(uint8_t surroundings);
+uint8_t		edge_consecutive(uint8_t surroundings);
+uint8_t		edge_opposing(uint8_t surroundings);
+uint8_t		edge_triple(uint8_t surroundings);
+
+uint8_t		wall_corner(uint8_t surroundings);
+uint8_t		wall_single(uint8_t surroundings);
+uint8_t		wall_opposing(uint8_t surroundings);
+uint8_t		wall_triple(uint8_t surroundings);
+uint8_t		wall_corner_edge(uint8_t surroundings);
+
+uint8_t		wall_single_edge_lr(uint8_t surroundings);
+uint8_t		wall_single_edge_l(uint8_t surroundings);
+uint8_t		wall_single_edge_r(uint8_t surroundings);
+
+// -- RENDER TOOLS --
+
+size_t		render_x_pos(t_map *map, size_t i);
+size_t		render_y_pos(t_map *map, size_t i);
+
+// -- SPRITE MANAGEMENT --
+
+t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index);
+t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i);
 
 // -- STRUCT FUNCTIONS -- 
 

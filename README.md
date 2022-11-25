@@ -11,9 +11,10 @@ through a maze, grabbing collectibles and making it to the exit.
 - [x] Determine what to draw where
 - [ ] Pick sprites based on surroundings and categories
   - [x] Walls
-  - [ ] Lava
+  - [x] Lava
   - [ ] Pillars
   - [ ] Floors
+  - [ ] Shadows
 - [ ] Set up rendering
 - [ ] Set up gameplay loop
 - [ ] Set up win condition

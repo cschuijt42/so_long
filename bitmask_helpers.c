@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	check_against_bitmask(uint8_t in, char *mask, int c)
+int	check_against_bitmask(uint8_t input, char *mask, int c)
 {
 	size_t		i;
 	uint8_t		orig;
@@ -20,20 +20,20 @@ int	check_against_bitmask(uint8_t in, char *mask, int c)
 
 	i = 0;
 	match = 0;
-	orig = in;
+	orig = input;
 	while (mask[i])
 	{
 		if (mask[i] == '1')
 			match |= 1 << i;
 		if (mask[i] == '*')
-			orig &= ~(1 << i);
+			input &= ~(1 << i);
 		i++;
 	}
-	if (orig == match)
+	if (input == match)
 		return (1);
 	c--;
 	if (c > 0)
-		return (check_against_bitmask(cyclical_shift_two(in), mask, c));
+		return (check_against_bitmask(cyclical_shift_two(orig), mask, c));
 	return (0);
 }
 

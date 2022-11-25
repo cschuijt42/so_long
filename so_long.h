@@ -90,7 +90,7 @@ int			floor_or_north_wall(size_t i, t_map *map);
 // -- Wall pass helpers --
 
 uint8_t		determine_wall_sprite(t_map *map, size_t i);
-int			check_against_bitmask(uint8_t in, char *mask, int c);
+int			check_against_bitmask(uint8_t input, char *mask, int c);
 uint8_t		cyclical_shift_two(uint8_t in);
 
 uint8_t		edge_single(uint8_t surroundings);

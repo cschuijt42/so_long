@@ -30,7 +30,7 @@ void	categorize_map_walls(t_map *map)
 		c_map[((y + 1) * map->width) - 1] = 'W';
 		y++;
 	}
-	map->render_categories = c_map;
+	map->sprite_categories = c_map;
 	initial_wall_seed(map);
 	recursive_walls(map);
 	lava_and_pillars(map);
@@ -43,15 +43,15 @@ void	fill_in_wall_map(t_map *map)
 	size_t	i;
 
 	i = 0;
-	map->render_walls = ft_calloc(1, map->size + 1);
-	if (!map->render_walls)
+	map->render_terrain = ft_calloc(1, map->size + 1);
+	if (!map->render_terrain)
 		exit_perror("malloc error");
-	while (map->render_categories[i])
+	while (map->sprite_categories[i])
 	{
-		if (map->render_categories[i] == 'N')
-			map->render_walls[i] = 60;
-		if (map->render_categories[i] == 'W')
-			map->render_walls[i] = determine_wall_sprite(map, i);
+		if (map->sprite_categories[i] == 'N')
+			map->render_terrain[i] = 60;
+		if (map->sprite_categories[i] == 'W')
+			map->render_terrain[i] = determine_wall_sprite(map, i);
 		i++;
 	}
 }

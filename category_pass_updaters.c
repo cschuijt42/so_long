@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   wall_pass_helpers.c                                :+:    :+:            */
+/*   category_pass_updaters.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cschuijt <cschuijt@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -19,9 +19,9 @@ void	north_walls(t_map *map)
 	i = 0;
 	while (i < map->size - (map->width * 2))
 	{
-		if (map->render_categories[i] == 'W')
-			if (map->render_categories[i + map->width] == ' ')
-				map->render_categories[i] = 'N';
+		if (map->sprite_categories[i] == 'W')
+			if (map->sprite_categories[i + map->width] == ' ')
+				map->sprite_categories[i] = 'N';
 		i++;
 	}
 }
@@ -33,15 +33,15 @@ void	fill_floors_and_strip_walls(t_map *map)
 	i = map->width;
 	while (i < map->size - map->width)
 	{
-		if (map->render_categories[i] == ' ')
-			map->render_categories[i] = 'F';
+		if (map->sprite_categories[i] == ' ')
+			map->sprite_categories[i] = 'F';
 		i++;
 	}
 	i = 0;
 	while (i < map->size)
 	{
 		if (!is_edge_wall(i, map))
-			map->render_categories[i] = ' ';
+			map->sprite_categories[i] = ' ';
 		i++;
 	}
 }
@@ -69,7 +69,7 @@ int	is_edge_wall(size_t i, t_map *map)
 
 int	floor_or_north_wall(size_t i, t_map *map)
 {
-	if (map->render_categories[i] == 'N' || map->render_categories[i] == 'F')
+	if (map->sprite_categories[i] == 'N' || map->sprite_categories[i] == 'F')
 		return (1);
 	return (0);
 }

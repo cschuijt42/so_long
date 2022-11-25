@@ -73,10 +73,8 @@ char	*join_string_array(char **array)
 void	free_map_struct(t_map *map)
 {
 	free(map->content);
-	free(map->render_categories);
-	free(map->render_walls);
-	free(map->render_lava);
-	free(map->render_floor);
+	free(map->sprite_categories);
+	free(map->render_terrain);
 	free(map->render_shadows);
 	free_array((void **) map->wall_sprites);
 	free_array((void **) map->lava_sprites);

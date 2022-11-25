@@ -18,11 +18,11 @@ void	render_map(t_map *map)
 	size_t		i;
 
 	i = 0;
-	while (map->render_categories[i])
+	while (map->sprite_categories[i])
 	{
-		if (map->render_categories[i] == 'W')
+		if (map->sprite_categories[i] == 'W')
 			render_wall_sprite(map, i);
-		if (map->render_categories[i] == 'N')
+		if (map->sprite_categories[i] == 'N')
 			render_wall_sprite(map, i);
 		i++;
 	}	

@@ -30,10 +30,8 @@ typedef struct s_sprite {
 typedef struct s_map {
 	mlx_t		*mlx;
 	char		*content;
-	char		*render_categories;
-	char		*render_walls;
-	char		*render_lava;
-	char		*render_floor;
+	char		*sprite_categories;
+	char		*render_terrain;
 	char		*render_shadows;
 	size_t		height;
 	size_t		width;

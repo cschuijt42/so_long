@@ -16,7 +16,7 @@
 // -- INCLUDES --
 
 # include "libft/libft.h"
-# include "include/MLX42.h"
+# include "mlx42/include/MLX42/MLX42.h"
 
 // -- STRUCTS --
 

@@ -26,21 +26,21 @@ unsigned char	determine_wall_sprite(t_map *map, size_t i)
 	surroundings = 0;
 	size = map->size;
 	width = map->width;
-	if (i >= width + 1 && is_o(map->render_categories[i - width - 1]))
+	if (i >= width + 1 && is_o(map->sprite_categories[i - width - 1]))
 		surroundings |= 1;
-	if (i >= width && is_o(map->render_categories[i - width]))
+	if (i >= width && is_o(map->sprite_categories[i - width]))
 		surroundings |= 1 << 1;
-	if (i >= width - 1 && is_o(map->render_categories[i - width + 1]))
+	if (i >= width - 1 && is_o(map->sprite_categories[i - width + 1]))
 		surroundings |= 1 << 2;
-	if (i < size - 1 && is_o(map->render_categories[i + 1]))
+	if (i < size - 1 && is_o(map->sprite_categories[i + 1]))
 		surroundings |= 1 << 3;
-	if (i <= size - width - 1 && is_o(map->render_categories[i + width + 1]))
+	if (i <= size - width - 1 && is_o(map->sprite_categories[i + width + 1]))
 		surroundings |= 1 << 4;
-	if (i <= size - width && is_o(map->render_categories[i + width]))
+	if (i <= size - width && is_o(map->sprite_categories[i + width]))
 		surroundings |= 1 << 5;
-	if (i <= size - width + 1 && is_o(map->render_categories[i + width - 1]))
+	if (i <= size - width + 1 && is_o(map->sprite_categories[i + width - 1]))
 		surroundings |= 1 << 6;
-	if (i >= 1 && is_o(map->render_categories[i - 1]))
+	if (i >= 1 && is_o(map->sprite_categories[i - 1]))
 		surroundings |= 1 << 7;
 	return (get_sprite_from_surroundings(surroundings));
 }

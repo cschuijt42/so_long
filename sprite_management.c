@@ -44,7 +44,7 @@ t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i)
 	size_t		index;
 
 	sprite = map->sprites;
-	index = (size_t) map->render_walls[i];
+	index = (size_t) map->render_terrain[i];
 	while (sprite)
 	{
 		if (sprite->index == index && sprite->spritesheet == sheet)

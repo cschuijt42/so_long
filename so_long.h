@@ -112,6 +112,11 @@ uint8_t		determine_lava_sprite(t_map *map, size_t i);
 uint8_t		match_high_lava_sprites(uint8_t surroundings);
 uint8_t		match_low_lava_sprites(uint8_t surroundings);
 
+// -- Floor pass helpers --
+
+void		fill_in_floors(t_map *map);
+uint8_t		determine_floor_surroundings(t_map *map, size_t i);
+
 // -- RENDER TOOLS --
 
 size_t		render_x_pos(t_map *map, size_t i);

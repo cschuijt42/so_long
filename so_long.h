@@ -46,6 +46,11 @@ typedef struct s_map {
 	t_sprite	*sprites;
 }	t_map;
 
+typedef struct s_floortile {
+	char				*pattern;
+	struct s_floortile	*next;
+}	t_floortile;
+
 // -- MAP INITIALIZATION --
 
 t_map		*initialize_map(char *path);
@@ -116,6 +121,13 @@ uint8_t		match_low_lava_sprites(uint8_t surroundings);
 
 void		fill_in_floors(t_map *map);
 uint8_t		determine_floor_surroundings(t_map *map, size_t i);
+int			floor_tile_fits_space(uint8_t surroundings, char *tile);
+void		fill_in_floor_tile(t_map *map, size_t i, char *tile);
+
+t_floortile	*initialize_tile_list(void);
+t_floortile	*add_tile_to_list(t_floortile **list, char *pattern);
+t_floortile	*new_tile(char *pattern);
+void		free_tile_list(t_floortile **list);
 
 // -- RENDER TOOLS --
 

@@ -14,21 +14,25 @@
 
 void	fill_in_floors(t_map *map)
 {
-	size_t	i;
-	uint8_t	surroundings;
+	size_t		i;
+	uint8_t		surroundings;
+	t_floortile	*tile;
 
 	i = 0;
+	tile = initialize_tile_list();
 	while (map->sprite_categories[i])
 	{
 		if (map->sprite_categories[i] == 'F' && map->render_terrain[i] == 0)
 		{
 			surroundings = determine_floor_surroundings(map, i);
-			while (!floor_tile_fits_space(surroundings, tile))
+			while (!floor_tile_fits_space(surroundings, tile->pattern))
 				tile = tile->next;
-			fill_in_floor_tile(map, i, tile);
+			fill_in_floor_tile(map, i, tile->pattern);
+			tile = tile->next;
 		}
 		i++;
 	}
+	free_tile_list(&tile);
 }
 
 uint8_t	determine_floor_surroundings(t_map *map, size_t i)
@@ -54,7 +58,7 @@ int	floor_tile_fits_space(uint8_t surroundings, char *tile)
 	i = 1;
 	while (i < 5)
 	{
-		if (tile[i] && !(surroundings << i + 2 & 1))
+		if (tile[i] && !(surroundings >> (i + 2) & 1))
 			return (0);
 		i++;
 	}

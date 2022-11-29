@@ -18,8 +18,24 @@ t_floortile	*initialize_tile_list(void)
 	t_floortile	*list;
 
 	list = NULL;
-	add_tile_to_list(&list, "@@@\0\0");
-	add_tile_to_list(&list, "O\0\0\0\0");
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x5E\x5F\0\0\0"); // 2x1 dark tiles
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x41\0\0\x50\0"); // 1x2 dark tiles
+	add_tile_to_list(&list, "\x40\0\0\0\0"); // single quad dark tile
+	add_tile_to_list(&list, "\x60\0\x70\x6F\0"); // dark corner bottom left
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x44\x45\x54\0\0"); // dark corner top right
+	add_tile_to_list(&list, "\x52\x53\x62\x61\0"); // 2x2 dark square
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x63\0\0\x72\x71"); // dark corner bottom right
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
+	add_tile_to_list(&list, "\x9A\0\0\0\0"); // single light tile
+	add_tile_to_list(&list, "\x42\x43\0\x51\0"); // dark corner top left
+	add_tile_to_list(&list, "\x4F\0\0\0\0"); // single dark tile
 	return (list);
 }
 

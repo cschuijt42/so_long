@@ -41,13 +41,17 @@ uint8_t	determine_floor_surroundings(t_map *map, size_t i)
 
 	surroundings = 0;
 	if (map->sprite_categories[i + 1] == 'F')
-		surroundings |= 1 << 3;
+		if (!(map->render_terrain[i + 1]))
+			surroundings |= 1 << 3;
 	if (map->sprite_categories[i + map->width + 1] == 'F')
-		surroundings |= 1 << 4;
+		if (!(map->render_terrain[i + map->width + 1]))
+			surroundings |= 1 << 4;
 	if (map->sprite_categories[i + map->width] == 'F')
-		surroundings |= 1 << 5;
+		if (!(map->render_terrain[i + map->width]))
+			surroundings |= 1 << 5;
 	if (map->sprite_categories[i + map->width - 1] == 'F')
-		surroundings |= 1 << 6;
+		if (!(map->render_terrain[i + map->width - 1]))
+			surroundings |= 1 << 6;
 	return (surroundings);
 }
 
@@ -67,7 +71,7 @@ int	floor_tile_fits_space(uint8_t surroundings, char *tile)
 
 void	fill_in_floor_tile(t_map *map, size_t i, char *tile)
 {
-	map->render_terrain[i] = tile[0];
+	map->render_terrain[i] = (unsigned char) tile[0];
 	if (tile[1])
 		map->render_terrain[i + 1] = tile[1];
 	if (tile[2])

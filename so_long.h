@@ -33,6 +33,7 @@ typedef struct s_map {
 	char		*sprite_categories;
 	char		*render_terrain;
 	char		*render_shadows;
+	mlx_image_t	*background_fill;
 	size_t		height;
 	size_t		width;
 	size_t		size;
@@ -77,6 +78,8 @@ void		categorize_map_walls(t_map *map);
 void		fill_in_background_sprite_indexes(t_map *map);
 void		render_map(t_map *map);
 void		render_background_sprite(t_map *map, size_t i, uint8_t **sprites);
+void		render_pillar(t_map *map, size_t i);
+void		render_background_pixels(t_map *map);
 
 // -- Categorization helpers --
 

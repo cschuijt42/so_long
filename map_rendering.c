@@ -17,6 +17,7 @@ void	render_map(t_map *map)
 {
 	size_t		i;
 
+	render_background_pixels(map);
 	i = 0;
 	while (map->sprite_categories[i])
 	{
@@ -24,22 +25,64 @@ void	render_map(t_map *map)
 			render_background_sprite(map, i, map->wall_sprites);
 		if (map->sprite_categories[i] == 'N')
 			render_background_sprite(map, i, map->wall_sprites);
-		if (map->sprite_categories[i] == 'L')
-			render_background_sprite(map, i, map->lava_sprites);
 		if (map->sprite_categories[i] == 'F')
 			render_background_sprite(map, i, map->wall_sprites);
+		if (map->sprite_categories[i] == 'L')
+			render_background_sprite(map, i, map->lava_sprites);
+		if (map->sprite_categories[i] == 'P')
+			render_pillar(map, i);
 		i++;
 	}	
+}
+
+void	render_background_pixels(t_map *map)
+{
+	size_t	screen;
+	size_t	width;
+	size_t	height;
+	size_t	i;
+
+	width = map->mlx->width;
+	height = map->mlx->height;
+	screen = width * height;
+	map->background_fill = \
+	mlx_new_image(map->mlx, width, height);
+	i = 0;
+	while (i < screen)
+	{
+		mlx_put_pixel(map->background_fill, i % width, i / width, 0x353540FF);
+		i++;
+	}
+	mlx_image_to_window(map->mlx, map->background_fill, 0, 0);
+	mlx_set_instance_depth(map->background_fill->instances, 0);
 }
 
 void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)
 {
 	t_sprite	*sprite;
+	size_t		sprite_index;
+	size_t		xy[2];
+	size_t		inst;
+
+	sprite_index = (size_t)((unsigned char) map->render_terrain[i]);
+	sprite = find_or_create_sprite(map, sprites, sprite_index);
+	xy[0] = render_x_pos(map, i);
+	xy[1] = render_y_pos(map, i);
+	inst = mlx_image_to_window(map->mlx, sprite->image, xy[0], xy[1]);
+	mlx_set_instance_depth(&sprite->image->instances[inst], 1);
+}
+
+void	render_pillar(t_map *map, size_t i)
+{
+	t_sprite	*sprite;
+	size_t		inst;
 	size_t		x_pos;
 	size_t		y_pos;
 
-	sprite = find_or_create_sprite(map, sprites, i);
+	render_background_sprite(map, i, map->wall_sprites);
+	sprite = find_or_create_sprite(map, map->wall_sprites, 138);
 	x_pos = render_x_pos(map, i);
-	y_pos = render_y_pos(map, i);
-	mlx_image_to_window(map->mlx, sprite->image, x_pos, y_pos);
+	y_pos = render_y_pos(map, i - map->width);
+	inst = mlx_image_to_window(map->mlx, sprite->image, x_pos, y_pos);
+	mlx_set_instance_depth(&sprite->image->instances[inst], 5);
 }

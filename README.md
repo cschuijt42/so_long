@@ -12,7 +12,7 @@ through a maze, grabbing collectibles and making it to the exit.
 - [ ] Pick sprites based on surroundings and categories
   - [x] Walls
   - [x] Lava
-  - [ ] Pillars
+  - [x] Pillars
   - [x] Floors
   - [ ] Shadows
 - [ ] Set up rendering

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
 void	load_map_collectibles(t_map *map)
 {
@@ -43,4 +44,19 @@ void	add_collectible_to_map(t_map *map, size_t i)
 			list = list->next;
 		list->next = collectible;
 	}
+}
+
+void	clear_collectible_list(t_map *map)
+{
+	t_collectible	*collectible;
+	t_collectible	*next;
+
+	collectible = map->collectibles;
+	while (collectible)
+	{
+		next = collectible->next;
+		free(collectible);
+		collectible = next;
+	}
+	map->collectibles = NULL;
 }

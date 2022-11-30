@@ -27,27 +27,6 @@ typedef struct s_sprite {
 	struct s_sprite	*next;
 }	t_sprite;
 
-typedef struct s_map {
-	mlx_t		*mlx;
-	char		*content;
-	char		*sprite_categories;
-	char		*render_terrain;
-	char		*render_shadows;
-	mlx_image_t	*background_fill;
-	size_t		height;
-	size_t		width;
-	size_t		size;
-	size_t		player_pos;
-	size_t		total_collectibles;
-	size_t		collected_collectibles;
-	size_t		collectibles;
-	uint8_t		**wall_sprites;
-	uint8_t		**lava_sprites;
-	uint8_t		**shadow_sprites;
-	uint8_t		**character_sprites;
-	t_sprite	*sprites;
-}	t_map;
-
 typedef struct s_floortile {
 	char				*pattern;
 	struct s_floortile	*next;
@@ -59,6 +38,27 @@ typedef struct s_collectible {
 	uint8_t					picked_up;
 	struct s_collectible	*next;
 }	t_collectible;
+
+typedef struct s_map {
+	mlx_t			*mlx;
+	char			*content;
+	char			*sprite_categories;
+	char			*render_terrain;
+	char			*render_shadows;
+	mlx_image_t		*background_fill;
+	size_t			height;
+	size_t			width;
+	size_t			size;
+	size_t			player_pos;
+	size_t			total_collectibles;
+	size_t			collected_collectibles;
+	t_collectible	*collectibles;
+	uint8_t			**wall_sprites;
+	uint8_t			**lava_sprites;
+	uint8_t			**shadow_sprites;
+	uint8_t			**character_sprites;
+	t_sprite		*sprites;
+}	t_map;
 
 // -- MAP INITIALIZATION --
 
@@ -88,6 +88,7 @@ void		render_map(t_map *map);
 void		render_background_sprite(t_map *map, size_t i, uint8_t **sprites);
 void		render_pillar(t_map *map, size_t i);
 void		render_background_pixels(t_map *map);
+void		render_collectibles(t_map *map);
 
 // -- Categorization helpers --
 
@@ -143,6 +144,12 @@ void		free_tile_list(t_floortile **list);
 // -- Exit helpers --
 
 uint8_t		determine_exit_sprite(t_map *map, size_t i);
+
+// -- COLLECTIBLES --
+
+void		load_map_collectibles(t_map *map);
+void		add_collectible_to_map(t_map *map, size_t i);
+void		clear_collectible_list(t_map *map);
 
 // -- RENDER TOOLS --
 

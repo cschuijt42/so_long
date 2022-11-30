@@ -32,6 +32,7 @@ void	render_map(t_map *map)
 		}
 		i++;
 	}
+	render_collectibles(map);
 }
 
 void	render_background_pixels(t_map *map)

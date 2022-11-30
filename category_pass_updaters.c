@@ -76,5 +76,7 @@ int	floor_or_north_wall(size_t i, t_map *map)
 {
 	if (map->sprite_categories[i] == 'N' || map->sprite_categories[i] == 'F')
 		return (1);
+	if (map->sprite_categories[i] == 'E')
+		return (1);
 	return (0);
 }

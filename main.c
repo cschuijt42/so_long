@@ -19,22 +19,20 @@ void	print_map_data(t_map *map);
 int	main(int ac, char **av)
 {
 	t_map	*map;
-	mlx_t	*mlx;
 
 	if (ac != 2)
 		exit_message("please provide just the map file as a single argument");
 	map = initialize_map(av[1]);
 	ft_printf("Map seems good to me!\n");
-	mlx = mlx_init(32 * map->width, 32 * map->height, "so_long", 0);
-	if (!mlx)
+	map->mlx = mlx_init(32 * map->width, 32 * map->height, "so_long", 0);
+	if (!map->mlx)
 		exit_message("couldn't initialize MLX window");
-	map->mlx = mlx;
 	categorize_map_walls(map);
 	fill_in_background_sprite_indexes(map);
 	print_map_data(map);
 	render_map(map);
 	mlx_loop(map->mlx);
-	mlx_terminate(mlx);
+	mlx_terminate(map->mlx);
 	exit(0);
 	return (0);
 }

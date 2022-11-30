@@ -92,5 +92,5 @@ static uint8_t	get_edge_sprite_from_surroundings(uint8_t s)
 
 static int	is_o(char c)
 {
-	return (c == 'N' || c == 'F' || c == 'L' || c == 'P');
+	return (c == 'N' || c == 'F' || c == 'L' || c == 'P' || c == 'E');
 }

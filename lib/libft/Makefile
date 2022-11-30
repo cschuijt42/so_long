@@ -11,6 +11,7 @@ OBJFILES := ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					get_next_line.o get_next_line_utils.o ft_strchrc.o
 FLAGS = -Werror -Wall -Wextra
 NAME = libft.a
+CC ?= gcc
 
 $(NAME) : $(OBJFILES)
 	ar rcs $(NAME) $(OBJFILES)

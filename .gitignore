@@ -1,8 +1,7 @@
 .DS_Store
 *.o
 test
-a.out*
+*.out*
 .vscode/*
 so_long
-so_long_linux
-libft.a
+*.a

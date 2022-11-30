@@ -5,22 +5,24 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						wall_sprite_functions_part_two.o wall_edge_sprite_functions.o \
 						bitmask_helpers.o sprite_management.o render_helpers.o lava_pass.o \
 						floor_pass.o floor_tile_helpers.o exit_pass.o collectible_helpers.o 
-FLAGS = -Werror -Wall -Wextra -g -I lib
-MAC_FLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
-LINUX_FLAGS = -ldl -lglfw -pthread -lm
-LIBFT_A = lib/libft/libft.a
-MLX42_A = lib/mlx42/libmlx42.a
-NAME = so_long
+FLAGS    := -Werror -Wall -Wextra -g -I lib
+LIBFT_A  := lib/libft/libft.a
+MLX42_A  := lib/mlx42/libmlx42.a
+NAME     := so_long
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	FW_FLAGS := -ldl -lglfw -pthread -lm
+else ifeq ($(UNAME_S), Darwin)
+	FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+else
+	$(error OS: $(OS) - Is not supported!)
+endif
 
 $(NAME) : $(OBJFILES) $(LIBFT_A) $(MLX42_A) so_long.h
-	$(CC) $(FLAGS) $(MAC_FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(MLX42_A)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
 
 all : $(NAME)
-
-$(NAME)_linux : $(OBJFILES) $(LIBFT_A) $(MLX42_A) so_long.h
-	$(CC) $(FLAGS) -o $(NAME)_linux $(OBJFILES) $(LIBFT_A) $(MLX42_A) $(LINUX_FLAGS)
-
-linux : $(NAME)_linux
 
 re : fclean all
 
@@ -28,7 +30,7 @@ clean :
 	rm -f $(OBJFILES) libft.a
 
 fclean :
-	rm -f $(NAME) $(NAME)_linux $(OBJFILES)
+	rm -f $(NAME) $(OBJFILES)
 	make -C lib/libft fclean
 	make -C lib/mlx42 fclean
 

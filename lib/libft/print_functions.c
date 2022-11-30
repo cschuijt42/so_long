@@ -15,7 +15,7 @@
 
 int	printf_nbr_b(int n, char *base)
 {
-	long			bl;
+	unsigned long	bl;
 	int				i;
 	unsigned int	un;
 
@@ -42,8 +42,8 @@ int	printf_nbr_b(int n, char *base)
 
 int	printf_nbr_ub(unsigned int n, char *base)
 {
-	long	bl;
-	int		i;
+	unsigned long	bl;
+	int				i;
 
 	i = 1;
 	bl = ft_strlen(base);

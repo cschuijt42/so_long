@@ -45,8 +45,7 @@ void	render_background_pixels(t_map *map)
 	width = map->mlx->width;
 	height = map->mlx->height;
 	screen = width * height;
-	map->background_fill = \
-	mlx_new_image(map->mlx, width, height);
+	map->background_fill = mlx_new_image(map->mlx, width, height);
 	i = 0;
 	while (i < screen)
 	{

@@ -12,6 +12,7 @@ NAME     := so_long
 
 ifeq ($(OS), Windows_NT)
 	FW_FLAGS := -lglfw3 -lopengl32 -lgdi32
+	CC = gcc
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Linux)

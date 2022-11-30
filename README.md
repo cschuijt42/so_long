@@ -13,7 +13,7 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Walls
   - [x] Lava
   - [ ] Pillars
-  - [ ] Floors
+  - [x] Floors
   - [ ] Shadows
 - [ ] Set up rendering
 - [ ] Set up gameplay loop

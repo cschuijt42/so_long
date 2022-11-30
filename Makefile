@@ -9,10 +9,10 @@ FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a
 NAME     := so_long
-CC	     ?= gcc
 
 ifeq ($(OS), Windows_NT)
 	FW_FLAGS := -lglfw3 -lopengl32 -lgdi32
+	CC = gcc
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Linux)

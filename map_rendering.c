@@ -31,7 +31,7 @@ void	render_map(t_map *map)
 				render_background_sprite(map, i, map->wall_sprites);
 		}
 		i++;
-	}	
+	}
 }
 
 void	render_background_pixels(t_map *map)

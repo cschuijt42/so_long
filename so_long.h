@@ -39,6 +39,7 @@ typedef struct s_map {
 	size_t		size;
 	size_t		player_pos;
 	size_t		total_collectibles;
+	size_t		collected_collectibles;
 	size_t		collectibles;
 	uint8_t		**wall_sprites;
 	uint8_t		**lava_sprites;
@@ -51,6 +52,13 @@ typedef struct s_floortile {
 	char				*pattern;
 	struct s_floortile	*next;
 }	t_floortile;
+
+typedef struct s_collectible {
+	size_t					pos;
+	size_t					instance;
+	uint8_t					picked_up;
+	struct s_collectible	*next;
+}	t_collectible;
 
 // -- MAP INITIALIZATION --
 

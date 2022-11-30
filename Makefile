@@ -10,13 +10,17 @@ LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a
 NAME     := so_long
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S), Linux)
-	FW_FLAGS := -ldl -lglfw -pthread -lm
-else ifeq ($(UNAME_S), Darwin)
-	FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+ifeq ($(OS), Windows_NT)
+	FW_FLAGS := -lglfw3 -lopengl32 -lgdi32
 else
-	$(error OS: $(OS) - Is not supported!)
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S), Linux)
+		FW_FLAGS := -ldl -lglfw -pthread -lm
+	else ifeq ($(UNAME_S), Darwin)
+		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+	else
+		$(error OS: $(OS) - Is not supported!)
+	endif
 endif
 
 $(NAME) : $(OBJFILES) $(LIBFT_A) $(MLX42_A) so_long.h

@@ -56,6 +56,8 @@ void	fill_in_background_sprite_indexes(t_map *map)
 			map->render_terrain[i] = determine_lava_sprite(map, i);
 		if (map->sprite_categories[i] == 'P')
 			map->render_terrain[i] = (unsigned char) 153;
+		if (map->sprite_categories[i] == 'E')
+			map->render_terrain[i] = determine_exit_sprite(map, i);
 		i++;
 	}
 	fill_in_floors(map);

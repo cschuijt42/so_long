@@ -21,16 +21,15 @@ void	render_map(t_map *map)
 	i = 0;
 	while (map->sprite_categories[i])
 	{
-		if (map->sprite_categories[i] == 'W')
-			render_background_sprite(map, i, map->wall_sprites);
-		if (map->sprite_categories[i] == 'N')
-			render_background_sprite(map, i, map->wall_sprites);
-		if (map->sprite_categories[i] == 'F')
-			render_background_sprite(map, i, map->wall_sprites);
-		if (map->sprite_categories[i] == 'L')
-			render_background_sprite(map, i, map->lava_sprites);
-		if (map->sprite_categories[i] == 'P')
-			render_pillar(map, i);
+		if (map->sprite_categories[i] != ' ')
+		{
+			if (map->sprite_categories[i] == 'L')
+				render_background_sprite(map, i, map->lava_sprites);
+			else if (map->sprite_categories[i] == 'P')
+				render_pillar(map, i);
+			else
+				render_background_sprite(map, i, map->wall_sprites);
+		}
 		i++;
 	}	
 }

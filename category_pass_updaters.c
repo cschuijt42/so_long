@@ -34,7 +34,12 @@ void	fill_floors_and_strip_walls(t_map *map)
 	while (i < map->size - map->width)
 	{
 		if (map->sprite_categories[i] == ' ')
-			map->sprite_categories[i] = 'F';
+		{
+			if (map->content[i] == 'E')
+				map->sprite_categories[i] = 'E';
+			else
+				map->sprite_categories[i] = 'F';
+		}
 		i++;
 	}
 	i = 0;

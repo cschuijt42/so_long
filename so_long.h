@@ -132,6 +132,10 @@ t_floortile	*add_tile_to_list(t_floortile **list, char *pattern);
 t_floortile	*new_tile(char *pattern);
 void		free_tile_list(t_floortile **list);
 
+// -- Exit helpers --
+
+uint8_t		determine_exit_sprite(t_map *map, size_t i);
+
 // -- RENDER TOOLS --
 
 size_t		render_x_pos(t_map *map, size_t i);

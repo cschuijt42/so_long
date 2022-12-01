@@ -42,6 +42,7 @@ void	load_spritesheets(t_map *map)
 {
 	map->wall_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
 	map->lava_sprites = read_spritesheet("sprites/lava.png", 32, 12, 18);
+	map->shadow_sprites = read_spritesheet("sprites/shadows.png", 32, 5, 6);
 }
 
 char	*join_string_array(char **array)

@@ -141,6 +141,22 @@ t_floortile	*add_tile_to_list(t_floortile **list, char *pattern);
 t_floortile	*new_tile(char *pattern);
 void		free_tile_list(t_floortile **list);
 
+// -- Shadow pass helpers --
+
+void		determine_shadow_sprites(t_map *map);
+void		render_shadows(t_map *map);
+void		fill_in_floor_shadow(t_map *map, size_t i);
+int			should_have_shadow(t_map *map, size_t i);
+int			is_wall(t_map *map, size_t i);
+int			is_floor_or_lava(t_map *map, size_t i);
+
+void		corner_floor_shadow(t_map *map, size_t i);
+void		small_corner_floor_shadow(t_map *map, size_t i);
+void		continuous_n_floor_shadow(t_map *map, size_t i);
+void		ending_n_floor_shadow(t_map *map, size_t i);
+void		continuous_w_floor_shadow(t_map *map, size_t i);
+void		ending_w_floor_shadow(t_map *map, size_t i);
+
 // -- Exit helpers --
 
 uint8_t		determine_exit_sprite(t_map *map, size_t i);

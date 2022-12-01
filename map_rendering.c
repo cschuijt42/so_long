@@ -33,6 +33,7 @@ void	render_map(t_map *map)
 		i++;
 	}
 	render_collectibles(map);
+	render_shadows(map);
 }
 
 void	render_background_pixels(t_map *map)
@@ -69,6 +70,21 @@ void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)
 	xy[1] = render_y_pos(map, i);
 	inst = mlx_image_to_window(map->mlx, sprite->image, xy[0], xy[1]);
 	mlx_set_instance_depth(&sprite->image->instances[inst], 1);
+}
+
+void	render_shadow_sprite(t_map *map, size_t i)
+{
+	t_sprite	*sprite;
+	size_t		sprite_index;
+	size_t		xy[2];
+	size_t		inst;
+
+	sprite_index = (size_t)(unsigned char) map->render_shadows[i];
+	sprite = find_or_create_sprite(map, map->shadow_sprites, sprite_index);
+	xy[0] = render_x_pos(map, i);
+	xy[1] = render_y_pos(map, i);
+	inst = mlx_image_to_window(map->mlx, sprite->image, xy[0], xy[1]);
+	mlx_set_instance_depth(&sprite->image->instances[inst], 2);
 }
 
 void	render_pillar(t_map *map, size_t i)

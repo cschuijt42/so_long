@@ -33,6 +33,9 @@ t_map	*initialize_map_struct(char **map_array)
 	map->player_pos = ft_strchr(map->content, 'P') - map->content;
 	map->content[map->player_pos] = '0';
 	map->total_collectibles = ft_strchrc(map->content, 'C');
+	map->render_shadows = ft_calloc(map->size + 1, 1);
+	if (!map->render_shadows)
+		exit_perror("malloc error");
 	load_spritesheets(map);
 	load_map_collectibles(map);
 	return (map);

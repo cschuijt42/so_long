@@ -4,7 +4,8 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						category_pass_updaters.o wall_pass_helpers.o wall_sprite_functions.o \
 						wall_sprite_functions_part_two.o wall_edge_sprite_functions.o \
 						bitmask_helpers.o sprite_management.o render_helpers.o lava_pass.o \
-						floor_pass.o floor_tile_helpers.o exit_pass.o collectible_helpers.o 
+						floor_pass.o floor_tile_helpers.o exit_pass.o collectible_helpers.o \
+						shadow_pass.o shadow_sprite_helpers.o shadow_sprites_part_two.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a

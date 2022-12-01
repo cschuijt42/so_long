@@ -18,16 +18,19 @@ void	fill_in_floor_shadow(t_map *map, size_t i)
 	{
 		if (should_have_shadow(map, i - 1))
 			small_corner_floor_shadow(map, i);
-		else if (should_have_shadow(map, i + map->width))
+		else
 			continuous_w_floor_shadow(map, i);
+	}
+	else if (should_have_shadow(map, i + map->width))
+	{
+		if (should_have_shadow(map, i + 1))
+			corner_floor_shadow(map, i);
 		else
 			ending_w_floor_shadow(map, i);
 	}
-	else if (should_have_shadow(map, i + 1))
+	else
 	{
-		if (should_have_shadow(map, i + map->width))
-			corner_floor_shadow(map, i);
-		else if (should_have_shadow(map, i - 1))
+		if (should_have_shadow(map, i - 1))
 			continuous_n_floor_shadow(map, i);
 		else
 			ending_n_floor_shadow(map, i);
@@ -53,4 +56,19 @@ void	corner_floor_shadow(t_map *map, size_t i)
 
 void	small_corner_floor_shadow(t_map *map, size_t i)
 {
+	size_t	sprite;
+
+	sprite = (size_t)(unsigned char) map->render_terrain[i];
+	if (sprite == 79 || sprite == 64 || sprite == 94 || sprite == 65)
+		map->render_shadows[i] = 25;
+	if (sprite == 154 || sprite == 82 || sprite == 96 || sprite == 68)
+		map->render_shadows[i] = 25;
+	if (sprite == 66 || sprite == 113 || sprite == 99)
+		map->render_shadows[i] = 25;
+	if (sprite == 95 || sprite == 83 || sprite == 69 || sprite == 67)
+		map->render_shadows[i] = 26;
+	if (sprite == 80 || sprite == 97 || sprite == 111 || sprite == 81)
+		map->render_shadows[i] = 27;
+	if (sprite == 114)
+		map->render_shadows[i] = 28;
 }

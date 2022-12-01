@@ -40,7 +40,7 @@ void	render_shadows(t_map *map)
 	i = map->width;
 	while (i < map->size - map->width)
 	{
-		if (map->render_shadows[i])
+		if (should_have_shadow(map, i))
 			render_shadow_sprite(map, i);
 		i++;
 	}

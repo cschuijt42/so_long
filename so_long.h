@@ -89,6 +89,8 @@ void		render_background_sprite(t_map *map, size_t i, uint8_t **sprites);
 void		render_pillar(t_map *map, size_t i);
 void		render_background_pixels(t_map *map);
 void		render_collectibles(t_map *map);
+void		render_shadows(t_map *map);
+void		render_shadow_sprite(t_map *map, size_t i);
 
 // -- Categorization helpers --
 
@@ -144,7 +146,6 @@ void		free_tile_list(t_floortile **list);
 // -- Shadow pass helpers --
 
 void		determine_shadow_sprites(t_map *map);
-void		render_shadows(t_map *map);
 void		fill_in_floor_shadow(t_map *map, size_t i);
 int			should_have_shadow(t_map *map, size_t i);
 int			is_wall(t_map *map, size_t i);

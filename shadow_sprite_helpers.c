@@ -14,27 +14,24 @@
 
 void	fill_in_floor_shadow(t_map *map, size_t i)
 {
-	if (should_have_shadow(map, i - map->width))
+	if (is_wall(map, i - map->width) && is_wall(map, i - 1))
+		corner_floor_shadow(map, i);
+	else if (is_wall(map, i - map->width))
 	{
-		if (should_have_shadow(map, i - 1))
-			small_corner_floor_shadow(map, i);
-		else
-			continuous_w_floor_shadow(map, i);
-	}
-	else if (should_have_shadow(map, i + map->width))
-	{
-		if (should_have_shadow(map, i + 1))
-			corner_floor_shadow(map, i);
-		else
-			ending_w_floor_shadow(map, i);
-	}
-	else
-	{
-		if (should_have_shadow(map, i - 1))
+		if (is_wall(map, i - map->width - 1))
 			continuous_n_floor_shadow(map, i);
 		else
 			ending_n_floor_shadow(map, i);
 	}
+	else if (is_wall(map, i - 1))
+	{
+		if (is_wall(map, i - map->width - 1))
+			continuous_w_floor_shadow(map, i);
+		else
+			ending_w_floor_shadow(map, i);
+	}
+	else
+		small_corner_floor_shadow(map, i);
 }
 
 void	corner_floor_shadow(t_map *map, size_t i)

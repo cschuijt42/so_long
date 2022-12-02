@@ -71,7 +71,7 @@ void	ending_w_floor_shadow(t_map *map, size_t i)
 
 	sprite = (size_t)(unsigned char) map->render_terrain[i];
 	if (sprite == 65 || sprite == 82 || sprite == 96)
-		map->render_shadows[i] = 21;
+		map->render_shadows[i] = 16;
 	else if (sprite == 66 || sprite == 99)
 		map->render_shadows[i] = 16;
 	else

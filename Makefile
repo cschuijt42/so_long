@@ -20,7 +20,7 @@ else
 	ifeq ($(UNAME_S), Linux)
 		FW_FLAGS := -ldl -lglfw -pthread -lm
 	else ifeq ($(UNAME_S), Darwin)
-		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -fsanitize=address
 	else
 		$(error OS: $(OS) - Is not supported!)
 	endif

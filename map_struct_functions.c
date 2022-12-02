@@ -46,6 +46,8 @@ void	load_spritesheets(t_map *map)
 	map->wall_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
 	map->lava_sprites = read_spritesheet("sprites/lava.png", 32, 12, 18);
 	map->shadow_sprites = read_spritesheet("sprites/shadows.png", 32, 5, 6);
+	map->player_sprites = read_spritesheet("sprites/dragon.png", 48, 8, 7);
+	map->patrol_sprites = read_spritesheet("sprites/necromancer.png", 48, 8, 5);
 }
 
 char	*join_string_array(char **array)
@@ -83,6 +85,7 @@ void	free_map_struct(t_map *map)
 	free_array((void **) map->wall_sprites);
 	free_array((void **) map->lava_sprites);
 	free_array((void **) map->shadow_sprites);
-	free_array((void **) map->character_sprites);
+	free_array((void **) map->player_sprites);
+	free_array((void **) map->patrol_sprites);
 	free(map);
 }

@@ -56,7 +56,8 @@ typedef struct s_map {
 	uint8_t			**wall_sprites;
 	uint8_t			**lava_sprites;
 	uint8_t			**shadow_sprites;
-	uint8_t			**character_sprites;
+	uint8_t			**player_sprites;
+	uint8_t			**patrol_sprites;
 	t_sprite		*sprites;
 }	t_map;
 

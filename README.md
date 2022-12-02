@@ -9,13 +9,15 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Ensure map is solvable
 - [x] Set up sprite intake
 - [x] Determine what to draw where
-- [ ] Pick sprites based on surroundings and categories
+- [x] Pick sprites based on surroundings and categories
   - [x] Walls
   - [x] Lava
   - [x] Pillars
   - [x] Floors
-  - [ ] Shadows
+  - [x] Shadows
+  - [ ] Additional walls
 - [ ] Set up rendering
+- [ ] Animate lava/candles/characters
 - [ ] Set up gameplay loop
 - [ ] Set up win condition
 - [ ] Cleanly exit the game when necessary

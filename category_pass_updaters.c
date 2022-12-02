@@ -53,22 +53,24 @@ void	fill_floors_and_strip_walls(t_map *map)
 
 int	is_edge_wall(size_t i, t_map *map)
 {
-	if (floor_or_north_wall(i - map->width - 1, map))
+	if (i > map->width + 1 && floor_or_north_wall(i - map->width - 1, map))
 		return (1);
-	if (floor_or_north_wall(i - map->width, map))
+	if (i > map->width && floor_or_north_wall(i - map->width, map))
 		return (1);
-	if (floor_or_north_wall(i - map->width + 1, map))
+	if (i > map->width - 1 && floor_or_north_wall(i - map->width + 1, map))
 		return (1);
-	if (floor_or_north_wall(i - 1, map))
+	if (i > 0 && floor_or_north_wall(i - 1, map))
 		return (1);
-	if (floor_or_north_wall(i + 1, map))
+	if (i < map->size - 1 && floor_or_north_wall(i + 1, map))
 		return (1);
-	if (floor_or_north_wall(i + map->width - 1, map))
+	if (i < map->size - map->width + 1)
+		if (floor_or_north_wall(i + map->width - 1, map))
+			return (1);
+	if (i < map->size - map->width && floor_or_north_wall(i + map->width, map))
 		return (1);
-	if (floor_or_north_wall(i + map->width, map))
-		return (1);
-	if (floor_or_north_wall(i + map->width + 1, map))
-		return (1);
+	if (i < map->size - map->width - 1)
+		if (floor_or_north_wall(i + map->width + 1, map))
+			return (1);
 	return (0);
 }
 

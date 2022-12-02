@@ -23,10 +23,10 @@ void	determine_shadow_sprites(t_map *map)
 			fill_in_floor_shadow(map, i);
 		if (map->sprite_categories[i] == 'L' && should_have_shadow(map, i))
 		{
-			if (should_have_shadow(map, i + map->width))
+			if (is_wall(map, i - map->width - 1))
 				map->render_shadows[i] = 14;
 			else
-				map->render_shadows[i] = 19;
+				map->render_shadows[i] = 15;
 		}
 		i++;
 	}

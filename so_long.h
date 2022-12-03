@@ -56,6 +56,7 @@ typedef struct s_map {
 	size_t			size;
 	t_player		*player;
 	int				animation_cycle;
+	int				lock_input;
 	size_t			player_pos;
 	size_t			total_collectibles;
 	size_t			collected_collectibles;
@@ -190,6 +191,10 @@ void		clear_collectible_list(t_map *map);
 
 size_t		render_x_pos(t_map *map, size_t i);
 size_t		render_y_pos(t_map *map, size_t i);
+
+// -- GAMEPLAY AND ANIMATIONS --
+
+void		animate_player_hook(void *param);
 
 // -- SPRITE MANAGEMENT --
 

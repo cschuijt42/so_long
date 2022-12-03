@@ -26,4 +26,5 @@ void	render_player(t_map *map)
 	xy[0] = render_x_pos(map, map->player->pos) - 8;
 	xy[1] = render_y_pos(map, map->player->pos) - 24;
 	mlx_image_to_window(map->mlx, map->player->image, xy[0], xy[1]);
+	mlx_set_instance_depth(&map->player->image->instances[0], 4);
 }

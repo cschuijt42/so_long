@@ -36,9 +36,18 @@ t_map	*initialize_map_struct(char **map_array)
 	map->render_shadows = ft_calloc(map->size + 1, 1);
 	if (!map->render_shadows)
 		exit_perror("malloc error");
+	initialize_map_player(map);
 	load_spritesheets(map);
 	load_map_collectibles(map);
 	return (map);
+}
+
+void	initialize_map_player(t_map *map)
+{
+	map->player = ft_calloc(sizeof(t_player), 1);
+	if (!map->player)
+		exit_perror("malloc error");
+	map->player->pos = map->player_pos;
 }
 
 void	load_spritesheets(t_map *map)

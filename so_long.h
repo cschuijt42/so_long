@@ -39,6 +39,11 @@ typedef struct s_collectible {
 	struct s_collectible	*next;
 }	t_collectible;
 
+typedef struct s_player {
+	mlx_image_t		*image;
+	size_t			pos;
+}	t_player;
+
 typedef struct s_map {
 	mlx_t			*mlx;
 	char			*content;
@@ -49,6 +54,8 @@ typedef struct s_map {
 	size_t			height;
 	size_t			width;
 	size_t			size;
+	t_player		*player;
+	int				animation_cycle;
 	size_t			player_pos;
 	size_t			total_collectibles;
 	size_t			collected_collectibles;
@@ -65,6 +72,7 @@ typedef struct s_map {
 
 t_map		*initialize_map(char *path);
 char		*read_map_from_file(int fd);
+void		initialize_map_player(t_map *map);
 
 // -- SPRITESHEETS --
 
@@ -82,6 +90,14 @@ void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
 
 // -- MAP RENDERING PASSES --
+// Render layers:
+// 6: HUD
+// 5: top half of pillars
+// 4: player and other entities
+// 3: collectibles
+// 2: shadows
+// 1: walls, lava, floors, bottom half of pillars
+// 0: one image filled with pixels of the background color
 
 void		categorize_map_walls(t_map *map);
 void		fill_in_background_sprite_indexes(t_map *map);
@@ -92,6 +108,7 @@ void		render_background_pixels(t_map *map);
 void		render_collectibles(t_map *map);
 void		render_shadows(t_map *map);
 void		render_shadow_sprite(t_map *map, size_t i);
+void		render_player(t_map *map);
 
 // -- Categorization helpers --
 

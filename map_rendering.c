@@ -34,6 +34,7 @@ void	render_map(t_map *map)
 	}
 	render_collectibles(map);
 	render_shadows(map);
+	render_player(map);
 }
 
 void	render_background_pixels(t_map *map)

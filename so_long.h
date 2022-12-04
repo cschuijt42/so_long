@@ -130,6 +130,11 @@ uint8_t		determine_wall_sprite(t_map *map, size_t i);
 int			check_against_bitmask(uint8_t input, char *mask, int c);
 uint8_t		cyclical_shift_two(uint8_t in);
 
+void		fill_in_north_wall_sprites(t_map *map);
+size_t		fill_in_north_wall_segment(t_map *map, size_t i);
+void		decorate_north_wall_segment(t_map *map, size_t i, size_t len);
+uint8_t		undecorated_north_wall_sprite(void);
+
 uint8_t		edge_single(uint8_t surroundings);
 uint8_t		edge_consecutive(uint8_t surroundings);
 uint8_t		edge_opposing(uint8_t surroundings);

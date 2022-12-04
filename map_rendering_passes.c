@@ -48,8 +48,6 @@ void	fill_in_background_sprite_indexes(t_map *map)
 		exit_perror("malloc error");
 	while (map->sprite_categories[i])
 	{
-		if (map->sprite_categories[i] == 'N')
-			map->render_terrain[i] = 60;
 		if (map->sprite_categories[i] == 'W')
 			map->render_terrain[i] = determine_wall_sprite(map, i);
 		if (map->sprite_categories[i] == 'L')
@@ -60,5 +58,6 @@ void	fill_in_background_sprite_indexes(t_map *map)
 			map->render_terrain[i] = determine_exit_sprite(map, i);
 		i++;
 	}
+	fill_in_north_wall_sprites(map);
 	fill_in_floors(map);
 }

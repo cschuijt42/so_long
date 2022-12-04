@@ -20,7 +20,7 @@ void	animate_player_hook(void *map_ptr)
 
 	map = (t_map *) map_ptr;
 	clock++;
-	if (clock >= 12)
+	if (clock >= 15)
 	{
 		clock = 0;
 		offset++;

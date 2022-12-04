@@ -42,6 +42,7 @@ typedef struct s_collectible {
 typedef struct s_player {
 	mlx_image_t		*image;
 	size_t			pos;
+	size_t			moves_taken;
 }	t_player;
 
 typedef struct s_map {
@@ -194,6 +195,11 @@ size_t		render_y_pos(t_map *map, size_t i);
 
 // -- GAMEPLAY AND ANIMATIONS --
 
+void		key_hook(void *map_ptr);
+void		try_move_player_up(t_map *map);
+void		try_move_player_left(t_map *map);
+void		try_move_player_down(t_map *map);
+void		try_move_player_right(t_map *map);
 void		animate_player_hook(void *param);
 
 // -- SPRITE MANAGEMENT --

@@ -36,7 +36,6 @@ void	try_exit_map(t_map *map)
 	t_collectible	*collectible;
 
 	collectible = map->collectibles;
-
 	while (collectible)
 	{
 		if (!collectible->picked_up)

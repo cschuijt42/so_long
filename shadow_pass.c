@@ -24,7 +24,12 @@ void	determine_shadow_sprites(t_map *map)
 		if (map->sprite_categories[i] == 'L' && should_have_shadow(map, i))
 		{
 			if (is_wall(map, i - map->width - 1))
-				map->render_shadows[i] = 14;
+			{
+				if (is_wall(map, i - 1))
+					map->render_shadows[i] = 14;
+				else
+					map->render_shadows[i] = 25;
+			}
 			else
 				map->render_shadows[i] = 15;
 		}

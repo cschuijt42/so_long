@@ -196,11 +196,16 @@ size_t		render_y_pos(t_map *map, size_t i);
 // -- GAMEPLAY AND ANIMATIONS --
 
 void		key_hook(void *map_ptr);
+void		movement_wrapper(t_map *map, char key);
 void		try_move_player_up(t_map *map);
 void		try_move_player_left(t_map *map);
 void		try_move_player_down(t_map *map);
 void		try_move_player_right(t_map *map);
+
 void		animate_player_hook(void *param);
+
+void		try_pick_up_collectible(t_map *map, size_t pos);
+void		try_exit_map(t_map *map);
 
 // -- SPRITE MANAGEMENT --
 

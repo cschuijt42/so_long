@@ -12,23 +12,26 @@
 
 #include "so_long.h"
 
-void	key_hook(void *map_ptr)
+void	movement_wrapper(t_map *map, char key)
 {
-	t_map	*map;
+	size_t	old_position;
 
-	map = (t_map *) map_ptr;
-	if (map->lock_input)
-		return ;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
+	old_position = map->player->pos;
+	if (key == 'W')
 		try_move_player_up(map);
-	if (mlx_is_key_down(map->mlx, MLX_KEY_A))
+	if (key == 'A')
 		try_move_player_left(map);
-	if (mlx_is_key_down(map->mlx, MLX_KEY_S))
+	if (key == 'S')
 		try_move_player_down(map);
-	if (mlx_is_key_down(map->mlx, MLX_KEY_D))
+	if (key == 'D')
 		try_move_player_right(map);
-	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(map->mlx);
+	if (map->player->pos != old_position)
+	{
+		if (map->content[map->player->pos] == 'C')
+			try_pick_up_collectible(map, map->player->pos);
+		if (map->content[map->player->pos] == 'E')
+			try_exit_map(map);
+	}
 }
 
 void	try_move_player_up(t_map *map)

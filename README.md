@@ -16,8 +16,12 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Floors
   - [x] Shadows
   - [ ] Additional walls
-- [ ] Set up rendering
-- [ ] Animate lava/candles/characters
-- [ ] Set up gameplay loop
-- [ ] Set up win condition
+- [x] Set up rendering
+- [ ] Animate stuff
+  - [x] Characters
+  - [ ] Candles
+  - [ ] Lava
+- [x] Set up gameplay loop
+- [x] Set up win condition
+- [ ] Camera system for large maps
 - [ ] Cleanly exit the game when necessary

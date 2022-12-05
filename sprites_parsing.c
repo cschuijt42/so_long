@@ -41,6 +41,7 @@ uint8_t	**read_spritesheet(char *path, size_t dim, size_t w, size_t h)
 		i++;
 	}
 	array[i] = NULL;
+	mlx_delete_texture(texture);
 	return (array);
 }
 

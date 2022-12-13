@@ -30,7 +30,12 @@ else
 endif
 
 $(NAME) : $(LIBFT_A) $(MLX42_A) $(OBJFILES) so_long.h
+ifeq ($(OS), Windows_NT)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
+else
+	@mkdir -p obj
+	$(CC) $(FLAGS) -o $(NAME) obj/*.o $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
+endif
 
 all : $(NAME)
 

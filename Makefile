@@ -8,6 +8,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						shadow_pass.o shadow_sprite_helpers.o shadow_sprites_part_two.o \
 						player_rendering.o animations.o movement.o key_hook.o \
 						gameplay_checks.o north_walls.o
+VPATH = obj
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a
@@ -28,18 +29,18 @@ else
 	endif
 endif
 
-$(NAME) : $(OBJFILES) $(LIBFT_A) $(MLX42_A) so_long.h
-	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
+$(NAME) : $(LIBFT_A) $(MLX42_A) $(OBJFILES) so_long.h
+	$(CC) $(FLAGS) -o $(NAME) obj/*.o $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
 
 all : $(NAME)
 
 re : fclean all
 
 clean :
-	rm -f $(OBJFILES) libft.a
+	rm -rf obj
 
-fclean :
-	rm -f $(NAME) $(OBJFILES)
+fclean : clean
+	rm -f $(NAME)
 	make -C lib/libft fclean
 	make -C lib/mlx42 fclean
 
@@ -49,7 +50,8 @@ $(LIBFT_A) :
 $(MLX42_A) :
 	make -C lib/mlx42
 
-%.o : %.c 
-	$(CC) -c $(FLAGS) -o $@ $^
+%.o : %.c
+	@mkdir -p obj
+	$(CC) -c $(FLAGS) -o obj/$@ $^
 
 .PHONY : clean fclean re

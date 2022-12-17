@@ -15,7 +15,7 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Pillars
   - [x] Floors
   - [x] Shadows
-  - [ ] Additional walls
+  - [x] Additional walls
 - [x] Set up rendering
 - [ ] Animate stuff
   - [x] Characters
@@ -23,5 +23,6 @@ through a maze, grabbing collectibles and making it to the exit.
   - [ ] Lava
 - [x] Set up gameplay loop
 - [x] Set up win condition
+- [ ] Add patrols
 - [ ] Camera system for large maps
-- [ ] Cleanly exit the game when necessary
+- [x] Make sure there are no memory leaks :)

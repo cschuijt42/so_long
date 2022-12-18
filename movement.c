@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	movement_wrapper(t_map *map, char key)
+void	player_movement_wrapper(t_map *map, char key)
 {
 	size_t	old_position;
 

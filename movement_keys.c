@@ -14,9 +14,6 @@
 
 void	player_movement_wrapper(t_map *map, char key)
 {
-	size_t	old_position;
-
-	old_position = map->player->pos;
 	if (key == 'W')
 		try_move_player_up(map);
 	else if (key == 'A')
@@ -25,51 +22,46 @@ void	player_movement_wrapper(t_map *map, char key)
 		try_move_player_down(map);
 	else if (key == 'D')
 		try_move_player_right(map);
-	if (map->player->pos != old_position)
-	{
-		if (map->content[map->player->pos] == 'C')
-			try_pick_up_collectible(map, map->player->pos);
-		if (map->content[map->player->pos] == 'E')
-			try_exit_map(map);
-	}
 }
 
 void	try_move_player_up(t_map *map)
 {
 	if (map->content[map->player->pos - map->width] == '1')
 		return ;
-	map->player->image->instances[0].y -= 32;
-	map->player->pos -= map->width;
-	map->player->moves_taken++;
-	ft_printf("Moves: %d\n", map->player->moves_taken);
-}
-
-void	try_move_player_left(t_map *map)
-{
-	if (map->content[map->player->pos - 1] == '1')
-		return ;
-	map->player->image->instances[0].x -= 32;
-	map->player->pos -= 1;
-	map->player->moves_taken++;
-	ft_printf("Moves: %d\n", map->player->moves_taken);
-}
-
-void	try_move_player_down(t_map *map)
-{
-	if (map->content[map->player->pos + map->width] == '1')
-		return ;
-	map->player->image->instances[0].y += 32;
-	map->player->pos += map->width;
-	map->player->moves_taken++;
-	ft_printf("Moves: %d\n", map->player->moves_taken);
+	map->player->move_direction = 0;
+	map->movement_clock = 0;
+	map->lock_input = 1;
+	animate_player_movement_up(map);
 }
 
 void	try_move_player_right(t_map *map)
 {
 	if (map->content[map->player->pos + 1] == '1')
 		return ;
-	map->player->image->instances[0].x += 32;
-	map->player->pos += 1;
-	map->player->moves_taken++;
-	ft_printf("Moves: %d\n", map->player->moves_taken);
+	map->player->move_direction = 1;
+	map->player->facing_offset = 0;
+	map->movement_clock = 0;
+	map->lock_input = 1;
+	animate_player_movement_right(map);
+}
+
+void	try_move_player_down(t_map *map)
+{
+	if (map->content[map->player->pos + map->width] == '1')
+		return ;
+	map->player->move_direction = 2;
+	map->movement_clock = 0;
+	map->lock_input = 1;
+	animate_player_movement_down(map);
+}
+
+void	try_move_player_left(t_map *map)
+{
+	if (map->content[map->player->pos - 1] == '1')
+		return ;
+	map->player->move_direction = 3;
+	map->player->facing_offset = 4;
+	map->movement_clock = 0;
+	map->lock_input = 1;
+	animate_player_movement_left(map);
 }

@@ -69,12 +69,20 @@ void	animate_player_hook(void *map_ptr)
 	t_map			*map;
 
 	map = (t_map *) map_ptr;
-	clock++;
-	if (clock >= 12)
+	if (map->movement_clock < 8)
 	{
+		movement_animation_wrapper(map);
 		clock = 0;
-		offset = (offset + 1) % 4;
-		map->player->image->pixels = \
-		map->player_sprites[offset + map->player->facing_offset];
+		offset = 0;
+	}
+	else
+	{
+		clock = (clock + 1) % 12;
+		if (clock == 0)
+		{
+			offset = (offset + 1) % 4;
+			map->player->image->pixels = \
+			map->player_sprites[offset + map->player->facing_offset];
+		}
 	}
 }

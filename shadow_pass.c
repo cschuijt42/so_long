@@ -16,6 +16,9 @@ void	determine_shadow_sprites(t_map *map)
 {
 	size_t	i;
 
+	map->render_shadows = ft_calloc(1, map->size + 1);
+	if (!map->render_shadows)
+		exit_perror("malloc error");
 	i = map->width;
 	while (i < map->size - map->width)
 	{

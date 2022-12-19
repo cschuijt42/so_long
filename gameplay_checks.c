@@ -12,6 +12,14 @@
 
 #include "so_long.h"
 
+void	check_collectibles_and_exit(t_map *map)
+{
+	if (map->content[map->player->pos] == 'C')
+		try_pick_up_collectible(map, map->player->pos);
+	if (map->content[map->player->pos] == 'E')
+		return (try_exit_map(map));
+}
+
 void	try_pick_up_collectible(t_map *map, size_t pos)
 {
 	t_collectible	*collectible;

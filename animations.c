@@ -43,7 +43,7 @@ void	animate_background_hook(void *map_ptr)
 	static size_t	offset = 0;
 	t_sprite		*sprite;
 
-	if (clock >= 8)
+	if (clock >= 4)
 	{
 		clock = 0;
 		offset++;
@@ -77,7 +77,7 @@ void	animate_player_hook(void *map_ptr)
 	}
 	else
 	{
-		clock = (clock + 1) % 12;
+		clock = (clock + 1) % 8;
 		if (clock == 0)
 		{
 			offset = (offset + 1) % 4;

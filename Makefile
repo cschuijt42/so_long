@@ -40,8 +40,6 @@ clean :
 
 fclean :
 	rm -f $(NAME) $(OBJFILES)
-	make -C lib/libft fclean
-	make -C lib/mlx42 fclean
 
 $(LIBFT_A) :
 	make -C lib/libft

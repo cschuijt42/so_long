@@ -72,8 +72,8 @@ void	animate_player_hook(void *map_ptr)
 	if (map->movement_clock < 8)
 	{
 		movement_animation_wrapper(map);
-		clock = 0;
-		offset = 0;
+		clock = 6;
+		offset = 3;
 	}
 	else
 	{

@@ -17,9 +17,9 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Shadows
   - [x] Additional walls
 - [x] Set up rendering
-- [ ] Animate stuff
+- [x] Animate stuff
   - [x] Characters
-  - [ ] Movement
+  - [x] Movement
   - [x] Candles
   - [x] Lava
 - [x] Set up gameplay loop

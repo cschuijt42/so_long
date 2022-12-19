@@ -73,9 +73,8 @@ void	animate_player_hook(void *map_ptr)
 	if (clock >= 12)
 	{
 		clock = 0;
-		offset++;
-		if (offset > 3)
-			offset = 0;
-		map->player->image->pixels = map->player_sprites[offset + 4];
+		offset = (offset + 1) % 4;
+		map->player->image->pixels = \
+		map->player_sprites[offset + map->player->facing_offset];
 	}
 }

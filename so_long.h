@@ -44,6 +44,8 @@ typedef struct s_player {
 	mlx_image_t		*image;
 	size_t			pos;
 	size_t			moves_taken;
+	size_t			move_direction;
+	size_t			facing_offset;
 }	t_player;
 
 typedef struct s_map {
@@ -57,7 +59,7 @@ typedef struct s_map {
 	size_t			width;
 	size_t			size;
 	t_player		*player;
-	int				animation_cycle;
+	int				movement_clock;
 	int				lock_input;
 	size_t			player_pos;
 	size_t			total_collectibles;

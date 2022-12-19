@@ -47,6 +47,8 @@ void	initialize_map_player(t_map *map)
 	map->player = ft_calloc(sizeof(t_player), 1);
 	if (!map->player)
 		exit_perror("malloc error");
+	map->player->facing_offset = 4;
+	map->player->move_direction = 0;
 	map->player->moves_taken = 0;
 	map->player->pos = map->player_pos;
 }

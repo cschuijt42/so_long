@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 	mlx_loop_hook(map->mlx, &animate_player_hook, map);
 	mlx_loop_hook(map->mlx, &key_hook, map);
 	render_map(map);
+	mark_sprites_for_animation(map);
 	mlx_loop(map->mlx);
 	mlx_terminate(map->mlx);
 	return (0);

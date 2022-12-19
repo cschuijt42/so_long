@@ -12,6 +12,56 @@
 
 #include "so_long.h"
 
+void	mark_sprites_for_animation(t_map *map)
+{
+	t_sprite	*sprite;
+
+	sprite = map->sprites;
+	while (sprite)
+	{
+		if (sprite->spritesheet == map->wall_sprites)
+		{
+			if (sprite->index == 90)
+				sprite->animation_frames = 4;
+			else
+				sprite->animation_frames = 0;
+		}
+		else if (sprite->spritesheet == map->lava_sprites)
+		{
+			if (sprite->index > 1)
+				sprite->animation_frames = 4;
+			else
+				sprite->animation_frames = 0;
+		}
+		sprite = sprite->next;
+	}
+}
+
+void	animate_background_hook(void *map_ptr)
+{
+	static size_t	clock = 0;
+	static size_t	offset = 0;
+	t_sprite		*sprite;
+
+	if (clock >= 8)
+	{
+		clock = 0;
+		offset++;
+		sprite = ((t_map *)map_ptr)->sprites;
+		while (sprite)
+		{
+			if (sprite->animation_frames)
+			{
+				sprite->image->pixels = sprite->spritesheet[sprite->index + \
+				(offset % sprite->animation_frames)];
+			}
+			sprite = sprite->next;
+		}
+	}
+	else
+		clock++;
+}
+
 void	animate_player_hook(void *map_ptr)
 {
 	static int		clock = 0;
@@ -20,7 +70,7 @@ void	animate_player_hook(void *map_ptr)
 
 	map = (t_map *) map_ptr;
 	clock++;
-	if (clock >= 15)
+	if (clock >= 12)
 	{
 		clock = 0;
 		offset++;

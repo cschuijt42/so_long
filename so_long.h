@@ -210,6 +210,7 @@ void		try_move_player_right(t_map *map);
 
 void		animate_player_hook(void *map_ptr);
 void		animate_background_hook(void *map_ptr);
+void		mark_sprites_for_animation(t_map *map);
 
 void		try_pick_up_collectible(t_map *map, size_t pos);
 void		try_exit_map(t_map *map);

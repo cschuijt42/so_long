@@ -21,7 +21,7 @@ void	render_player(t_map *map)
 	{
 		map->player->image = mlx_new_image(map->mlx, 48, 48);
 		free(map->player->image->pixels);
-		map->player->image->pixels = map->player_sprites[0];
+		map->player->image->pixels = map->player_sprites[4];
 	}
 	xy[0] = render_x_pos(map, map->player->pos) - 8;
 	xy[1] = render_y_pos(map, map->player->pos) - 24;

@@ -17,6 +17,8 @@ void	key_hook(void *map_ptr)
 	t_map	*map;
 
 	map = (t_map *) map_ptr;
+	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(map->mlx);
 	if (map->lock_input)
 		return ;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
@@ -27,6 +29,4 @@ void	key_hook(void *map_ptr)
 		player_movement_wrapper(map, 'S');
 	if (mlx_is_key_down(map->mlx, MLX_KEY_D))
 		player_movement_wrapper(map, 'D');
-	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(map->mlx);
 }

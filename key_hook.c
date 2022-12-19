@@ -23,10 +23,10 @@ void	key_hook(void *map_ptr)
 		return ;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
 		player_movement_wrapper(map, 'W');
-	if (mlx_is_key_down(map->mlx, MLX_KEY_A))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_A))
 		player_movement_wrapper(map, 'A');
-	if (mlx_is_key_down(map->mlx, MLX_KEY_S))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_S))
 		player_movement_wrapper(map, 'S');
-	if (mlx_is_key_down(map->mlx, MLX_KEY_D))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_D))
 		player_movement_wrapper(map, 'D');
 }

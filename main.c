@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 	categorize_map_walls(map);
 	fill_in_background_sprite_indexes(map);
 	print_map_data(map);
+	mlx_loop_hook(map->mlx, &animate_background_hook, map);
 	mlx_loop_hook(map->mlx, &animate_player_hook, map);
 	mlx_loop_hook(map->mlx, &key_hook, map);
 	render_map(map);

@@ -24,6 +24,7 @@ t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index)
 	sprite->spritesheet = sheet;
 	sprite->index = index;
 	sprite->image = mlx_new_image(map->mlx, 32, 32);
+	sprite->animation_frames = 0;
 	free(sprite->image->pixels);
 	sprite->image->pixels = sheet[index];
 	if (!map->sprites)

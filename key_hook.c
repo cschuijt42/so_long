@@ -20,13 +20,13 @@ void	key_hook(void *map_ptr)
 	if (map->lock_input)
 		return ;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
-		movement_wrapper(map, 'W');
+		player_movement_wrapper(map, 'W');
 	if (mlx_is_key_down(map->mlx, MLX_KEY_A))
-		movement_wrapper(map, 'A');
+		player_movement_wrapper(map, 'A');
 	if (mlx_is_key_down(map->mlx, MLX_KEY_S))
-		movement_wrapper(map, 'S');
+		player_movement_wrapper(map, 'S');
 	if (mlx_is_key_down(map->mlx, MLX_KEY_D))
-		movement_wrapper(map, 'D');
+		player_movement_wrapper(map, 'D');
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(map->mlx);
 }

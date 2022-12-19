@@ -19,8 +19,9 @@ through a maze, grabbing collectibles and making it to the exit.
 - [x] Set up rendering
 - [ ] Animate stuff
   - [x] Characters
-  - [ ] Candles
-  - [ ] Lava
+  - [ ] Movement
+  - [x] Candles
+  - [x] Lava
 - [x] Set up gameplay loop
 - [x] Set up win condition
 - [ ] Add patrols

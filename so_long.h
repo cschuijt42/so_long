@@ -87,6 +87,7 @@ void		load_spritesheets(t_map *map);
 
 // -- MAP VALIDATIONS --
 
+void		run_map_validations(char **map_rows, char *map_str);
 void		validate_filename(char *file);
 void		validate_empty_lines(char *map);
 void		validate_map_measurements(char **map);
@@ -96,7 +97,8 @@ void		validate_map_solvability(t_map *map);
 
 // -- MAP RENDERING PASSES --
 // Render layers:
-// 6: HUD
+// 7: HUD content
+// 6: HUD background
 // 5: top half of pillars
 // 4: player and other entities
 // 3: collectibles

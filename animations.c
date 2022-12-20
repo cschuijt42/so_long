@@ -73,7 +73,7 @@ void	animate_player_hook(void *map_ptr)
 	{
 		movement_animation_wrapper(map);
 		clock = 6;
-		offset = 3;
+		offset = 2;
 	}
 	else
 	{

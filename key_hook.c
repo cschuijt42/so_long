@@ -21,12 +21,16 @@ void	key_hook(void *map_ptr)
 		mlx_close_window(map->mlx);
 	if (map->lock_input)
 		return ;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(map->mlx, MLX_KEY_W) || \
+		mlx_is_key_down(map->mlx, MLX_KEY_UP))
 		player_movement_wrapper(map, 'W');
-	else if (mlx_is_key_down(map->mlx, MLX_KEY_A))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_A) || \
+			mlx_is_key_down(map->mlx, MLX_KEY_LEFT))
 		player_movement_wrapper(map, 'A');
-	else if (mlx_is_key_down(map->mlx, MLX_KEY_S))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_S) || \
+			mlx_is_key_down(map->mlx, MLX_KEY_DOWN))
 		player_movement_wrapper(map, 'S');
-	else if (mlx_is_key_down(map->mlx, MLX_KEY_D))
+	else if (mlx_is_key_down(map->mlx, MLX_KEY_D) || \
+			mlx_is_key_down(map->mlx, MLX_KEY_RIGHT))
 		player_movement_wrapper(map, 'D');
 }

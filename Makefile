@@ -7,7 +7,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						floor_pass.o floor_tile_helpers.o exit_pass.o collectible_helpers.o \
 						shadow_pass.o shadow_sprite_helpers.o shadow_sprites_part_two.o \
 						player_rendering.o animations.o movement_keys.o key_hook.o \
-						gameplay_checks.o north_walls.o movement.o
+						gameplay_checks.o north_walls.o movement.o map_name.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a
@@ -47,7 +47,7 @@ $(LIBFT_A) :
 $(MLX42_A) :
 	make -C lib/mlx42
 
-%.o : %.c 
+%.o : %.c
 	$(CC) -c $(FLAGS) -o $@ $^
 
 .PHONY : clean fclean re

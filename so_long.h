@@ -50,6 +50,7 @@ typedef struct s_player {
 
 typedef struct s_map {
 	mlx_t			*mlx;
+	char			*map_name;
 	char			*content;
 	char			*sprite_categories;
 	char			*render_terrain;
@@ -78,6 +79,7 @@ typedef struct s_map {
 t_map		*initialize_map(char *path);
 char		*read_map_from_file(int fd);
 void		initialize_map_player(t_map *map);
+void		fill_in_map_name(t_map *map, char *path);
 
 // -- SPRITESHEETS --
 

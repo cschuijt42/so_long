@@ -39,6 +39,7 @@ t_map	*initialize_map(char *path)
 	free(map_str);
 	free_array((void **)map_rows);
 	validate_map_solvability(map_struct);
+	fill_in_map_name(map_struct, path);
 	return (map_struct);
 }
 

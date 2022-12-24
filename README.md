@@ -27,3 +27,8 @@ through a maze, grabbing collectibles and making it to the exit.
 - [ ] Add patrols
 - [ ] Camera system for large maps
 - [x] Make sure there are no memory leaks :)
+
+## Asset Credits
+- The dungeon sprites are [dungeonOld_](https://analogstudios.itch.io/dungeonold) and the character sprites are [dungeonSprites_](https://analogstudios.itch.io/dungeonsprites), both by [analogstudios](https://analogstudios.itch.io/).
+- The GUI font is [monogram](https://datagoblin.itch.io/monogram) by [datagoblin](https://datagoblin.itch.io/). To get the font in a good bitmap layout, I used [Codehead's Bitmap Font Generator](https://github.com/CodeheadUK/CBFG).
+- The paper backdrop for the GUI comes from [Cryo's Mini GUI](https://paperhatlizard.itch.io/cryos-mini-gui).

@@ -88,6 +88,7 @@ char	*join_string_array(char **array)
 
 void	free_map_struct(t_map *map)
 {
+	free(map->map_name);
 	free(map->content);
 	free(map->sprite_categories);
 	free(map->render_terrain);

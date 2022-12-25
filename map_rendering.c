@@ -28,7 +28,7 @@ void	render_map(t_map *map)
 			else if (map->sprite_categories[i] == 'P')
 				render_pillar(map, i);
 			else
-				render_background_sprite(map, i, map->wall_sprites);
+				render_background_sprite(map, i, map->bg_sprites);
 		}
 		i++;
 	}
@@ -96,8 +96,8 @@ void	render_pillar(t_map *map, size_t i)
 	size_t		x_pos;
 	size_t		y_pos;
 
-	render_background_sprite(map, i, map->wall_sprites);
-	sprite = find_or_create_sprite(map, map->wall_sprites, 138);
+	render_background_sprite(map, i, map->bg_sprites);
+	sprite = find_or_create_sprite(map, map->bg_sprites, 138);
 	x_pos = render_x_pos(map, i);
 	y_pos = render_y_pos(map, i - map->width);
 	inst = mlx_image_to_window(map->mlx, sprite->image, x_pos, y_pos);

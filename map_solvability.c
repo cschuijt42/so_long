@@ -23,7 +23,9 @@ void	validate_map_solvability(t_map *map)
 	size_t	i;
 
 	map_str = ft_strdup(map->content);
-	map_str[map->player_pos] = 'X';
+	if (!map_str)
+		exit_perror("malloc error");
+	map_str[map->player->pos] = 'X';
 	i = 1;
 	while (i)
 		i = traverse_map_string(map_str, map);

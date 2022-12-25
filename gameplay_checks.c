@@ -31,7 +31,7 @@ void	try_pick_up_collectible(t_map *map, size_t pos)
 		if (collectible->pos == pos)
 		{
 			collectible->picked_up = true;
-			sprite = find_or_create_sprite(map, map->wall_sprites, 178);
+			sprite = find_or_create_sprite(map, map->bg_sprites, 178);
 			sprite->image->instances[collectible->instance].enabled = false;
 			return ;
 		}

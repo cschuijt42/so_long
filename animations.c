@@ -19,7 +19,7 @@ void	mark_sprites_for_animation(t_map *map)
 	sprite = map->sprites;
 	while (sprite)
 	{
-		if (sprite->spritesheet == map->wall_sprites)
+		if (sprite->spritesheet == map->bg_sprites)
 		{
 			if (sprite->index == 90)
 				sprite->animation_frames = 4;

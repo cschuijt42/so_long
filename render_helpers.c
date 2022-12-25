@@ -29,7 +29,7 @@ void	render_collectibles(t_map *map)
 	t_sprite		*sprite;
 
 	collectible = map->collectibles;
-	sprite = find_or_create_sprite(map, map->wall_sprites, 178);
+	sprite = find_or_create_sprite(map, map->bg_sprites, 178);
 	while (collectible)
 	{
 		collectible->instance = mlx_image_to_window(map->mlx, sprite->image, \

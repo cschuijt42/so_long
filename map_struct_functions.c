@@ -16,6 +16,7 @@
 t_map	*initialize_map_struct(char **map_array)
 {
 	t_map	*map;
+	size_t	player_pos;
 	size_t	x;
 	size_t	y;
 
@@ -30,17 +31,17 @@ t_map	*initialize_map_struct(char **map_array)
 	map->width = x;
 	map->content = join_string_array(map_array);
 	map->size = ft_strlen(map->content);
-	map->player_pos = ft_strchr(map->content, 'P') - map->content;
-	map->content[map->player_pos] = '0';
-	map->total_collectibles = ft_strchrc(map->content, 'C');
+	player_pos = ft_strchr(map->content, 'P') - map->content;
+	map->content[player_pos] = '0';
+	map->col_total = ft_strchrc(map->content, 'C');
 	map->movement_clock = 20;
-	initialize_map_player(map);
+	initialize_map_player(map, player_pos);
 	load_spritesheets(map);
 	load_map_collectibles(map);
 	return (map);
 }
 
-void	initialize_map_player(t_map *map)
+void	initialize_map_player(t_map *map, size_t player_pos)
 {
 	map->player = ft_calloc(sizeof(t_player), 1);
 	if (!map->player)
@@ -48,12 +49,12 @@ void	initialize_map_player(t_map *map)
 	map->player->facing_offset = 4;
 	map->player->move_direction = 0;
 	map->player->moves_taken = 0;
-	map->player->pos = map->player_pos;
+	map->player->pos = player_pos;
 }
 
 void	load_spritesheets(t_map *map)
 {
-	map->wall_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
+	map->bg_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
 	map->lava_sprites = read_spritesheet("sprites/lava.png", 32, 12, 18);
 	map->shadow_sprites = read_spritesheet("sprites/shadows.png", 32, 5, 6);
 	map->player_sprites = read_spritesheet("sprites/dragon.png", 48, 8, 7);
@@ -93,7 +94,7 @@ void	free_map_struct(t_map *map)
 	free(map->sprite_categories);
 	free(map->render_terrain);
 	free(map->render_shadows);
-	free_array((void **) map->wall_sprites);
+	free_array((void **) map->bg_sprites);
 	free_array((void **) map->lava_sprites);
 	free_array((void **) map->shadow_sprites);
 	free_array((void **) map->player_sprites);

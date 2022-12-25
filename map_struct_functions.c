@@ -20,6 +20,7 @@ t_map	*initialize_map_struct(char **map_array)
 	size_t	x;
 	size_t	y;
 
+	fit_map_array_to_window(map_array);
 	x = ft_strlen(map_array[0]);
 	y = 0;
 	while (map_array[y])

@@ -18,6 +18,10 @@
 # include "libft/libft.h"
 # include "mlx42/include/MLX42/MLX42.h"
 
+// -- DEFINES --
+
+# define WINDOW_MIN_W 15
+
 // -- STRUCTS --
 
 // @brief One sprite, instantiated from a larger spritesheet.
@@ -170,6 +174,7 @@ t_map		*initialize_map(char *path);
 char		*read_map_from_file(int fd);
 void		initialize_map_player(t_map *map, size_t player_pos);
 void		fill_in_map_name(t_map *map, char *path);
+void		fit_map_array_to_window(char **map_array);
 
 // -- SPRITESHEETS --
 

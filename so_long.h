@@ -37,7 +37,7 @@
 // Font dimensions in the spritesheet and pixel buffers
 # define FONT_SPRITE_DIMS 32
 // Font width for projecting letters subsequently onto other images
-# define FONT_W 10
+# define FONT_W 11
 
 // -- STRUCTS --
 
@@ -221,6 +221,7 @@ void		string_to_image(char *str, mlx_image_t *image, \
 							uint8_t **charset, size_t xy[2]);
 void		char_to_image(uint8_t *chr, mlx_image_t *image, \
 							size_t xy[2], uint32_t color);
+void		render_gui_strings(t_map *map);
 
 // -- MAP VALIDATIONS --
 

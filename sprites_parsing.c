@@ -86,17 +86,3 @@ void	sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
 		i++;
 	}
 }
-
-void	font_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
-							size_t x, size_t y)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < FONT_H)
-	{
-		ft_memmove(image->pixels + (((image->width * (y + i)) + x) * 4), \
-					buffer + (i * FONT_W * 4), FONT_W * 4);
-		i++;
-	}
-}

@@ -19,7 +19,7 @@ size_t	render_x_pos(t_map *map, size_t i)
 
 size_t	render_y_pos(t_map *map, size_t i)
 {
-	return ((i / map->width) * 32);
+	return (((i / map->width) * 32) + 64);
 }
 
 void	render_collectibles(t_map *map)

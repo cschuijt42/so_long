@@ -33,6 +33,7 @@ void	render_gui(t_map *map)
 	sprite_buffer_to_image(map->gui_bg_sprites[2], map->background, i * 32, 0);
 	sprite_buffer_to_image(map->gui_bg_sprites[5], map->background, i * 32, 32);
 	sprite_buffer_to_image(map->gui_bg_sprites[8], map->background, i * 32, 64);
+	string_to_image("Hello world!", map->background, map->gui_charset, 0x000000FF);
 }
 
 void	update_gui(t_map *map)

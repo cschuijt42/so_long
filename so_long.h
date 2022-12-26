@@ -32,9 +32,9 @@
 // Sprite width for projecting onto other images
 # define SPRITE_W 32
 
-// Font height for projecting onto other images
-# define FONT_H 16
-// Font width for projecting onto other images
+// Font dimensions in the spritesheet and pixel buffers
+# define FONT_SPRITE_DIMS 32
+// Font width for projecting letters subsequently onto other images
 # define FONT_W 10
 
 // -- STRUCTS --
@@ -133,7 +133,7 @@ typedef struct s_player {
 //                          the index refers to.
 // @param render_shadows    Unsigned char array of sprite indices for the
 //                          shadows on each space of the map.
-// @param background   MLX image for the background layer of the game,
+// @param background        MLX image for the background layer of the game,
 //                          which should be filled with a single color. Also
 //                          contains the parts of the GUI which do not need to
 //                          update as the game runs.
@@ -163,7 +163,7 @@ typedef struct s_player {
 //                          enemies.
 // @param gui_bg_sprites    Spritesheet containing the background tiles for
 //                          the GUI.
-// @param gui_font_sprites  Spritesheet containing the letters to draw onto
+// @param gui_charset       Spritesheet containing the letters to draw onto
 //                          the GUI.
 // @param sprites           Linked list of instantiated background sprites to
 //                          avoid creating more MLX images than required.
@@ -192,7 +192,7 @@ typedef struct s_map {
 	uint8_t			**player_sprites;
 	uint8_t			**patrol_sprites;
 	uint8_t			**gui_bg_sprites;
-	uint8_t			**gui_font_sprites;
+	uint8_t			**gui_charset;
 	t_sprite		*sprites;
 }	t_map;
 
@@ -212,8 +212,13 @@ uint8_t		*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w);
 void		load_spritesheets(t_map *map);
 void		sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
 								size_t x, size_t y);
-void		font_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
-								size_t x, size_t y);
+
+// -- TEXT RENDERING --
+
+void		string_to_image(char *str, mlx_image_t *image, \
+							uint8_t **charset, uint32_t color);
+void		char_to_image(uint8_t *chr, mlx_image_t *image, \
+							size_t x, uint32_t color);
 
 // -- MAP VALIDATIONS --
 

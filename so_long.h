@@ -20,6 +20,8 @@
 
 // -- DEFINES --
 
+// The minimum width of the window in map tiles, to ensure the GUI can be
+// properly drawn.
 # define WINDOW_MIN_W 15
 
 // -- STRUCTS --
@@ -141,6 +143,10 @@ typedef struct s_player {
 //                          player character.
 // @param patrol_sprites    Spritesheet containing all animation frames for the
 //                          enemies.
+// @param gui_bg_sprites    Spritesheet containing the background tiles for
+//                          the GUI.
+// @param gui_font_sprites  Spritesheet containing the letters to draw onto
+//                          the GUI.
 // @param sprites           Linked list of instantiated background sprites to
 //                          avoid creating more MLX images than required.
 typedef struct s_map {
@@ -165,6 +171,8 @@ typedef struct s_map {
 	uint8_t			**shadow_sprites;
 	uint8_t			**player_sprites;
 	uint8_t			**patrol_sprites;
+	uint8_t			**gui_bg_sprites;
+	uint8_t			**gui_font_sprites;
 	t_sprite		*sprites;
 }	t_map;
 
@@ -174,7 +182,8 @@ t_map		*initialize_map(char *path);
 char		*read_map_from_file(int fd);
 void		initialize_map_player(t_map *map, size_t player_pos);
 void		fill_in_map_name(t_map *map, char *path);
-void		fit_map_array_to_window(char **map_array);
+void		fit_map_array_to_window(char ***map_array);
+void		add_top_row(char ***map_array);
 
 // -- SPRITESHEETS --
 
@@ -213,6 +222,11 @@ void		render_collectibles(t_map *map);
 void		render_shadows(t_map *map);
 void		render_shadow_sprite(t_map *map, size_t i);
 void		render_player(t_map *map);
+
+// -- GUI helpers --
+
+void		render_gui(t_map *map);
+void		update_gui(t_map *map);
 
 // -- Categorization helpers --
 

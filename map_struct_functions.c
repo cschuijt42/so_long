@@ -60,7 +60,7 @@ void	load_spritesheets(t_map *map)
 	map->player_sprites = read_spritesheet("sprites/dragon.png", 48, 8, 7);
 	map->patrol_sprites = read_spritesheet("sprites/necromancer.png", 48, 8, 5);
 	map->gui_bg_sprites = read_spritesheet("sprites/paper.png", 32, 3, 3);
-	// map->gui_font_sprites = read_spritesheet("sprites/")
+	map->gui_charset = read_spritesheet("sprites/monogram.png", 32, 8, 16);
 }
 
 char	*join_string_array(char **array)
@@ -107,6 +107,6 @@ void	free_map_struct(t_map *map)
 	free_array((void **) map->player_sprites);
 	free_array((void **) map->patrol_sprites);
 	free_array((void **) map->gui_bg_sprites);
-	free_array((void **) map->gui_font_sprites);
+	free_array((void **) map->gui_charset);
 	free(map);
 }

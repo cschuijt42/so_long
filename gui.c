@@ -14,8 +14,10 @@
 
 void	render_gui(t_map *map)
 {
+	(void) map;
 }
 
 void	update_gui(t_map *map)
 {
+	(void) map;
 }

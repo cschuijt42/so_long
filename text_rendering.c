@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 void	string_to_image(char *str, mlx_image_t *image, \
-						uint8_t **charset, uint32_t color)
+						uint8_t **charset, size_t xy[2])
 {
 	size_t	i;
 
@@ -21,15 +21,16 @@ void	string_to_image(char *str, mlx_image_t *image, \
 	while (str[i])
 	{
 		if (ft_isprint(str[i]))
-			char_to_image(charset[(int)(str[i])], image, (i * FONT_W), color);
+			char_to_image(charset[(int)(str[i])], image, xy, TEXT_COLOR);
 		else
-			char_to_image(charset['?'], image, (i * FONT_W), color);
+			char_to_image(charset['?'], image, xy, TEXT_COLOR);
+		xy[0] += FONT_W;
 		i++;
 	}
 }
 
 void	char_to_image(uint8_t *chr, mlx_image_t *image, \
-						size_t x, uint32_t color)
+						size_t xy[2], uint32_t color)
 {
 	size_t		i;
 	uint32_t	*src;
@@ -39,8 +40,8 @@ void	char_to_image(uint8_t *chr, mlx_image_t *image, \
 	while (i < FONT_SPRITE_DIMS * FONT_SPRITE_DIMS)
 	{
 		if (src[i] == 0xFFFFFFFF)
-			mlx_put_pixel(image, x + (i % FONT_SPRITE_DIMS), \
-							i / FONT_SPRITE_DIMS, color);
+			mlx_put_pixel(image, xy[0] + (i % FONT_SPRITE_DIMS), \
+							xy[1] + (i / FONT_SPRITE_DIMS), color);
 		i++;
 	}
 }

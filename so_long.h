@@ -32,6 +32,8 @@
 // Sprite width for projecting onto other images
 # define SPRITE_W 32
 
+// RGBA color to render text in
+# define TEXT_COLOR 0x000000FF
 // Font dimensions in the spritesheet and pixel buffers
 # define FONT_SPRITE_DIMS 32
 // Font width for projecting letters subsequently onto other images
@@ -216,9 +218,9 @@ void		sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
 // -- TEXT RENDERING --
 
 void		string_to_image(char *str, mlx_image_t *image, \
-							uint8_t **charset, uint32_t color);
+							uint8_t **charset, size_t xy[2]);
 void		char_to_image(uint8_t *chr, mlx_image_t *image, \
-							size_t x, uint32_t color);
+							size_t xy[2], uint32_t color);
 
 // -- MAP VALIDATIONS --
 

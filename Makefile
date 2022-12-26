@@ -48,7 +48,7 @@ $(LIBFT_A) :
 $(MLX42_A) :
 	make -C lib/mlx42
 
-%.o : %.c
-	$(CC) -c $(FLAGS) -o $@ $^
+%.o : %.c so_long.h
+	$(CC) -c $(FLAGS) -o $@ $<
 
 .PHONY : clean fclean re

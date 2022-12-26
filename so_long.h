@@ -22,10 +22,10 @@
 
 // The minimum width of the window in map tiles, to ensure the GUI can be
 // properly drawn.
-# define MIN_MAP_W 50
+# define MIN_MAP_W 30
 // Amount of pixels that the map rendering needs to be offset by to make room
 // for the GUI above.
-# define GUI_OFFSET 105
+# define GUI_OFFSET 96
 
 // Sprite height for projecting onto other images
 # define SPRITE_H 32

@@ -23,15 +23,15 @@ void	fit_map_array_to_window(char ***map_array)
 	add_top_row(map_array);
 	i = 0;
 	original_width = ft_strlen((*map_array)[i]);
-	if (original_width >= WINDOW_MIN_W)
+	if (original_width >= MIN_MAP_W)
 		return ;
-	missing_width = WINDOW_MIN_W - original_width;
+	missing_width = MIN_MAP_W - original_width;
 	while ((*map_array)[i])
 	{
-		str = ft_calloc(WINDOW_MIN_W + 1, 1);
+		str = ft_calloc(MIN_MAP_W + 1, 1);
 		if (!str)
 			exit_perror("malloc error");
-		ft_memset(str, '1', WINDOW_MIN_W);
+		ft_memset(str, '1', MIN_MAP_W);
 		ft_memcpy(str + (missing_width / 2), (*map_array)[i], original_width);
 		free((*map_array)[i]);
 		(*map_array)[i] = str;

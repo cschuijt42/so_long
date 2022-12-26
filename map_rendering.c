@@ -49,15 +49,16 @@ void	render_background_pixels(t_map *map)
 	width = map->mlx->width;
 	height = map->mlx->height;
 	screen = width * height;
-	map->background_fill = mlx_new_image(map->mlx, width, height);
+	map->background = mlx_new_image(map->mlx, width, height);
 	i = 0;
 	while (i < screen)
 	{
-		mlx_put_pixel(map->background_fill, i % width, i / width, 0x353540FF);
+		mlx_put_pixel(map->background, i % width, i / width, 0x353540FF);
 		i++;
 	}
-	mlx_image_to_window(map->mlx, map->background_fill, 0, 0);
-	mlx_set_instance_depth(map->background_fill->instances, 0);
+	render_gui(map);
+	mlx_image_to_window(map->mlx, map->background, 0, 0);
+	mlx_set_instance_depth(map->background->instances, 0);
 }
 
 void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)

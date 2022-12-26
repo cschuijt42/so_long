@@ -24,7 +24,8 @@ int	main(int ac, char **av)
 		exit_message("please provide just the map file as a single argument");
 	map = initialize_map(av[1]);
 	ft_printf("Map seems good to me!\n");
-	map->mlx = mlx_init(32 * map->width, (32 * map->height) + 64, "so_long", 0);
+	map->mlx = mlx_init(32 * map->width, (32 * map->height) + GUI_OFFSET, \
+						"so_long", 0);
 	if (!map->mlx)
 		exit_message("couldn't initialize MLX window");
 	categorize_map_walls(map);

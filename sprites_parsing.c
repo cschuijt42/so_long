@@ -72,3 +72,31 @@ uint8_t	*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w)
 	}
 	return (buffer);
 }
+
+void	sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
+							size_t x, size_t y)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < SPRITE_H)
+	{
+		ft_memmove(image->pixels + (((image->width * (y + i)) + x) * 4), \
+					buffer + (i * SPRITE_W * 4), SPRITE_W * 4);
+		i++;
+	}
+}
+
+void	font_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
+							size_t x, size_t y)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < FONT_H)
+	{
+		ft_memmove(image->pixels + (((image->width * (y + i)) + x) * 4), \
+					buffer + (i * FONT_W * 4), FONT_W * 4);
+		i++;
+	}
+}

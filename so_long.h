@@ -22,7 +22,20 @@
 
 // The minimum width of the window in map tiles, to ensure the GUI can be
 // properly drawn.
-# define WINDOW_MIN_W 15
+# define MIN_MAP_W 50
+// Amount of pixels that the map rendering needs to be offset by to make room
+// for the GUI above.
+# define GUI_OFFSET 105
+
+// Sprite height for projecting onto other images
+# define SPRITE_H 32
+// Sprite width for projecting onto other images
+# define SPRITE_W 32
+
+// Font height for projecting onto other images
+# define FONT_H 16
+// Font width for projecting onto other images
+# define FONT_W 10
 
 // -- STRUCTS --
 
@@ -120,8 +133,13 @@ typedef struct s_player {
 //                          the index refers to.
 // @param render_shadows    Unsigned char array of sprite indices for the
 //                          shadows on each space of the map.
-// @param background_fill   MLX image for the background layer of the game,
-//                          which should be filled with a single color.
+// @param background   MLX image for the background layer of the game,
+//                          which should be filled with a single color. Also
+//                          contains the parts of the GUI which do not need to
+//                          update as the game runs.
+// @param gui_moves         MLX image for the move count in the GUI. 
+// @param gui_collectibles  MLX image for the currently picked up collectible
+//                          count in the GUI.
 // @param height            Total height of the map, in spaces.
 // @param width             Total width of the map, in spaces.
 // @param size              Total size of the map, in spaces.
@@ -156,7 +174,9 @@ typedef struct s_map {
 	char			*sprite_categories;
 	char			*render_terrain;
 	char			*render_shadows;
-	mlx_image_t		*background_fill;
+	mlx_image_t		*background;
+	mlx_image_t		*gui_moves;
+	mlx_image_t		*gui_collectibles;
 	size_t			height;
 	size_t			width;
 	size_t			size;
@@ -190,6 +210,10 @@ void		add_top_row(char ***map_array);
 uint8_t		**read_spritesheet(char *path, size_t dim, size_t w, size_t h);
 uint8_t		*crop_buffer(uint8_t *texture, size_t i, size_t dim, size_t w);
 void		load_spritesheets(t_map *map);
+void		sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
+								size_t x, size_t y);
+void		font_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
+								size_t x, size_t y);
 
 // -- MAP VALIDATIONS --
 

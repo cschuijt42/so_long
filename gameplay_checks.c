@@ -28,13 +28,12 @@ void	try_pick_up_collectible(t_map *map, size_t pos)
 	collectible = map->collectibles;
 	while (collectible)
 	{
-		if (collectible->pos == pos) // This is purposefully bugged atm
+		if (collectible->pos == pos && !(collectible->picked_up))
 		{
 			collectible->picked_up = true;
 			sprite = find_or_create_sprite(map, map->bg_sprites, 178);
 			sprite->image->instances[collectible->instance].enabled = false;
 			map->col_grabbed++;
-			render_gui(map);
 			return ;
 		}
 		collectible = collectible->next;

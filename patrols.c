@@ -25,7 +25,7 @@ void	load_patrols(t_map *map)
 void	load_patrols(t_map *map)
 {
 	(void) map;
-	ft_printf("Bonus activated, but there's no patrol code yet!");
+	ft_printf("Bonus activated, but there's no patrol code yet!\n");
 }
 
 #endif

@@ -8,7 +8,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						shadow_pass.o shadow_sprite_helpers.o shadow_sprites_part_two.o \
 						player_rendering.o animations.o movement_keys.o key_hook.o \
 						gameplay_checks.o north_walls.o movement.o map_name.o map_fitting.o \
-						gui.o text_rendering.o map_struct_helpers.o
+						gui.o text_rendering.o map_struct_helpers.o map_content_validation.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a

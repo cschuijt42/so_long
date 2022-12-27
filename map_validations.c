@@ -75,35 +75,3 @@ static void	validate_middle_row(char *row)
 	if (*row != '1')
 		exit_message("map outer walls are not properly closed");
 }
-
-// Checks the map for invalid characters, as well as for invalid start,
-// exit and collectible counts. A valid map has exactly one player,
-// exactly one exit and at least one collectible on it.
-void	validate_map_content(char *map)
-{
-	size_t	starts;
-	size_t	exits;
-	size_t	collects;
-
-	starts = 0;
-	exits = 0;
-	collects = 0;
-	while (*map)
-	{
-		if (*map == 'P')
-			starts++;
-		else if (*map == 'E')
-			exits++;
-		else if (*map == 'C')
-			collects++;
-		else if (*map != '1' && *map != '0' && *map != '\n')
-			exit_message("map contains illegal characters");
-		map++;
-	}
-	if (starts != 1)
-		exit_message("map does not have exactly one starting position");
-	if (exits != 1)
-		exit_message("map does not have exactly one exit");
-	if (collects < 1)
-		exit_message("map does not have at least one collectible");
-}

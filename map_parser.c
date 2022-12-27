@@ -29,7 +29,7 @@ t_map	*initialize_map(char *path)
 	map_str = read_map_from_file(fd);
 	close(fd);
 	if (!*map_str)
-		exit_message("Map is empty");
+		exit_message("map is empty");
 	validate_empty_lines(map_str);
 	map_rows = ft_split(map_str, '\n');
 	if (!map_rows)

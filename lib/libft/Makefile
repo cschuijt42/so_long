@@ -8,7 +8,7 @@ OBJFILES := ft_atoi.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 					ft_putnbr_base.o ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o \
 					ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o \
 					ft_lstsize.o ft_putnbr_base.o ft_printf.o print_functions.o \
-					get_next_line.o get_next_line_utils.o ft_strchrc.o
+					get_next_line.o get_next_line_utils.o ft_strchrc.o ft_digitcount.o
 FLAGS = -Werror -Wall -Wextra
 NAME = libft.a
 ifeq ($(OS), Windows_NT)

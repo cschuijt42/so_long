@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-#ifndef BONUS
+#ifndef PATROLS
 
 void	load_patrols(t_map *map)
 {
@@ -25,7 +25,7 @@ void	load_patrols(t_map *map)
 void	load_patrols(t_map *map)
 {
 	(void) map;
-	ft_printf("Bonus activated, but there's no patrol code yet!\n");
+	ft_printf("Patrols activated, but there's no patrol code yet!\n");
 }
 
 #endif

@@ -55,7 +55,7 @@ static size_t	traverse_map_string(char *str, t_map *map)
 	return (i);
 }
 
-#ifdef BONUS
+#ifdef PATROLS
 
 static void	move_into_space(char *space)
 {

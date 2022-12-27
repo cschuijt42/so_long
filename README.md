@@ -23,7 +23,7 @@ The objective for so_long is to create a small 2D game where the player moves th
   - [x] Lava
 - [x] Set up gameplay loop
 - [x] Set up win condition
-- [ ] Add GUI
+- [x] Add GUI
 - [ ] Add patrols
 - [ ] Camera system for large maps
 - [x] Make sure there are no memory leaks :)
@@ -31,4 +31,4 @@ The objective for so_long is to create a small 2D game where the player moves th
 ## Asset Credits
 - The dungeon sprites are [dungeonOld_](https://analogstudios.itch.io/dungeonold) and the character sprites are [dungeonSprites_](https://analogstudios.itch.io/dungeonsprites), both by [analogstudios](https://analogstudios.itch.io/).
 - The GUI font is [monogram](https://datagoblin.itch.io/monogram) by [datagoblin](https://datagoblin.itch.io/). To get the font in a good bitmap layout, I used [Codehead's Bitmap Font Generator](https://github.com/CodeheadUK/CBFG).
-- The paper backdrop for the GUI comes from [Crusenho's GUI Essential pack](https://crusenho.itch.io/complete-gui-essential-pack), which is distributed under a CC-BY-ND license.
+- The paper backdrop for the GUI comes from [Crusenho's GUI Essential pack](https://crusenho.itch.io/complete-gui-essential-pack) with a small coloring update, which is distributed under a CC-BY-ND license.

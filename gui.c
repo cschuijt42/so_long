@@ -16,23 +16,26 @@ void	render_gui(t_map *map)
 {
 	size_t	i;
 
-	sprite_buffer_to_image(map->gui_bg_sprites[0], map->background, 0, 0);
-	sprite_buffer_to_image(map->gui_bg_sprites[3], map->background, 0, 32);
-	sprite_buffer_to_image(map->gui_bg_sprites[6], map->background, 0, 64);
+	sprite_buffer_to_image(map->gui_bg_sprites[0], map->background, 16, 16);
+	sprite_buffer_to_image(map->gui_bg_sprites[3], map->background, 16, 48);
+	sprite_buffer_to_image(map->gui_bg_sprites[6], map->background, 16, 80);
 	i = 1;
-	while (i < map->width - 1)
+	while (i < map->width - 2)
 	{
 		sprite_buffer_to_image(map->gui_bg_sprites[1], \
-								map->background, i * 32, 0);
+								map->background, (i * 32) + 16, 16);
 		sprite_buffer_to_image(map->gui_bg_sprites[4], \
-								map->background, i * 32, 32);
+								map->background, (i * 32) + 16, 48);
 		sprite_buffer_to_image(map->gui_bg_sprites[7], \
-								map->background, i * 32, 64);
+								map->background, (i * 32) + 16, 80);
 		i++;
 	}
-	sprite_buffer_to_image(map->gui_bg_sprites[2], map->background, i * 32, 0);
-	sprite_buffer_to_image(map->gui_bg_sprites[5], map->background, i * 32, 32);
-	sprite_buffer_to_image(map->gui_bg_sprites[8], map->background, i * 32, 64);
+	sprite_buffer_to_image(map->gui_bg_sprites[2], map->background, \
+							(i * 32) + 16, 16);
+	sprite_buffer_to_image(map->gui_bg_sprites[5], map->background, \
+							(i * 32) + 16, 48);
+	sprite_buffer_to_image(map->gui_bg_sprites[8], map->background, \
+							(i * 32) + 16, 80);
 	render_gui_strings(map);
 }
 
@@ -42,18 +45,18 @@ void	render_gui_strings(t_map *map)
 	char	*collectible_count;
 
 	collectible_count = ft_itoa(map->col_total);
-	xy[0] = 20;
-	xy[1] = 14;
+	xy[0] = 36;
+	xy[1] = 26;
 	string_to_image(map->map_name, map->background, map->gui_charset, xy);
-	xy[0] = 20;
-	xy[1] = 38;
+	xy[0] = 36;
+	xy[1] = 50;
 	string_to_image("Moves:", map->background, map->gui_charset, xy);
-	xy[0] = 20;
-	xy[1] = 62;
+	xy[0] = 36;
+	xy[1] = 74;
 	string_to_image("Gold:", map->background, map->gui_charset, xy);
-	xy[0] = 120;
+	xy[0] = 136;
 	string_to_image("/", map->background, map->gui_charset, xy);
-	xy[0] = 140;
+	xy[0] = 156;
 	string_to_image(collectible_count, map->background, map->gui_charset, xy);
 }
 

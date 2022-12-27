@@ -1,6 +1,5 @@
 # so_long
-The objective for so_long is to create a small 2D game where the player moves
-through a maze, grabbing collectibles and making it to the exit.
+The objective for so_long is to create a small 2D game where the player moves through a maze read from a file, grabbing collectibles and making it to the exit.
 
 ## Checklist of doom:
 - [x] File handling and ingress
@@ -24,6 +23,7 @@ through a maze, grabbing collectibles and making it to the exit.
   - [x] Lava
 - [x] Set up gameplay loop
 - [x] Set up win condition
+- [ ] Add GUI
 - [ ] Add patrols
 - [ ] Camera system for large maps
 - [x] Make sure there are no memory leaks :)
@@ -31,4 +31,4 @@ through a maze, grabbing collectibles and making it to the exit.
 ## Asset Credits
 - The dungeon sprites are [dungeonOld_](https://analogstudios.itch.io/dungeonold) and the character sprites are [dungeonSprites_](https://analogstudios.itch.io/dungeonsprites), both by [analogstudios](https://analogstudios.itch.io/).
 - The GUI font is [monogram](https://datagoblin.itch.io/monogram) by [datagoblin](https://datagoblin.itch.io/). To get the font in a good bitmap layout, I used [Codehead's Bitmap Font Generator](https://github.com/CodeheadUK/CBFG).
-- The paper backdrop for the GUI comes from [Cryo's Mini GUI](https://paperhatlizard.itch.io/cryos-mini-gui).
+- The paper backdrop for the GUI comes from [Crusenho's GUI Essential pack](https://crusenho.itch.io/complete-gui-essential-pack), which is distributed under a CC-BY-ND license.

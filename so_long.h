@@ -177,8 +177,6 @@ typedef struct s_map {
 	char			*render_terrain;
 	char			*render_shadows;
 	mlx_image_t		*background;
-	mlx_image_t		*gui_moves;
-	mlx_image_t		*gui_collectibles;
 	size_t			height;
 	size_t			width;
 	size_t			size;
@@ -219,9 +217,10 @@ void		sprite_buffer_to_image(uint8_t *buffer, mlx_image_t *image, \
 
 void		string_to_image(char *str, mlx_image_t *image, \
 							uint8_t **charset, size_t xy[2]);
+void		string_to_image_right(char *str, mlx_image_t *image, \
+								uint8_t **charset, size_t xy[2]);
 void		char_to_image(uint8_t *chr, mlx_image_t *image, \
 							size_t xy[2], uint32_t color);
-void		render_gui_strings(t_map *map);
 
 // -- MAP VALIDATIONS --
 
@@ -258,7 +257,8 @@ void		render_player(t_map *map);
 // -- GUI helpers --
 
 void		render_gui(t_map *map);
-void		update_gui(t_map *map);
+void		render_gui_static_strings(t_map *map);
+void		render_gui_dynamic_strings(t_map *map);
 
 // -- Categorization helpers --
 

@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+static void	bonus_or_exit(char c);
+
 // Checks the map for invalid characters, as well as for invalid start,
 // exit and collectible counts. A valid map has exactly one player,
 // exactly one exit and at least one collectible on it.
@@ -48,7 +50,7 @@ void	validate_map_content(char *map)
 
 // Checks for the presence of bonus characters if allowed, else
 // exits with an error message.
-void	bonus_or_exit(char c)
+static void	bonus_or_exit(char c)
 {
 	if (c == 'U' || c == 'D' || c == 'L' || c == 'R')
 		return ;
@@ -59,8 +61,9 @@ void	bonus_or_exit(char c)
 
 // Checks for the presence of bonus characters if allowed, else
 // exits with an error message.
-void	bonus_or_exit(char c)
+static void	bonus_or_exit(char c)
 {
+	(void) c;
 	exit_message("map contains illegal characters");
 }
 

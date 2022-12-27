@@ -35,6 +35,7 @@ t_map	*initialize_map_struct(char **map_array)
 	initialize_map_player(map, player_pos);
 	load_spritesheets(map);
 	load_map_collectibles(map);
+	load_patrols(map);
 	return (map);
 }
 

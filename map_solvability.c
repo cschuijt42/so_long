@@ -55,6 +55,22 @@ static size_t	traverse_map_string(char *str, t_map *map)
 	return (i);
 }
 
+#ifdef BONUS
+
+static void	move_into_space(char *space)
+{
+	if (*space == '0' || *space == 'C' || *space == 'P' || *space == 'E')
+	{
+		*space = 'X';
+	}
+	if (*space == 'U' || *space == 'D' || *space == 'L' || *space == 'R')
+	{
+		*space = 'X';
+	}
+}
+
+#else
+
 static void	move_into_space(char *space)
 {
 	if (*space == '0' || *space == 'C' || *space == 'P' || *space == 'E')
@@ -62,6 +78,8 @@ static void	move_into_space(char *space)
 		*space = 'X';
 	}
 }
+
+#endif
 
 static size_t	remaining_objectives(char *map)
 {

@@ -234,6 +234,9 @@ void		validate_map_boundaries(char **map);
 void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
 
+// -- PATROLS --
+void		load_patrols(t_map *map);
+
 // -- MAP RENDERING PASSES --
 // Render layers:
 // 7: GUI content

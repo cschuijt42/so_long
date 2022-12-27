@@ -30,11 +30,8 @@ t_map	*initialize_map_struct(char **map_array)
 	map->width = ft_strlen(map_array[0]);
 	map->content = join_string_array(map_array);
 	free_array((void **) map_array);
-	map->size = ft_strlen(map->content);
 	player_pos = ft_strchr(map->content, 'P') - map->content;
-	map->content[player_pos] = '0';
-	map->col_total = ft_strchrc(map->content, 'C');
-	map->movement_clock = 20;
+	set_additional_map_variables(map, player_pos);
 	initialize_map_player(map, player_pos);
 	load_spritesheets(map);
 	load_map_collectibles(map);

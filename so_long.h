@@ -184,6 +184,7 @@ typedef struct s_map {
 	int				movement_clock;
 	int				lock_input;
 	size_t			col_total;
+	char			*col_total_str;
 	size_t			col_grabbed;
 	t_collectible	*collectibles;
 	uint8_t			**bg_sprites;
@@ -204,6 +205,7 @@ void		initialize_map_player(t_map *map, size_t player_pos);
 void		fill_in_map_name(t_map *map, char *path);
 void		fit_map_array_to_window(char ***map_array);
 void		add_top_row(char ***map_array);
+void		set_additional_map_variables(t_map *map, size_t player_pos);
 
 // -- SPRITESHEETS --
 

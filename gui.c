@@ -44,9 +44,9 @@ void	render_gui(t_map *map)
 void	render_gui_static_strings(t_map *map)
 {
 	size_t	xy[2];
-	char	*collectible_count;
+	size_t	collectible_offset;
 
-	collectible_count = ft_itoa(map->col_total);
+	collectible_offset = ft_digitcount(map->col_grabbed) * FONT_W;
 	xy[0] = 36;
 	xy[1] = 26;
 	string_to_image(map->map_name, map->background, map->gui_charset, xy);
@@ -56,10 +56,10 @@ void	render_gui_static_strings(t_map *map)
 	xy[0] = 36;
 	xy[1] = 74;
 	string_to_image("Gold:", map->background, map->gui_charset, xy);
-	xy[0] = 136;
+	xy[0] = 115 + collectible_offset;
 	string_to_image("/", map->background, map->gui_charset, xy);
-	xy[0] = 156;
-	string_to_image(collectible_count, map->background, map->gui_charset, xy);
+	xy[0] = 137 + collectible_offset;
+	string_to_image(map->col_total_str, map->background, map->gui_charset, xy);
 }
 
 void	render_gui_dynamic_strings(t_map *map)
@@ -79,6 +79,6 @@ void	render_gui_dynamic_strings(t_map *map)
 	str = ft_itoa(map->col_grabbed);
 	if (!str)
 		exit_perror("malloc error");
-	string_to_image_right(str, map->background, map->gui_charset, xy);
+	string_to_image(str, map->background, map->gui_charset, xy);
 	free(str);
 }

@@ -28,13 +28,13 @@ void	movement_animation_wrapper(t_map *map)
 			render_gui(map);
 			return ;
 		}
-		if (map->player->move_direction == 0)
+		if (map->player->move_direction == dir_up)
 			animate_player_movement_up(map);
-		else if (map->player->move_direction == 1)
+		else if (map->player->move_direction == dir_right)
 			animate_player_movement_right(map);
-		else if (map->player->move_direction == 2)
+		else if (map->player->move_direction == dir_down)
 			animate_player_movement_down(map);
-		else if (map->player->move_direction == 3)
+		else if (map->player->move_direction == dir_left)
 			animate_player_movement_left(map);
 		patrol_movement_animation_wrapper(map);
 	}

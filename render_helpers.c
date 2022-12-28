@@ -36,7 +36,7 @@ void	render_collectibles(t_map *map)
 		render_x_pos(map, collectible->pos), \
 		render_y_pos(map, collectible->pos));
 		instance = &sprite->image->instances[collectible->instance];
-		mlx_set_instance_depth(instance, 3);
+		mlx_set_instance_depth(instance, layer_collectibles);
 		collectible = collectible->next;
 	}
 }

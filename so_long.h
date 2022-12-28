@@ -39,6 +39,26 @@
 // Font width for projecting letters subsequently onto other images
 # define FONT_W 11
 
+// -- ENUMS --
+
+typedef enum e_render_layers {
+	layer_bg,
+	layer_bg_sprites,
+	layer_shadows,
+	layer_collectibles,
+	layer_patrols,
+	layer_player,
+	layer_pillars,
+	layer_gui
+}	t_render_layers;
+
+typedef enum e_direction {
+	dir_up,
+	dir_right,
+	dir_down,
+	dir_left
+}	t_direction;
+
 // -- STRUCTS --
 
 // @brief One sprite, instantiated from a larger spritesheet.
@@ -261,15 +281,6 @@ int			should_be_patrol(char c);
 void		render_patrols(t_map *map);
 
 // -- MAP RENDERING PASSES --
-// Render layers:
-// 7: GUI content
-// 6: GUI background
-// 5: top half of pillars
-// 4: player and other entities
-// 3: collectibles
-// 2: shadows
-// 1: walls, lava, floors, bottom half of pillars
-// 0: one image filled with pixels of the background color
 
 void		categorize_map_walls(t_map *map);
 void		fill_in_background_sprite_indexes(t_map *map);

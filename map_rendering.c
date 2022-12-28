@@ -59,7 +59,7 @@ void	render_background_pixels(t_map *map)
 	}
 	render_gui(map);
 	mlx_image_to_window(map->mlx, map->background, 0, 0);
-	mlx_set_instance_depth(map->background->instances, 0);
+	mlx_set_instance_depth(map->background->instances, layer_bg);
 }
 
 void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)
@@ -74,7 +74,7 @@ void	render_background_sprite(t_map *map, size_t i, uint8_t **sprites)
 	xy[0] = render_x_pos(map, i);
 	xy[1] = render_y_pos(map, i);
 	inst = mlx_image_to_window(map->mlx, sprite->image, xy[0], xy[1]);
-	mlx_set_instance_depth(&sprite->image->instances[inst], 1);
+	mlx_set_instance_depth(&sprite->image->instances[inst], layer_bg_sprites);
 }
 
 void	render_shadow_sprite(t_map *map, size_t i)
@@ -89,7 +89,7 @@ void	render_shadow_sprite(t_map *map, size_t i)
 	xy[0] = render_x_pos(map, i);
 	xy[1] = render_y_pos(map, i);
 	inst = mlx_image_to_window(map->mlx, sprite->image, xy[0], xy[1]);
-	mlx_set_instance_depth(&sprite->image->instances[inst], 2);
+	mlx_set_instance_depth(&sprite->image->instances[inst], layer_shadows);
 }
 
 void	render_pillar(t_map *map, size_t i)
@@ -104,5 +104,5 @@ void	render_pillar(t_map *map, size_t i)
 	x_pos = render_x_pos(map, i);
 	y_pos = render_y_pos(map, i - map->width);
 	inst = mlx_image_to_window(map->mlx, sprite->image, x_pos, y_pos);
-	mlx_set_instance_depth(&sprite->image->instances[inst], 5);
+	mlx_set_instance_depth(&sprite->image->instances[inst], layer_pillars);
 }

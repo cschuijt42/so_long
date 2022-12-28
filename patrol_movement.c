@@ -19,13 +19,13 @@ void	patrol_movement_animation_wrapper(t_map *map)
 	patrol = map->patrols;
 	while (patrol)
 	{
-		if (patrol->move_direction == 0)
+		if (patrol->move_direction == dir_up)
 			animate_patrol_movement_up(map, patrol);
-		if (patrol->move_direction == 1)
+		else if (patrol->move_direction == dir_right)
 			animate_patrol_movement_right(map, patrol);
-		if (patrol->move_direction == 2)
+		else if (patrol->move_direction == dir_down)
 			animate_patrol_movement_down(map, patrol);
-		if (patrol->move_direction == 3)
+		else if (patrol->move_direction == dir_left)
 			animate_patrol_movement_left(map, patrol);
 		patrol = patrol->next;
 	}

@@ -45,7 +45,7 @@ void	initialize_map_player(t_map *map, size_t player_pos)
 	if (!map->player)
 		exit_perror("malloc error");
 	map->player->facing_offset = 4;
-	map->player->move_direction = 0;
+	map->player->move_direction = dir_up;
 	map->player->moves_taken = 0;
 	map->player->pos = player_pos;
 }

@@ -34,14 +34,17 @@ void	add_new_patrol(t_map *map, size_t pos, char dir)
 		exit_perror("malloc error");
 	patrol->pos = pos;
 	if (dir == 'U')
-		patrol->move_direction = 0;
+		patrol->move_direction = dir_up;
 	else if (dir == 'R')
-		patrol->move_direction = 1;
+		patrol->move_direction = dir_right;
 	else if (dir == 'D')
-		patrol->move_direction = 2;
+	{
+		patrol->move_direction = dir_down;
+		patrol->facing_offset = 4;
+	}
 	else if (dir == 'L')
 	{
-		patrol->move_direction = 3;
+		patrol->move_direction = dir_left;
 		patrol->facing_offset = 4;
 	}
 	add_patrol_to_map(map, patrol);

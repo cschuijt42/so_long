@@ -35,7 +35,7 @@ void	render_map(t_map *map)
 	render_collectibles(map);
 	render_shadows(map);
 	render_player(map);
-	// render_patrols(map);
+	render_patrols(map);
 	render_gui(map);
 	mark_sprites_for_animation(map);
 }

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	patrols_or_exit(char c);
+static void	check_invalid_characters(char c);
 
 // Checks the map for invalid characters, as well as for invalid start,
 // exit and collectible counts. A valid map has exactly one player,
@@ -34,8 +34,8 @@ void	validate_map_content(char *map)
 			exits++;
 		else if (*map == 'C')
 			collects++;
-		else if (*map != '1' && *map != '0' && *map != '\n')
-			patrols_or_exit(*map);
+		else
+			check_invalid_characters(*map);
 		map++;
 	}
 	if (starts != 1)
@@ -46,23 +46,9 @@ void	validate_map_content(char *map)
 		exit_message("map does not have at least one collectible");
 }
 
-#ifdef PATROLS
-
-static void	patrols_or_exit(char c)
+void	check_invalid_characters(char c)
 {
-	if (c == 'U' || c == 'D' || c == 'L' || c == 'R')
-		return ;
-	exit_message("map contains illegal characters");
+	if (c != '1' && c != '0' && c != '\n')
+		if (c != 'U' && c != 'D' && c != 'L' && c != 'R')
+			exit_message("map contains illegal characters");
 }
-
-#else
-
-// Checks for the presence of bonus characters if allowed, else
-// exits with an error message.
-static void	patrols_or_exit(char c)
-{
-	(void) c;
-	exit_message("map contains illegal characters");
-}
-
-#endif

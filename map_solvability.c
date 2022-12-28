@@ -55,8 +55,6 @@ static size_t	traverse_map_string(char *str, t_map *map)
 	return (i);
 }
 
-#ifdef PATROLS
-
 static void	move_into_space(char *space)
 {
 	if (*space == '0' || *space == 'C' || *space == 'P' || *space == 'E')
@@ -68,18 +66,6 @@ static void	move_into_space(char *space)
 		*space = 'X';
 	}
 }
-
-#else
-
-static void	move_into_space(char *space)
-{
-	if (*space == '0' || *space == 'C' || *space == 'P' || *space == 'E')
-	{
-		*space = 'X';
-	}
-}
-
-#endif
 
 static size_t	remaining_objectives(char *map)
 {

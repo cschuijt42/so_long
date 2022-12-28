@@ -126,6 +126,7 @@ typedef struct s_player {
 //                       0 = up, 1 = right, 2 = down, 3 = left
 // @param facing_offset  The amount of sprites to offset rendering by,
 //                       should be 0 or 4.
+// @param next           The next patrol in the list, or NULL if last patrol.
 typedef struct s_patrol {
 	mlx_image_t		*image;
 	size_t			pos;
@@ -254,8 +255,10 @@ void		validate_map_solvability(t_map *map);
 // -- PATROLS --
 
 void		load_patrols(t_map *map);
-void		add_patrol_to_map(t_map *map, size_t pos, char dir);
+void		add_new_patrol(t_map *map, size_t pos, char dir);
+void		add_patrol_to_map(t_map *map, t_patrol *patrol);
 int			should_be_patrol(char c);
+void		render_patrols(t_map *map);
 
 // -- MAP RENDERING PASSES --
 // Render layers:

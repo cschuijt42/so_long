@@ -12,16 +12,6 @@
 
 #include "so_long.h"
 
-#ifndef PATROLS
-
-void	load_patrols(t_map *map)
-{
-	(void) map;
-	return ;
-}
-
-#else
-
 void	load_patrols(t_map *map)
 {
 	size_t	i;
@@ -30,17 +20,14 @@ void	load_patrols(t_map *map)
 	while (map->content[i])
 	{
 		if (should_be_patrol(map->content[i]))
-			add_patrol_to_map(map, i, map->content[i]);
+			add_new_patrol(map, i, map->content[i]);
 		i++;
 	}
 }
 
-#endif
-
-void	add_patrol_to_map(t_map *map, size_t pos, char dir)
+void	add_new_patrol(t_map *map, size_t pos, char dir)
 {
 	t_patrol	*patrol;
-	t_patrol	*last_patrol;
 
 	patrol = ft_calloc(sizeof(t_patrol), 1);
 	if (!patrol)
@@ -57,10 +44,23 @@ void	add_patrol_to_map(t_map *map, size_t pos, char dir)
 		patrol->move_direction = 3;
 		patrol->facing_offset = 4;
 	}
-	last_patrol = map->patrols;
-	while (last_patrol->next)
-		last_patrol = last_patrol->next;
-	last_patrol->next = patrol;
+	add_patrol_to_map(map, patrol);
+}
+
+void	add_patrol_to_map(t_map *map, t_patrol *patrol)
+{
+	t_patrol	*last_patrol;
+
+	patrol->next = NULL;
+	if (!map->patrols)
+		map->patrols = patrol;
+	else
+	{
+		last_patrol = map->patrols;
+		while (last_patrol->next)
+			last_patrol = last_patrol->next;
+		last_patrol->next = patrol;
+	}
 }
 
 int	should_be_patrol(char c)

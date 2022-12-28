@@ -61,6 +61,7 @@ void	add_patrol_to_map(t_map *map, t_patrol *patrol)
 			last_patrol = last_patrol->next;
 		last_patrol->next = patrol;
 	}
+	update_patrol_movement_direction(map, patrol);
 }
 
 int	should_be_patrol(char c)

@@ -12,12 +12,17 @@
 
 #include "so_long.h"
 
-void	check_collectibles_and_exit(t_map *map)
+int	run_gameplay_checks(t_map *map)
 {
+	if (player_next_to_patrol(map))
+		return (game_over(map, 0));
 	if (map->content[map->player->pos] == 'C')
 		try_pick_up_collectible(map, map->player->pos);
 	if (map->content[map->player->pos] == 'E')
-		return (try_exit_map(map));
+		if (try_exit_map(map))
+			return (game_over(map, 1));
+	ft_printf("Moves: %d\n", map->player->moves_taken);
+	return (0);
 }
 
 void	try_pick_up_collectible(t_map *map, size_t pos)
@@ -40,7 +45,7 @@ void	try_pick_up_collectible(t_map *map, size_t pos)
 	}
 }
 
-void	try_exit_map(t_map *map)
+int	try_exit_map(t_map *map)
 {
 	t_collectible	*collectible;
 
@@ -48,9 +53,29 @@ void	try_exit_map(t_map *map)
 	while (collectible)
 	{
 		if (!collectible->picked_up)
-			return ;
+			return (0);
 		collectible = collectible->next;
 	}
-	ft_printf("Game over at %d moves\n", map->player->moves_taken);
-	mlx_close_window(map->mlx);
+	return (1);
+}
+
+int	player_next_to_patrol(t_map *map)
+{
+	(void) map;
+	return (0);
+}
+
+int	game_over(t_map *map, int victory)
+{
+	if (victory)
+	{
+		ft_printf("Victory at %d moves\n", map->player->moves_taken);
+		mlx_close_window(map->mlx);
+	}
+	else
+	{
+		ft_printf("Game over at %d moves\n", map->player->moves_taken);
+		mlx_close_window(map->mlx);
+	}
+	return (1);
 }

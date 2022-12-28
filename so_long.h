@@ -393,15 +393,20 @@ void		animate_player_hook(void *map_ptr);
 void		animate_background_hook(void *map_ptr);
 void		mark_sprites_for_animation(t_map *map);
 
-void		check_collectibles_and_exit(t_map *map);
+int			run_gameplay_checks(t_map *map);
 void		try_pick_up_collectible(t_map *map, size_t pos);
-void		try_exit_map(t_map *map);
+int			try_exit_map(t_map *map);
+int			player_next_to_patrol(t_map *map);
+int			game_over(t_map *map, int victory);
 
 void		patrol_movement_animation_wrapper(t_map *map);
+void		update_patrol_movement_direction(t_map *map, t_patrol *patrol);
+void		update_patrol_facing_offset(t_patrol *patrol);
 void		animate_patrol_movement_up(t_map *map, t_patrol *patrol);
 void		animate_patrol_movement_right(t_map *map, t_patrol *patrol);
 void		animate_patrol_movement_down(t_map *map, t_patrol *patrol);
 void		animate_patrol_movement_left(t_map *map, t_patrol *patrol);
+void		idle_animate_patrols(t_map *map, size_t offset);
 
 // -- SPRITE MANAGEMENT --
 

@@ -83,6 +83,20 @@ void	animate_player_hook(void *map_ptr)
 			offset = (offset + 1) % 4;
 			map->player->image->pixels = \
 			map->player_sprites[offset + map->player->facing_offset];
+			idle_animate_patrols(map, offset);
 		}
+	}
+}
+
+void	idle_animate_patrols(t_map *map, size_t offset)
+{
+	t_patrol	*patrol;
+
+	patrol = map->patrols;
+	while (patrol)
+	{
+		patrol->image->pixels = \
+		map->patrol_sprites[offset + patrol->facing_offset];
+		patrol = patrol->next;
 	}
 }

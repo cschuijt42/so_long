@@ -24,9 +24,8 @@ void	movement_animation_wrapper(t_map *map)
 		{
 			map->lock_input = 0;
 			map->player->moves_taken++;
-			check_collectibles_and_exit(map);
+			run_gameplay_checks(map);
 			render_gui(map);
-			ft_printf("Moves: %d\n", map->player->moves_taken);
 			return ;
 		}
 		if (map->player->move_direction == 0)

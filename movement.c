@@ -37,6 +37,7 @@ void	movement_animation_wrapper(t_map *map)
 			animate_player_movement_down(map);
 		else if (map->player->move_direction == 3)
 			animate_player_movement_left(map);
+		patrol_movement_animation_wrapper(map);
 	}
 }
 

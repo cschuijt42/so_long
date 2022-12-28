@@ -397,6 +397,12 @@ void		check_collectibles_and_exit(t_map *map);
 void		try_pick_up_collectible(t_map *map, size_t pos);
 void		try_exit_map(t_map *map);
 
+void		patrol_movement_animation_wrapper(t_map *map);
+void		animate_patrol_movement_up(t_map *map, t_patrol *patrol);
+void		animate_patrol_movement_right(t_map *map, t_patrol *patrol);
+void		animate_patrol_movement_down(t_map *map, t_patrol *patrol);
+void		animate_patrol_movement_left(t_map *map, t_patrol *patrol);
+
 // -- SPRITE MANAGEMENT --
 
 t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index);

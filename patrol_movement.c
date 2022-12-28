@@ -41,7 +41,7 @@ void	animate_patrol_movement_up(t_map *map, t_patrol *patrol)
 	}
 	if (map->movement_clock >= 5)
 		return ;
-	patrol->image->instances[0].y += 8;
+	patrol->image->instances[0].y -= 8;
 	patrol->image->pixels = \
 	map->patrol_sprites[7 + patrol->facing_offset + map->movement_clock];
 }
@@ -71,7 +71,7 @@ void	animate_patrol_movement_down(t_map *map, t_patrol *patrol)
 	}
 	if (map->movement_clock >= 5)
 		return ;
-	patrol->image->instances[0].y -= 8;
+	patrol->image->instances[0].y += 8;
 	patrol->image->pixels = \
 	map->patrol_sprites[7 + patrol->facing_offset + map->movement_clock];
 }

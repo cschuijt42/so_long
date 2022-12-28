@@ -39,7 +39,8 @@ void	update_patrol_movement_direction(t_map *map, t_patrol *patrol)
 
 void	update_patrol_facing_offset(t_patrol *patrol)
 {
-	if (patrol->move_direction == dir_up || patrol->move_direction == dir_right)
+	if (patrol->move_direction == dir_down || \
+		patrol->move_direction == dir_left)
 	{
 		patrol->facing_offset = 4;
 	}

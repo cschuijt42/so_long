@@ -126,8 +126,8 @@ typedef struct s_collectible {
 // @param image          The MLX image with which the player is rendered.
 // @param pos            The position of the player on the map.
 // @param moves_taken    Amount of moves taken by the player.
-// @param move_direction A number to indicate which way the player is moving.
-// 0 = up, 1 = right, 2 = down, 3 = left. Only used while animating a move.
+// @param move_direction A number from e_direction to indicate which way the
+//                       player is moving.
 // @param facing_offset  The amount by which the sprite index needs to change
 // based on which way the player is facing right now. 4 for left, 0 for right.
 typedef struct s_player {
@@ -142,8 +142,8 @@ typedef struct s_player {
 //
 // @param image          The MLX image with which this patrol is rendered.
 // @param pos            The position of this patrol on the map.
-// @param move_direction The direction this patrol is currently moving towards:
-//                       0 = up, 1 = right, 2 = down, 3 = left
+// @param move_direction A number from e_direction to indicate the direction
+//                       this patrol is currently moving in.
 // @param facing_offset  The amount of sprites to offset rendering by,
 //                       should be 0 or 4.
 // @param next           The next patrol in the list, or NULL if last patrol.

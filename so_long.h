@@ -118,6 +118,22 @@ typedef struct s_player {
 	size_t			facing_offset;
 }	t_player;
 
+// @brief Struct for a single enemy patrol.
+//
+// @param image          The MLX image with which this patrol is rendered.
+// @param pos            The position of this patrol on the map.
+// @param move_direction The direction this patrol is currently moving towards:
+//                       0 = up, 1 = right, 2 = down, 3 = left
+// @param facing_offset  The amount of sprites to offset rendering by,
+//                       should be 0 or 4.
+typedef struct s_patrol {
+	mlx_image_t		*image;
+	size_t			pos;
+	size_t			move_direction;
+	size_t			facing_offset;
+	struct s_patrol	*next;
+}	t_patrol;
+
 // @brief Struct for all game data, from the map to sprites to MLX.
 //
 // @param mlx               The MLX instance this map is being rendered in.
@@ -181,6 +197,7 @@ typedef struct s_map {
 	size_t			width;
 	size_t			size;
 	t_player		*player;
+	t_patrol		*patrols;
 	int				movement_clock;
 	int				lock_input;
 	size_t			col_total;
@@ -235,7 +252,10 @@ void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
 
 // -- PATROLS --
+
 void		load_patrols(t_map *map);
+void		add_patrol_to_map(t_map *map, size_t pos, char dir);
+int			should_be_patrol(char c);
 
 // -- MAP RENDERING PASSES --
 // Render layers:

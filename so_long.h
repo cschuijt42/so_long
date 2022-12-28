@@ -46,6 +46,7 @@ typedef enum e_render_layers {
 	layer_bg_sprites,
 	layer_shadows,
 	layer_collectibles,
+	layer_indicators,
 	layer_patrols,
 	layer_player,
 	layer_pillars,

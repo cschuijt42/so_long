@@ -61,7 +61,27 @@ int	try_exit_map(t_map *map)
 
 int	player_next_to_patrol(t_map *map)
 {
-	(void) map;
+	size_t		personal_space[5];
+	t_patrol	*patrol;
+
+	personal_space[0] = map->player->pos;
+	personal_space[1] = map->player->pos + 1;
+	personal_space[2] = map->player->pos - 1;
+	personal_space[3] = map->player->pos + map->width;
+	personal_space[4] = map->player->pos - map->width;
+	patrol = map->patrols;
+	while (patrol)
+	{
+		if (patrol->pos == personal_space[0] || \
+			patrol->pos == personal_space[1] || \
+			patrol->pos == personal_space[2] || \
+			patrol->pos == personal_space[3] || \
+			patrol->pos == personal_space[4])
+		{
+			return (1);
+		}
+		patrol = patrol->next;
+	}
 	return (0);
 }
 

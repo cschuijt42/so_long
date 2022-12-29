@@ -50,7 +50,8 @@ typedef enum e_render_layers {
 	layer_patrols,
 	layer_player,
 	layer_pillars,
-	layer_gui
+	layer_gui_moves,
+	layer_gui_cols
 }	t_render_layers;
 
 typedef enum e_direction {
@@ -227,6 +228,8 @@ typedef struct s_map {
 	char			*col_total_str;
 	size_t			col_grabbed;
 	t_collectible	*collectibles;
+	mlx_image_t		*move_counter;
+	mlx_image_t		*col_counter;
 	uint8_t			**bg_sprites;
 	uint8_t			**lava_sprites;
 	uint8_t			**shadow_sprites;
@@ -304,6 +307,8 @@ void		render_patrol_movement_indicators(t_map *map);
 void		render_gui(t_map *map);
 void		render_gui_static_strings(t_map *map);
 void		render_gui_dynamic_strings(t_map *map);
+void		initialize_gui_dynamic_strings(t_map *map);
+void		update_gui(t_map *map);
 
 // -- Categorization helpers --
 

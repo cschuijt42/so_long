@@ -25,7 +25,7 @@ void	movement_animation_wrapper(t_map *map)
 			map->lock_input = 0;
 			map->player->moves_taken++;
 			run_gameplay_checks(map);
-			render_gui(map);
+			update_gui(map);
 			return ;
 		}
 		if (map->player->move_direction == dir_up)

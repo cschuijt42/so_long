@@ -429,6 +429,9 @@ t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i);
 
 t_map		*initialize_map_struct(char **map_array);
 void		free_map_struct(t_map *map);
+void		detach_images_from_spritesheets(t_map *map);
+void		free_linked_lists(t_map *map);
+void		free_map_collectibles(t_map *map);
 
 // -- HELPERS --
 

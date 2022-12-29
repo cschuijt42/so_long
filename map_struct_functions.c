@@ -86,25 +86,3 @@ char	*join_string_array(char **array)
 	}
 	return (str);
 }
-
-void	free_map_struct(t_map *map)
-{
-	if (map->map_name)
-		free(map->map_name);
-	if (map->content)
-		free(map->content);
-	if (map->sprite_categories)
-		free(map->sprite_categories);
-	if (map->render_terrain)
-		free(map->render_terrain);
-	if (map->render_shadows)
-		free(map->render_shadows);
-	free_array((void **) map->bg_sprites);
-	free_array((void **) map->lava_sprites);
-	free_array((void **) map->shadow_sprites);
-	free_array((void **) map->player_sprites);
-	free_array((void **) map->patrol_sprites);
-	free_array((void **) map->gui_bg_sprites);
-	free_array((void **) map->gui_charset);
-	free(map);
-}

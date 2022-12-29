@@ -10,7 +10,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						gameplay_checks.o north_walls.o movement.o map_name.o map_fitting.o \
 						gui.o text_rendering.o map_content_validation.o patrols.o \
 						map_struct_helpers.o patrol_rendering.o patrol_movement.o \
-						patrol_movement_helpers.o
+						patrol_movement_helpers.o map_struct_freeing_functions.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a
@@ -25,7 +25,7 @@ else
 	ifeq ($(UNAME_S), Linux)
 		FW_FLAGS := -ldl -lglfw -pthread -lm
 	else ifeq ($(UNAME_S), Darwin)
-		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -fsanitize=address
+		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 	else
 		$(error OS: $(OS) - Is not supported!)
 	endif

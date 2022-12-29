@@ -272,6 +272,7 @@ void		validate_map_measurements(char **map);
 void		validate_map_boundaries(char **map);
 void		validate_map_content(char *map);
 void		validate_map_solvability(t_map *map);
+void		validate_patrol_locations(t_map *map);
 
 // -- PATROLS --
 

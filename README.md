@@ -33,7 +33,7 @@ The objective for so_long is to create a small 2D game where the player moves th
 - [ ] Do not immediately exit the game when winning or losing, stick around for a death animation or a victory screen
 - [ ] Rework animations to be on a get_time clock instead of a frame clock
 - [ ] Add an indicator of where each patrol is moving next
-- [ ] Add a validation for patrols that are "stuck" between two walls
+- [x] Add a validation for patrols that are "stuck" between two walls or start next to a player
 - [ ] Rework the GUI to not re-render everything each time and use layered string images instead
 
 ## Asset Credits

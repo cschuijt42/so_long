@@ -52,7 +52,7 @@ void	initialize_map_player(t_map *map, size_t player_pos)
 
 void	load_spritesheets(t_map *map)
 {
-	map->bg_sprites = read_spritesheet("sprites/dungeon2.png", 32, 15, 12);
+	map->bg_sprites = read_spritesheet("sprites/dungeon.png", 32, 15, 12);
 	map->lava_sprites = read_spritesheet("sprites/lava.png", 32, 12, 18);
 	map->shadow_sprites = read_spritesheet("sprites/shadows.png", 32, 5, 6);
 	map->player_sprites = read_spritesheet("sprites/dragon.png", 48, 8, 7);

@@ -11,7 +11,7 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						gui.o text_rendering.o map_content_validation.o patrols.o \
 						map_struct_helpers.o patrol_rendering.o patrol_movement.o \
 						patrol_movement_helpers.o map_struct_freeing_functions.o \
-						patrol_validation.o
+						patrol_validation.o collectible_rendering.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
 MLX42_A  := lib/mlx42/libmlx42.a

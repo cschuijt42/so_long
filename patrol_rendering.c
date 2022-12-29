@@ -30,4 +30,25 @@ void	render_patrols(t_map *map)
 		mlx_set_instance_depth(&patrol->image->instances[0], layer_patrols);
 		patrol = patrol->next;
 	}
+	render_patrol_movement_indicators(map);
+}
+
+void	render_patrol_movement_indicators(t_map *map)
+{
+	t_patrol		*patrol;
+	t_sprite		*sprite;
+	mlx_instance_t	*instance;
+
+	patrol = map->patrols;
+	sprite = find_or_create_sprite(map, map->bg_sprites, 13);
+	while (patrol)
+	{
+		patrol->indicator_instance = mlx_image_to_window(map->mlx, \
+					sprite->image, \
+					render_x_pos(map, patrol_indicator_pos(map, patrol)), \
+					render_y_pos(map, patrol_indicator_pos(map, patrol)));
+		instance = &sprite->image->instances[patrol->indicator_instance];
+		mlx_set_instance_depth(instance, layer_indicators);
+		patrol = patrol->next;
+	}
 }

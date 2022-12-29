@@ -49,3 +49,35 @@ void	update_patrol_facing_offset(t_patrol *patrol)
 		patrol->facing_offset = 0;
 	}
 }
+
+size_t	patrol_indicator_pos(t_map *map, t_patrol *patrol)
+{
+	if (patrol->move_direction == dir_up)
+	{
+		return (patrol->pos - map->width);
+	}
+	else if (patrol->move_direction == dir_right)
+	{
+		return (patrol->pos + 1);
+	}
+	else if (patrol->move_direction == dir_down)
+	{
+		return (patrol->pos + map->width);
+	}
+	else if (patrol->move_direction == dir_left)
+	{
+		return (patrol->pos - 1);
+	}
+	return (0);
+}
+
+void	update_patrol_movement_indicator(t_map *map, t_patrol *patrol)
+{
+	t_sprite		*sprite;
+
+	sprite = find_or_create_sprite(map, map->bg_sprites, 13);
+	sprite->image->instances[patrol->indicator_instance].x = \
+		render_x_pos(map, patrol_indicator_pos(map, patrol));
+	sprite->image->instances[patrol->indicator_instance].y = \
+		render_y_pos(map, patrol_indicator_pos(map, patrol));
+}

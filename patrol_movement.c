@@ -37,6 +37,7 @@ void	animate_patrol_movement_up(t_map *map, t_patrol *patrol)
 	{
 		patrol->pos -= map->width;
 		update_patrol_movement_direction(map, patrol);
+		update_patrol_movement_indicator(map, patrol);
 		patrol->image->pixels = map->patrol_sprites[1 + patrol->facing_offset];
 	}
 	if (map->movement_clock >= 5)
@@ -52,6 +53,7 @@ void	animate_patrol_movement_right(t_map *map, t_patrol *patrol)
 	{
 		patrol->pos += 1;
 		update_patrol_movement_direction(map, patrol);
+		update_patrol_movement_indicator(map, patrol);
 		patrol->image->pixels = map->patrol_sprites[1 + patrol->facing_offset];
 	}
 	if (map->movement_clock >= 5)
@@ -67,6 +69,7 @@ void	animate_patrol_movement_down(t_map *map, t_patrol *patrol)
 	{
 		patrol->pos += map->width;
 		update_patrol_movement_direction(map, patrol);
+		update_patrol_movement_indicator(map, patrol);
 		patrol->image->pixels = map->patrol_sprites[1 + patrol->facing_offset];
 	}
 	if (map->movement_clock >= 5)
@@ -82,6 +85,7 @@ void	animate_patrol_movement_left(t_map *map, t_patrol *patrol)
 	{
 		patrol->pos -= 1;
 		update_patrol_movement_direction(map, patrol);
+		update_patrol_movement_indicator(map, patrol);
 		patrol->image->pixels = map->patrol_sprites[1 + patrol->facing_offset];
 	}
 	if (map->movement_clock >= 5)

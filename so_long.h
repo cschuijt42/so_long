@@ -153,6 +153,7 @@ typedef struct s_patrol {
 	size_t			pos;
 	size_t			move_direction;
 	size_t			facing_offset;
+	size_t			indicator_instance;
 	struct s_patrol	*next;
 }	t_patrol;
 
@@ -281,6 +282,8 @@ void		add_new_patrol(t_map *map, size_t pos, char dir);
 void		add_patrol_to_map(t_map *map, t_patrol *patrol);
 int			should_be_patrol(char c);
 void		render_patrols(t_map *map);
+size_t		patrol_indicator_pos(t_map *map, t_patrol *patrol);
+void		update_patrol_movement_indicator(t_map *map, t_patrol *patrol);
 
 // -- MAP RENDERING PASSES --
 
@@ -294,6 +297,7 @@ void		render_collectibles(t_map *map);
 void		render_shadows(t_map *map);
 void		render_shadow_sprite(t_map *map, size_t i);
 void		render_player(t_map *map);
+void		render_patrol_movement_indicators(t_map *map);
 
 // -- GUI helpers --
 

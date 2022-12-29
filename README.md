@@ -24,9 +24,15 @@ The objective for so_long is to create a small 2D game where the player moves th
 - [x] Set up gameplay loop
 - [x] Set up win condition
 - [x] Add GUI
-- [ ] Add patrols
-- [ ] Camera system for large maps
+- [x] Add patrols
 - [x] Make sure there are no memory leaks :)
+
+### The Home Stretch
+- [ ] Add a function on exiting the render loop which detaches all images from their spritesheet pixel buffers, to avoid double frees
+- [ ] Free the entire map struct on ending the game
+- [ ] Do not immediately exit the game when winning or losing, stick around for a death animation or a victory screen
+- [ ] Rework animations to be on a get_time clock instead of a frame clock
+- [ ] Rework the GUI to not re-render everything each time and use layered string images instead
 
 ## Asset Credits
 - The dungeon sprites are [dungeonOld_](https://analogstudios.itch.io/dungeonold) and the character sprites are [dungeonSprites_](https://analogstudios.itch.io/dungeonsprites), both by [analogstudios](https://analogstudios.itch.io/).

@@ -34,7 +34,7 @@ The objective for so_long is to create a small 2D game where the player moves th
 - [ ] Rework animations to be on a get_time clock instead of a frame clock
 - [x] Add an indicator of where each patrol is moving next
 - [x] Add a validation for patrols that are "stuck" between two walls or start next to a player
-- [ ] Rework the GUI to not re-render everything each time and use layered string images instead
+- [x] Rework the GUI to not re-render everything each time and use layered string images instead
 
 ## Asset Credits
 - The dungeon sprites are [dungeonOld_](https://analogstudios.itch.io/dungeonold) and the character sprites are [dungeonSprites_](https://analogstudios.itch.io/dungeonsprites), both by [analogstudios](https://analogstudios.itch.io/).

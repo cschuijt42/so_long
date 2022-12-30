@@ -19,7 +19,7 @@ void	key_hook(void *map_ptr)
 	map = (t_map *) map_ptr;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(map->mlx);
-	if (map->lock_input)
+	if (map->game_state || map->lock_input)
 		return ;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_W) || \
 		mlx_is_key_down(map->mlx, MLX_KEY_UP))

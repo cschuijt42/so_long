@@ -62,7 +62,7 @@ void	animate_background_hook(void *map_ptr)
 	}
 }
 
-void	animate_player_hook(void *map_ptr)
+void	animate_characters_hook(void *map_ptr)
 {
 	static size_t	clock = 0;
 	size_t			current_clock;				
@@ -73,7 +73,7 @@ void	animate_player_hook(void *map_ptr)
 	if (map->movement_clock < 8)
 	{
 		movement_animation_wrapper(map);
-		offset = 1;
+		offset = 0;
 	}
 	else
 	{
@@ -82,9 +82,36 @@ void	animate_player_hook(void *map_ptr)
 		{
 			clock = current_clock;
 			offset = (offset + 1) % 4;
-			map->player->image->pixels = \
-			map->player_sprites[offset + map->player->facing_offset];
+			animate_player(map, offset);
 			idle_animate_patrols(map, offset);
+		}
+	}
+}
+
+void	animate_player(t_map *map, size_t offset)
+{
+	static int	animation_part_two = 0;
+
+	if (map->game_state == state_playing || map->game_state == state_victory)
+	{
+		map->player->image->pixels = \
+			map->player_sprites[offset + map->player->facing_offset];
+	}
+	else if (map->game_state == state_loss_animation)
+	{
+		if (!animation_part_two)
+		{
+			map->player->image->pixels = \
+				map->player_sprites[40 + offset + map->player->facing_offset];
+			if (offset == 3)
+				animation_part_two = 1;
+		}
+		else
+		{
+			map->player->image->pixels = \
+				map->player_sprites[48 + offset + map->player->facing_offset];
+			if (offset == 3)
+				map->game_state = state_game_over;
 		}
 	}
 }

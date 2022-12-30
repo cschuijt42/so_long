@@ -93,12 +93,12 @@ int	game_over(t_map *map, int victory)
 	if (victory)
 	{
 		ft_printf("Victory at %d moves\n", map->player->moves_taken);
-		mlx_close_window(map->mlx);
+		map->game_state = state_victory;
 	}
 	else
 	{
 		ft_printf("Game over at %d moves\n", map->player->moves_taken);
-		mlx_close_window(map->mlx);
+		map->game_state = state_loss_animation;
 	}
 	return (1);
 }

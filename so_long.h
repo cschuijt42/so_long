@@ -71,6 +71,13 @@ typedef enum e_direction {
 	dir_left
 }	t_direction;
 
+typedef enum e_game_state {
+	state_playing,
+	state_loss_animation,
+	state_game_over,
+	state_victory
+}	t_game_state;
+
 // -- STRUCTS --
 
 // @brief One sprite, instantiated from a larger spritesheet.
@@ -234,6 +241,7 @@ typedef struct s_map {
 	t_patrol		*patrols;
 	int				movement_clock;
 	int				lock_input;
+	int				game_state;
 	size_t			col_total;
 	char			*col_total_str;
 	size_t			col_grabbed;
@@ -410,6 +418,7 @@ size_t		render_y_pos(t_map *map, size_t i);
 
 void		key_hook(void *map_ptr);
 void		player_movement_wrapper(t_map *map, char key);
+void		animate_player(t_map *map, size_t offset);
 void		try_move_player_up(t_map *map);
 void		try_move_player_left(t_map *map);
 void		try_move_player_down(t_map *map);
@@ -421,7 +430,7 @@ void		animate_player_movement_right(t_map *map);
 void		animate_player_movement_down(t_map *map);
 void		animate_player_movement_left(t_map *map);
 
-void		animate_player_hook(void *map_ptr);
+void		animate_characters_hook(void *map_ptr);
 void		animate_background_hook(void *map_ptr);
 void		mark_sprites_for_animation(t_map *map);
 

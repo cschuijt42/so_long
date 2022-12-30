@@ -58,6 +58,8 @@ void	load_spritesheets(t_map *map)
 	map->player_sprites = read_spritesheet("sprites/dragon.png", 48, 8, 7);
 	map->patrol_sprites = read_spritesheet("sprites/necromancer.png", 48, 8, 5);
 	map->gui_bg_sprites = read_spritesheet("sprites/paper.png", 32, 3, 3);
+	map->gui_end_sprites = read_spritesheet("sprites/paper_transparent.png", \
+											32, 3, 3);
 	map->gui_charset = read_spritesheet("sprites/monogram.png", 32, 8, 16);
 }
 

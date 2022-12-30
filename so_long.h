@@ -61,7 +61,8 @@ typedef enum e_render_layers {
 	layer_player,
 	layer_pillars,
 	layer_gui_moves,
-	layer_gui_cols
+	layer_gui_cols,
+	layer_endscreen
 }	t_render_layers;
 
 typedef enum e_direction {
@@ -254,6 +255,7 @@ typedef struct s_map {
 	uint8_t			**player_sprites;
 	uint8_t			**patrol_sprites;
 	uint8_t			**gui_bg_sprites;
+	uint8_t			**gui_end_sprites;
 	uint8_t			**gui_charset;
 	t_sprite		*sprites;
 }	t_map;
@@ -282,6 +284,8 @@ void		string_to_image(char *str, mlx_image_t *image, \
 							uint8_t **charset, size_t xy[2]);
 void		string_to_image_right(char *str, mlx_image_t *image, \
 								uint8_t **charset, size_t xy[2]);
+void		string_to_image_center(char *str, mlx_image_t *image, \
+									uint8_t **charset, size_t y);
 void		char_to_image(uint8_t *chr, mlx_image_t *image, \
 							size_t xy[2], uint32_t color);
 
@@ -327,6 +331,11 @@ void		render_gui_static_strings(t_map *map);
 void		render_gui_dynamic_strings(t_map *map);
 void		initialize_gui_dynamic_strings(t_map *map);
 void		update_gui(t_map *map);
+
+void		endscreen_hook(void *map_ptr);
+void		render_endscreen_background(t_map *map, mlx_image_t *image);
+void		render_victory_screen(t_map *map);
+void		render_game_over_screen(t_map *map);
 
 // -- Categorization helpers --
 

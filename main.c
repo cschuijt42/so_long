@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 	mlx_loop_hook(map->mlx, &animate_background_hook, map);
 	mlx_loop_hook(map->mlx, &animate_characters_hook, map);
 	mlx_loop_hook(map->mlx, &key_hook, map);
+	mlx_loop_hook(map->mlx, &endscreen_hook, map);
 	render_map(map);
 	mlx_loop(map->mlx);
 	detach_images_from_spritesheets(map);

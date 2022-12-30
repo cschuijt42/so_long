@@ -28,6 +28,7 @@ void	free_map_struct(t_map *map)
 	free_array((void **) map->patrol_sprites);
 	free_array((void **) map->gui_bg_sprites);
 	free_array((void **) map->gui_charset);
+	free_array((void **) map->gui_end_sprites);
 	free(map->player);
 	free_linked_lists(map);
 	free(map);

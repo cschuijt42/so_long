@@ -30,7 +30,7 @@ The objective for so_long is to create a small 2D game where the player moves th
 ### The Home Stretch
 - [x] Add a function on exiting the render loop which detaches all images from their spritesheet pixel buffers, to avoid double frees
 - [x] Free the entire map struct on ending the game
-- [ ] Do not immediately exit the game when winning or losing, stick around for a death animation or a victory screen
+- [x] Do not immediately exit the game when winning or losing, stick around for a death animation or a victory screen
 - [x] Rework animations to be on a get_time clock instead of a frame clock
 - [x] Add an indicator of where each patrol is moving next
 - [x] Add a validation for patrols that are "stuck" between two walls or start next to a player

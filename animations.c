@@ -40,12 +40,14 @@ void	mark_sprites_for_animation(t_map *map)
 void	animate_background_hook(void *map_ptr)
 {
 	static size_t	clock = 0;
+	size_t			current_clock;
 	static size_t	offset = 0;
 	t_sprite		*sprite;
 
-	if (clock >= 4)
+	current_clock = mlx_get_time() / BG_ANIMATION_INTERVAL;
+	if (current_clock > clock)
 	{
-		clock = 0;
+		clock = current_clock;
 		offset++;
 		sprite = ((t_map *)map_ptr)->sprites;
 		while (sprite)
@@ -58,13 +60,12 @@ void	animate_background_hook(void *map_ptr)
 			sprite = sprite->next;
 		}
 	}
-	else
-		clock++;
 }
 
 void	animate_player_hook(void *map_ptr)
 {
-	static int		clock = 0;
+	static size_t	clock = 0;
+	size_t			current_clock;				
 	static int		offset = 0;
 	t_map			*map;
 
@@ -72,14 +73,14 @@ void	animate_player_hook(void *map_ptr)
 	if (map->movement_clock < 8)
 	{
 		movement_animation_wrapper(map);
-		clock = 6;
-		offset = 2;
+		offset = 1;
 	}
 	else
 	{
-		clock = (clock + 1) % 8;
-		if (clock == 0)
+		current_clock = mlx_get_time() / IDLE_ANIMATION_INTERVAL;
+		if (current_clock > clock)
 		{
+			clock = current_clock;
 			offset = (offset + 1) % 4;
 			map->player->image->pixels = \
 			map->player_sprites[offset + map->player->facing_offset];

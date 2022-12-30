@@ -12,8 +12,10 @@
 
 #include "so_long.h"
 
-int	run_gameplay_checks(t_map *map)
+int	finish_moving_and_run_checks(t_map *map)
 {
+	map->lock_input = 0;
+	map->player->moves_taken++;
 	if (player_next_to_patrol(map))
 		return (game_over(map, 0));
 	if (map->content[map->player->pos] == 'C')
@@ -22,6 +24,7 @@ int	run_gameplay_checks(t_map *map)
 		if (try_exit_map(map))
 			return (game_over(map, 1));
 	ft_printf("Moves: %d\n", map->player->moves_taken);
+	update_gui(map);
 	return (0);
 }
 

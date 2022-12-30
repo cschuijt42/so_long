@@ -27,6 +27,16 @@
 // for the GUI above.
 # define GUI_OFFSET 128
 
+// Amount of seconds that should be between animation frames for background
+// sprites (lava/candles)
+# define BG_ANIMATION_INTERVAL 0.09
+// Amount of seconds that should be between frames for idle animation of
+// characters (player and patrols)
+# define IDLE_ANIMATION_INTERVAL 0.12
+// Amount of seconds that should be between frames of movement for
+// the player and patrols
+# define MOVE_ANIMATION_INTERVAL 0.045
+
 // Sprite height for projecting onto other images
 # define SPRITE_H 32
 // Sprite width for projecting onto other images
@@ -415,7 +425,7 @@ void		animate_player_hook(void *map_ptr);
 void		animate_background_hook(void *map_ptr);
 void		mark_sprites_for_animation(t_map *map);
 
-int			run_gameplay_checks(t_map *map);
+int			finish_moving_and_run_checks(t_map *map);
 void		try_pick_up_collectible(t_map *map, size_t pos);
 int			try_exit_map(t_map *map);
 int			player_next_to_patrol(t_map *map);

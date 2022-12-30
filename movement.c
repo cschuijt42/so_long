@@ -15,17 +15,16 @@
 void	movement_animation_wrapper(t_map *map)
 {
 	static size_t	clock = 0;
+	size_t			current_clock;
 
-	clock = (clock + 1) % 3;
-	if (clock == 0)
+	current_clock = mlx_get_time() / MOVE_ANIMATION_INTERVAL;
+	if (current_clock > clock)
 	{
+		clock = current_clock;
 		map->movement_clock++;
 		if (map->movement_clock >= 8)
 		{
-			map->lock_input = 0;
-			map->player->moves_taken++;
-			run_gameplay_checks(map);
-			update_gui(map);
+			finish_moving_and_run_checks(map);
 			return ;
 		}
 		if (map->player->move_direction == dir_up)

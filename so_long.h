@@ -16,7 +16,9 @@
 // -- INCLUDES --
 
 # include "libft/libft.h"
-# include "mlx42/include/MLX42/MLX42.h"
+# include <stddef.h>
+# include <stdint.h>
+# include <MLX42/MLX42.h>
 
 // -- DEFINES --
 
@@ -82,7 +84,7 @@ typedef enum e_game_state {
 // -- STRUCTS --
 
 // @brief One sprite, instantiated from a larger spritesheet.
-// 
+//
 // Sprites are a singly linked list of all background tiles loaded into
 // an MLX image. By using the list, sprites that are needed more than once
 // are only turned into an image once, and just reinstantiated after that.
@@ -197,7 +199,7 @@ typedef struct s_patrol {
 //                          which should be filled with a single color. Also
 //                          contains the parts of the GUI which do not need to
 //                          update as the game runs.
-// @param gui_moves         MLX image for the move count in the GUI. 
+// @param gui_moves         MLX image for the move count in the GUI.
 // @param gui_collectibles  MLX image for the currently picked up collectible
 //                          count in the GUI.
 // @param height            Total height of the map, in spaces.
@@ -463,7 +465,7 @@ void		idle_animate_patrols(t_map *map, size_t offset);
 t_sprite	*add_new_sprite(t_map *map, uint8_t **sheet, size_t index);
 t_sprite	*find_or_create_sprite(t_map *map, uint8_t **sheet, size_t i);
 
-// -- STRUCT FUNCTIONS -- 
+// -- STRUCT FUNCTIONS --
 
 t_map		*initialize_map_struct(char **map_array);
 void		free_map_struct(t_map *map);

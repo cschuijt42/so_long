@@ -14,7 +14,6 @@ OBJFILES := free_functions.o helpers.o main.o map_parser.o map_solvability.o \
 						patrol_validation.o collectible_rendering.o game_end.o
 FLAGS    := -Werror -Wall -Wextra -g -I lib
 LIBFT_A  := lib/libft/libft.a
-MLX42_A  := lib/mlx42/libmlx42.a
 NAME     := so_long
 
 ifeq ($(OS), Windows_NT)
@@ -24,7 +23,7 @@ ifeq ($(OS), Windows_NT)
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Linux)
-		FW_FLAGS := -ldl -lglfw -pthread -lm
+		FW_FLAGS := -lmlx42 -lglfw
 	else ifeq ($(UNAME_S), Darwin)
 		FW_FLAGS := -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 	else
@@ -32,8 +31,8 @@ else
 	endif
 endif
 
-$(NAME) : $(OBJFILES) $(LIBFT_A) $(MLX42_A) so_long.h
-	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(MLX42_A) $(FW_FLAGS)
+$(NAME) : $(OBJFILES) $(LIBFT_A) so_long.h
+	$(CC) $(FLAGS) -o $(NAME) $(OBJFILES) $(LIBFT_A) $(FW_FLAGS)
 
 all : $(NAME)
 
@@ -47,9 +46,6 @@ fclean :
 
 $(LIBFT_A) :
 	make -C lib/libft
-
-$(MLX42_A) :
-	make -C lib/mlx42
 
 %.o : %.c so_long.h
 	$(CC) -c $(FLAGS) -o $@ $<
